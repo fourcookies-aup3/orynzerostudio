@@ -258,7 +258,7 @@ const translations: Record<Language, Record<string, string>> = {
     "booking.eyebrow": "// Booking",
     "booking.title": "Schedule a meeting.",
     "booking.intro":
-      "Choose the format that fits your project. Bookings are handled via calendar integration — replace the embed source with your Cal.com or Calendly URL.",
+      "Select a phase below to schedule your consultation or project discussion with real-time availability.",
     "booking.b01.title": "Discovery Call",
     "booking.b01.body":
       "A short introductory call to align on scope, timing, and creative direction.",
@@ -268,8 +268,8 @@ const translations: Record<Language, Record<string, string>> = {
     "booking.b03.title": "Consultation",
     "booking.b03.body":
       "For agencies and brands seeking cinematic direction or FPV expertise on an existing project.",
-    "booking.embed.title": "Connect Cal.com, Calendly or Google Calendar.",
-    "booking.embed.desc": "Ready for integration. Paste your booking link inside booking.tsx.",
+    "booking.embed.title": "Cal.com Live Calendar Integrated.",
+    "booking.embed.desc": "Connected directly to cal.com/oryn-29f422.",
     "booking.embed.cta": "Contact studio directly",
 
     // Contact Page
@@ -535,19 +535,19 @@ const translations: Record<Language, Record<string, string>> = {
     "booking.eyebrow": "// Buchung",
     "booking.title": "Vereinbare einen Termin.",
     "booking.intro":
-      "Wähle das Format, das zu deinem Projekt passt. Buchungen werden über Kalender-Integration abgewickelt — ersetze den Embed-Link mit deiner Cal.com- oder Calendly-URL.",
+      "Wähle eine Phase unten, um dein Erstgespräch oder deine Projektberatung mit Echtzeit-Verfügbarkeiten zu buchen.",
     "booking.b01.title": "Erstgespräch",
     "booking.b01.body":
       "Ein kurzes Einführungsgespräch zur Abstimmung von Umfang, Zeitplan und kreativer Ausrichtung.",
     "booking.b02.title": "Projekt-Meeting",
     "booking.b02.body":
-      "Eine Arbeitssitzung zur Detaillierung der kreativen Ausarbeitung, des Produktionsplans und der deliverables.",
+      "Eine Arbeitssitzung zur Detaillierung der kreativen Ausarbeitung, des Produktionsplans und der Deliverables.",
     "booking.b03.title": "Beratung",
     "booking.b03.body":
       "Für Agenturen und Marken, die filmische Beratung oder FPV-Expertise für ein bestehendes Projekt suchen.",
-    "booking.embed.title": "Cal.com, Calendly oder Google Calendar verbinden.",
+    "booking.embed.title": "Cal.com Live-Kalender integriert.",
     "booking.embed.desc":
-      "Bereit für die Integration. Füge deinen Buchungslink in booking.tsx ein.",
+      "Direkt verbunden mit cal.com/oryn-29f422.",
     "booking.embed.cta": "Studio direkt kontaktieren",
 
     // Contact Page

@@ -91,6 +91,10 @@ export async function appendFreelancerToGoogleDoc(
     });
   }
 
+  if (!docId) {
+    throw new Error("Could not find or create Google Document ID for roster.");
+  }
+
   // 3. Append entry to the top of the Document (after header or at index 1)
   const entryText = `-----------------------------------------------------\nFREELANCER PROFILE — ${freelancer.name.toUpperCase()}\nSubmitted: ${freelancer.createdAt}\nRole: ${freelancer.role}\nEmail: ${freelancer.email}\nPhone: ${freelancer.phone || "N/A"}\nLocation: ${freelancer.city || "N/A"}\nDay Rate: ${freelancer.rate || "N/A"}\nCV / Resume Download Link: ${freelancer.resumeUrl || "N/A"}\nShowreel Download / Link: ${freelancer.showreelFileUrl || freelancer.portfolio || "N/A"}\nPortfolio / Reel: ${freelancer.portfolio || "N/A"}\nEquipment: ${freelancer.equipment || "N/A"}\nBio / Experience: ${freelancer.message || "N/A"}\n-----------------------------------------------------\n\n`;
 

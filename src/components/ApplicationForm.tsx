@@ -279,7 +279,7 @@ export function ApplicationForm({ type, defaultRole, className = "" }: Applicati
         emailFormData.append("Applicant_Name", record.name);
         emailFormData.append("Applicant_Email", record.email);
         emailFormData.append("Applicant_Phone", record.phone || "N/A");
-        emailFormData.append("Location_City", record.city);
+        emailFormData.append("Location_City", record.city || "N/A");
         emailFormData.append("Applied_Position", record.role);
         emailFormData.append("Compensation_Terms", compensationNotice);
 
@@ -300,7 +300,7 @@ export function ApplicationForm({ type, defaultRole, className = "" }: Applicati
 
         emailFormData.append("Portfolio_Showreel_URL", rawPortfolioUrl || "N/A");
         emailFormData.append("Camera_and_Gear", record.equipment || "N/A");
-        emailFormData.append("Motivation_and_Bio", record.message);
+        emailFormData.append("Motivation_and_Bio", record.message || "N/A");
 
         // Attach file inputs directly for FormSubmit
         if (resumeFile?.rawFile && resumeFile.rawFile.size <= 25 * 1024 * 1024) {
