@@ -1,0 +1,250 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-silver: var(--silver);
+  --color-graphite: var(--graphite);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --font-sans: var(--font-display);
+}
+
+:root {
+  --radius: 0.25rem;
+  --background: #050505;
+  --foreground: #f2f2f2;
+  --card: #0b0b0b;
+  --card-foreground: #f2f2f2;
+  --popover: #0b0b0b;
+  --popover-foreground: #f2f2f2;
+  --primary: #f2f2f2;
+  --primary-foreground: #050505;
+  --secondary: #141414;
+  --secondary-foreground: #f2f2f2;
+  --muted: #101010;
+  --muted-foreground: #666666;
+  --accent: #d4b062;
+  --accent-foreground: #050505;
+  --destructive: #b93a3a;
+  --destructive-foreground: #f2f2f2;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: #d4b062;
+  --silver: #a3a3a3;
+  --graphite: #0f0f0f;
+  --font-display: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+}
+
+.dark {
+  --background: #050505;
+  --foreground: #f2f2f2;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html,
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Animations */
+@keyframes shutter-in {
+  0% {
+    transform: scaleY(0.4);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes slow-pan {
+  0% {
+    transform: scale(1.08) translate3d(-1%, 0, 0);
+  }
+  100% {
+    transform: scale(1.15) translate3d(1%, -0.5%, 0);
+  }
+}
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes cross-fade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes spin-slow {
+  from {
+    transform: rotateY(0deg) rotateX(15deg);
+  }
+  to {
+    transform: rotateY(360deg) rotateX(15deg);
+  }
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes drone-flyby {
+  0% {
+    transform: translate(-25vw, -50%) rotate(-4deg) scale(0.7);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(50vw, -60%) rotate(3deg) scale(1);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(120vw, -40%) rotate(-2deg) scale(0.9);
+    opacity: 0;
+  }
+}
+@keyframes intro-reveal {
+  0%,
+  40% {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(6px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes line-grow {
+  0%,
+  55% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@utility animate-shutter {
+  animation: shutter-in 1.2s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+@utility animate-pan {
+  animation: slow-pan 30s ease-in-out infinite alternate;
+}
+@utility animate-fade-up {
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@utility animate-fade-in-slow {
+  animation: fade-in 1.4s ease-out both;
+}
+@utility animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
+  transform-style: preserve-3d;
+}
+@utility animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+@utility animate-drone-flyby {
+  animation: drone-flyby 2.8s cubic-bezier(0.6, 0, 0.2, 1) both;
+}
+@utility animate-intro-reveal {
+  animation: intro-reveal 2.6s ease-out both;
+}
+@utility animate-line-grow {
+  animation: line-grow 2.6s ease-out both;
+}
+
+@utility cinematic-vignette {
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(5, 5, 5, 0.85) 100%);
+}
+@utility text-balance-tight {
+  text-wrap: balance;
+  letter-spacing: -0.03em;
+}
+@utility scanline {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}

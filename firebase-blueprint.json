@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "Freelancer": {
+      "title": "Freelancer Application",
+      "description": "Freelancer application entry submitted via website form",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "city": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "role": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "portfolio": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "resumeUrl": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "rate": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "equipment": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "createdAt": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "email", "role", "portfolio", "message"]
+    }
+  },
+  "firestore": {
+    "/freelancers/{freelancerId}": {
+      "schema": "Freelancer",
+      "description": "Public submissions of freelancer applications"
+    }
+  }
+}
