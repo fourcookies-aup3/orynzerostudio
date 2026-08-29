@@ -82,6 +82,7 @@ const featuredClips = [
     poster: "https://img.youtube.com/vi/4mwIvmZ5y7c/maxresdefault.jpg",
     client: "Parkour Day Stäfa",
     year: "2026",
+    credits: "Main Recording/Editing: VISURE GMBH · Co-Filming/Drone Shots: Finn Ryf",
   },
 ];
 
@@ -277,6 +278,26 @@ function HomePage() {
   };
 
   // Job applications state with persistence
+  useEffect(() => {
+    if (window.location.hash) {
+      const sectionName = window.location.hash.substring(1);
+      const timer = setTimeout(() => {
+        const target =
+          document.getElementById(sectionName) ||
+          document.querySelector(`[data-section="${sectionName}"]`);
+        if (target) {
+          const headerOffset = 90;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: Math.max(0, offsetPosition),
+            behavior: "smooth",
+          });
+        }
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, []);
   const [applications, setApplications] = useState<
     Record<string, Array<{ name: string; email: string; portfolio: string; message: string }>>
   >(() => {
@@ -500,8 +521,9 @@ function HomePage() {
 
         {/* ===================== ABOUT SECTION (STORYTELLING) ===================== */}
         <section
+          id="storytelling"
           data-section="storytelling"
-          className="relative px-6 py-24 sm:py-32 md:px-16 bg-gradient-to-b from-transparent to-black/30"
+          className="relative px-6 py-24 sm:py-32 md:px-16 bg-gradient-to-b from-transparent to-black/30 scroll-mt-28"
         >
           <FadeInOnScroll direction="up" distance={40}>
             <div className="mx-auto max-w-5xl">
@@ -541,7 +563,7 @@ function HomePage() {
       </section>
 
         {/* ===================== SHOWREEL SECTION (PREMIUM GALLERY) ===================== */}
-        <section data-section="showreel" className="relative px-6 py-24 sm:py-32 md:px-16">
+        <section id="showreel" data-section="showreel" className="relative px-6 py-24 sm:py-32 md:px-16 scroll-mt-28">
           <FadeInOnScroll direction="up" distance={40}>
             <div className="mx-auto max-w-5xl">
               {/* Header */}
@@ -625,6 +647,11 @@ function HomePage() {
                           <h4 className="text-xl font-bold tracking-tight text-white uppercase">
                             {clip.title}
                           </h4>
+                          {"credits" in clip && clip.credits && (
+                            <span className="mt-1.5 inline-block font-mono text-[8px] tracking-wide text-silver/90 bg-black/70 px-2.5 py-0.5 rounded-full border border-white/10">
+                              {clip.credits as string}
+                            </span>
+                          )}
                         </div>
                         <div className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur-sm transition-all duration-500 group-hover:scale-110 group-hover:bg-white group-hover:text-black">
                           <Play className="size-3 fill-current ml-0.5" />
@@ -640,8 +667,9 @@ function HomePage() {
 
         {/* ===================== SERVICES SECTION (WHAT WE OFFER) ===================== */}
         <section
+          id="services"
           data-section="services"
-          className="relative px-6 py-24 sm:py-32 md:px-16 bg-gradient-to-b from-black/20 to-transparent"
+          className="relative px-6 py-24 sm:py-32 md:px-16 bg-gradient-to-b from-black/20 to-transparent scroll-mt-28"
         >
           <FadeInOnScroll direction="up" distance={40}>
             <div className="mx-auto max-w-5xl">
@@ -723,7 +751,7 @@ function HomePage() {
         </section>
 
         {/* ===================== PROJECTS SECTION (CASE STUDY) ===================== */}
-        <section data-section="portfolio" className="relative px-6 py-24 sm:py-32 md:px-16">
+        <section id="portfolio" data-section="portfolio" className="relative px-6 py-24 sm:py-32 md:px-16 scroll-mt-28">
           <FadeInOnScroll direction="up" distance={40}>
             <div className="mx-auto max-w-5xl">
               {/* Header */}
@@ -782,10 +810,15 @@ function HomePage() {
                           </div>
 
                           {/* Footer detail row of the card */}
-                          <div className="mt-6 flex items-start justify-between font-mono text-[9px] uppercase tracking-[0.25em] text-silver/40 pl-4 pr-4">
+                          <div className="mt-6 flex flex-col sm:flex-row sm:items-start justify-between gap-3 font-mono text-[9px] uppercase tracking-[0.25em] text-silver/40 pl-4 pr-4">
                             <div className="flex flex-col gap-2">
                               <span>CLIENT: {p.client}</span>
                               <span>DISCIPLINE: {p.category}</span>
+                              {p.credits && (
+                                <span className="text-accent normal-case tracking-normal font-sans text-xs mt-1">
+                                  <strong>Main Recording/Editing:</strong> {p.credits.mainRecordingEditing} · <strong>Co-Filming/Drone Shots:</strong> {p.credits.coFilmingDroneShots}
+                                </span>
+                              )}
                             </div>
                             <span>{p.location}</span>
                           </div>
@@ -843,8 +876,9 @@ function HomePage() {
 
         {/* ===================== TEAM SECTION ===================== */}
         <section
+          id="team"
           data-section="team"
-          className="relative px-6 py-24 sm:py-32 md:px-16 border-t border-white/5 bg-gradient-to-b from-black/40 to-transparent"
+          className="relative px-6 py-24 sm:py-32 md:px-16 border-t border-white/5 bg-gradient-to-b from-black/40 to-transparent scroll-mt-28"
         >
           <FadeInOnScroll direction="up" distance={40}>
             <div className="mx-auto max-w-5xl">
@@ -1012,8 +1046,9 @@ function HomePage() {
 
         {/* ===================== JOBS & CAREER SECTION ===================== */}
         <section
+          id="careers"
           data-section="careers"
-          className="relative px-6 py-24 sm:py-32 md:px-16 border-t border-white/5 bg-gradient-to-b from-transparent to-black/20"
+          className="relative px-6 py-24 sm:py-32 md:px-16 border-t border-white/5 bg-gradient-to-b from-transparent to-black/20 scroll-mt-28"
         >
           <FadeInOnScroll direction="up" distance={40}>
             <div className="mx-auto max-w-5xl">
@@ -1279,12 +1314,12 @@ function HomePage() {
         </section>
 
         {/* ===================== PARTNERS NETWORK ===================== */}
-        <div data-section="partners">
+        <div id="partners" data-section="partners" className="scroll-mt-28">
           <PartnersClients />
         </div>
 
         {/* ===================== CONTACT & MAPS SECTION ===================== */}
-        <section data-section="contact" className="relative px-6 py-24 sm:py-32 md:px-16">
+        <section id="contact" data-section="contact" className="relative px-6 py-24 sm:py-32 md:px-16 scroll-mt-28">
           <FadeInOnScroll direction="up" distance={40}>
             <div className="mx-auto max-w-5xl">
             <div className="mb-12 grid gap-8 md:grid-cols-2">
@@ -1495,6 +1530,12 @@ function HomePage() {
               >
                 CLOSE FRAME <X className="size-3.5" />
               </button>
+              {selectedVideo && selectedVideo.includes("4mwIvmZ5y7c") && (
+                <div className="absolute top-4 left-4 z-20 font-mono text-[9px] text-white/90 bg-black/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-accent/30 flex items-center gap-2">
+                  <span className="size-1.5 rounded-full bg-accent animate-pulse" />
+                  <span>Main Recording/Editing: VISURE GMBH · Co-Filming/Drone Shots: Finn Ryf</span>
+                </div>
+              )}
               <VideoPlayer src={selectedVideo} autoPlay={true} loop={true} muted={false} />
             </motion.div>
           </motion.div>
@@ -1545,7 +1586,7 @@ function HomePage() {
                 </div>
 
                 {/* Dynamic player */}
-                <div className="border border-white/5 bg-black rounded-3xl overflow-hidden aspect-video shadow-2xl">
+                <div className="border border-white/5 bg-black rounded-3xl overflow-hidden aspect-video shadow-2xl relative">
                   <VideoPlayer
                     src={activeCaseStudy.video || "https://youtu.be/2bbwo-n7Lmo"}
                     poster={activeCaseStudy.cover}
@@ -1596,6 +1637,23 @@ function HomePage() {
 
                   {/* Sidebar stats */}
                   <aside className="md:col-span-4 border border-white/5 bg-white/[0.01] p-6 rounded-3xl space-y-5 font-mono text-[9px] tracking-widest leading-relaxed">
+                    {/* Explicit Production Credits in Modal Sidebar */}
+                    <div className="border border-accent/20 bg-accent/5 p-4 rounded-2xl space-y-2">
+                      <span className="block text-accent uppercase text-[8px] font-bold tracking-widest">
+                        PRODUCTION CREDITS
+                      </span>
+                      <div className="space-y-1.5 text-white font-sans text-xs tracking-normal">
+                        <p>
+                          <span className="text-silver/50 block font-mono text-[8px] uppercase tracking-wider">Main Recording/Editing</span>
+                          VISURE GMBH
+                        </p>
+                        <p className="mt-1">
+                          <span className="text-silver/50 block font-mono text-[8px] uppercase tracking-wider">Co-Filming/Drone Shots</span>
+                          Finn Ryf
+                        </p>
+                      </div>
+                    </div>
+
                     <div>
                       <span className="block text-silver/40 uppercase text-[8px]">CLIENT</span>
                       <span className="mt-1 block text-white font-sans text-xs font-bold uppercase tracking-normal">

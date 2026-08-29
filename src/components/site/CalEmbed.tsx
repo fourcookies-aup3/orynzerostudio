@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Cal, { getCalApi } from "@calcom/embed-react";
-import { ExternalLink, RefreshCw, Calendar, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { ExternalLink, Calendar } from "lucide-react";
 
 interface CalEmbedProps {
   calLink?: string; // e.g. "oryn-29f422" or "oryn-29f422/discovery-call"
@@ -9,32 +8,6 @@ interface CalEmbedProps {
 }
 
 export function CalEmbed({ calLink = "oryn-29f422", title, description }: CalEmbedProps) {
-  const [embedError, setEmbedError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setIsLoading(true);
-    setEmbedError(false);
-
-    (async function () {
-      try {
-        const cal = await getCalApi({});
-        cal("ui", {
-          theme: "dark",
-          styles: {
-            branding: { brandColor: "#ffffff" },
-          },
-          hideEventTypeDetails: false,
-          layout: "month_view",
-        });
-      } catch (err) {
-        console.error("Cal.com embed init error:", err);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
-  }, [calLink]);
-
   const calUrl = `https://cal.com/${calLink}`;
 
   return (
@@ -76,30 +49,12 @@ export function CalEmbed({ calLink = "oryn-29f422", title, description }: CalEmb
 
       {/* Embed Container */}
       <div className="relative min-h-[680px] border border-border bg-background overflow-hidden shadow-2xl">
-        {isLoading && (
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-background/80 backdrop-blur-xs">
-            <RefreshCw className="h-6 w-6 animate-spin text-accent mb-2" />
-            <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
-              Loading Cal.com calendar...
-            </p>
-          </div>
-        )}
-
-        {!embedError ? (
-          <Cal
-            calLink={calLink}
-            style={{ width: "100%", height: "100%", minHeight: "680px" }}
-            config={{ layout: "month_view", theme: "dark" }}
-          />
-        ) : (
-          /* Fallback iFrame */
-          <iframe
-            src={`${calUrl}?embed=true&theme=dark`}
-            title="Cal.com Booking Calendar"
-            className="w-full h-[680px] border-0"
-            allow="camera; microphone; autoplay; payment"
-          />
-        )}
+        <iframe
+          src={`${calUrl}?embed=true&theme=dark&layout=month_view`}
+          title="Cal.com Booking Calendar"
+          className="w-full h-[680px] border-0"
+          allow="camera; microphone; autoplay; payment"
+        />
       </div>
     </div>
   );

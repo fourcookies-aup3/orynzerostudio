@@ -86,7 +86,25 @@ function ProjectPage() {
         </div>
 
         <div className="mx-auto mt-16 max-w-7xl px-6">
-          <VideoPlayer src={showreel.src} poster={p.cover} aspect="cinemascope" />
+          <VideoPlayer src={p.video || showreel.src} poster={p.cover} aspect="cinemascope" />
+
+          {/* Explicit Video / Project Credits Bar */}
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.02] px-6 py-4 font-mono text-[10px]">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+              <span className="uppercase tracking-widest text-accent font-semibold">
+                Credits:
+              </span>
+              <span className="text-white">
+                <strong className="text-silver/60 font-normal">Main Recording/Editing:</strong> VISURE GMBH
+              </span>
+              <span className="text-white">
+                <strong className="text-silver/60 font-normal">Co-Filming/Drone Shots:</strong> Finn Ryf
+              </span>
+            </div>
+            <span className="uppercase tracking-widest text-silver/40">
+              {p.location}
+            </span>
+          </div>
         </div>
       </section>
 
@@ -104,7 +122,24 @@ function ProjectPage() {
             </div>
           </div>
 
-          <aside className="space-y-10 border border-white/5 rounded-3xl bg-white/[0.01] p-8">
+          <aside className="space-y-8 border border-white/5 rounded-3xl bg-white/[0.01] p-8">
+            {/* Explicit Production Credits in Aside */}
+            <div className="border border-accent/20 bg-accent/5 p-5 rounded-2xl space-y-2.5 font-mono">
+              <p className="text-[9px] uppercase tracking-widest text-accent font-bold">
+                Production Credits
+              </p>
+              <div className="space-y-1 text-xs">
+                <p className="text-white font-sans">
+                  <span className="text-silver/60 block font-mono text-[9px] uppercase tracking-wider">Main Recording/Editing</span>
+                  VISURE GMBH
+                </p>
+                <p className="text-white font-sans mt-2">
+                  <span className="text-silver/60 block font-mono text-[9px] uppercase tracking-wider">Co-Filming/Drone Shots</span>
+                  Finn Ryf
+                </p>
+              </div>
+            </div>
+
             <Meta label="Production" value="ORYN ZERO" />
             <Meta label="Client" value={p.client} />
             <Meta label="Location" value={p.location} />

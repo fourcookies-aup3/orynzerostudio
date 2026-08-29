@@ -44,10 +44,12 @@ export function SiteNav() {
         const sections = nav.map((n) => n.href.substring(1));
         let current = "";
         for (const section of sections) {
-          const element = document.querySelector(`[data-section="${section}"]`);
+          const element =
+            document.getElementById(section) ||
+            document.querySelector(`[data-section="${section}"]`);
           if (element) {
             const rect = element.getBoundingClientRect();
-            if (rect.top <= 250 && rect.bottom >= 250) {
+            if (rect.top <= 300 && rect.bottom >= 100) {
               current = section;
             }
           }
@@ -64,17 +66,32 @@ export function SiteNav() {
     if (href.startsWith("#")) {
       e.preventDefault();
       setOpen(false);
+      document.body.style.overflow = "";
       const sectionName = href.substring(1);
-      if (currentPath === "/") {
-        const target = document.querySelector(`[data-section="${sectionName}"]`);
+
+      const performScroll = () => {
+        const target =
+          document.getElementById(sectionName) ||
+          document.querySelector(`[data-section="${sectionName}"]`);
         if (target) {
-          target.scrollIntoView({ behavior: "smooth" });
+          const headerOffset = 90;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: Math.max(0, offsetPosition),
+            behavior: "smooth",
+          });
           if (window.history.replaceState) {
-            window.history.replaceState(null, "", window.location.pathname);
+            window.history.replaceState(null, "", `#${sectionName}`);
           }
         }
+      };
+
+      if (currentPath === "/") {
+        // Run after modal close transition begins so layout isn't blocked
+        setTimeout(performScroll, 50);
       } else {
-        window.location.href = "/";
+        window.location.href = `/#${sectionName}`;
       }
     }
   };
@@ -115,13 +132,35 @@ export function SiteNav() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="flex items-center pl-1 cursor-pointer"
+            className="flex items-center pl-1 cursor-pointer shrink-0"
           >
             <OrynLogo size="sm" />
           </Link>
 
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+            {nav.map((n) => {
+              const isActive = activeSection === n.href.substring(1);
+              return (
+                <a
+                  key={n.href}
+                  href={currentPath === "/" ? n.href : `/${n.href}`}
+                  onClick={(e) => handleScrollTo(e, n.href)}
+                  className={cn(
+                    "px-3 py-1.5 rounded-full font-mono text-[9px] uppercase tracking-[0.2em] transition-all duration-300",
+                    isActive
+                      ? "bg-white/10 text-accent font-bold"
+                      : "text-silver/70 hover:text-white hover:bg-white/5",
+                  )}
+                >
+                  {getNavLabel(n.href)}
+                </a>
+              );
+            })}
+          </nav>
+
           {/* Premium CTA Buttons & Menu Trigger */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             <Link
               to="/freelancers"
               className="hidden sm:inline-block rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[9px] font-bold uppercase tracking-[0.2em] text-silver transition-all hover:border-accent hover:text-white"

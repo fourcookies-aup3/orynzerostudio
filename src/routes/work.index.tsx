@@ -153,6 +153,11 @@ function WorkIndex() {
                 <p className="mt-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                   {p.category} · {p.location}
                 </p>
+                {p.credits && (
+                  <p className="mt-1 font-mono text-[9px] text-accent/80">
+                    Main Recording/Editing: {p.credits.mainRecordingEditing} · Co-Filming/Drone Shots: {p.credits.coFilmingDroneShots}
+                  </p>
+                )}
               </Link>
             ))}
             {filtered.length === 0 && (

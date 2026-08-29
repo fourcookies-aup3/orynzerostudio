@@ -15,6 +15,7 @@ export const heroReels = [
     youtubeUrl: "https://youtu.be/4mwIvmZ5y7c",
     poster: "https://img.youtube.com/vi/4mwIvmZ5y7c/maxresdefault.jpg",
     label: "Parkour Day Stäfa / Event Film",
+    credits: "Main Recording/Editing: VISURE GMBH · Co-Filming/Drone Shots: Finn Ryf",
   },
 ];
 
@@ -51,4 +52,10 @@ export const site = {
 
 export const partners = [{ name: "VISURE GMBH", note: "Production Partner" }];
 
-export const clients = [{ name: "Parkour Day Stäfa", note: "Event Film" }];
+export const clients = [
+  {
+    name: "Parkour Day Stäfa",
+    note: "Event Film",
+    credits: "Main Recording/Editing: VISURE GMBH · Co-Filming/Drone Shots: Finn Ryf",
+  },
+];

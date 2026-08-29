@@ -101,11 +101,29 @@ export function PartnersClients() {
                   A high-impact community and athletic event captured using our specialized
                   close-proximity FPV drone tracking.
                 </p>
+
+                {/* Explicit Production Credits */}
+                <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.02] p-3.5 space-y-1.5 font-mono text-[9px]">
+                  <span className="text-accent/90 uppercase tracking-widest text-[8px] block font-semibold">
+                    Production Credits
+                  </span>
+                  <div className="space-y-0.5">
+                    <p className="text-white">
+                      <span className="text-silver/50">Main Recording/Editing:</span> VISURE GMBH
+                    </p>
+                    <p className="text-white">
+                      <span className="text-silver/50">Co-Filming/Drone Shots:</span> Finn Ryf
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="mt-8 flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-widest text-silver/40">
-                <span className="size-1 rounded-full bg-silver/50" />
-                <span>Event Film Client</span>
+              <div className="mt-8 flex items-center justify-between font-mono text-[8px] uppercase tracking-widest text-silver/40">
+                <div className="flex items-center gap-1.5">
+                  <span className="size-1 rounded-full bg-silver/50" />
+                  <span>Event Film Client</span>
+                </div>
+                <span className="text-silver/60">Stäfa, Zürich</span>
               </div>
             </motion.div>
           </div>
