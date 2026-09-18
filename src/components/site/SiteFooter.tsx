@@ -84,6 +84,14 @@ export function SiteFooter() {
             >
               Contact
             </Link>
+            <a
+              href="https://www.crowdify.net/de/projekt/orynzero-studio-am-start"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs uppercase tracking-widest text-accent hover:text-white transition-colors"
+            >
+              Crowdify Campaign ↗
+            </a>
           </div>
         </div>
 

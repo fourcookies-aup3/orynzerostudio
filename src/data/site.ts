@@ -52,6 +52,13 @@ export const site = {
 
 export const partners = [{ name: "VISURE GMBH", note: "Production Partner" }];
 
+export const crowdfunding = {
+  title: "OrynZERO Studio am Start",
+  platform: "Crowdify",
+  projectUrl: "https://www.crowdify.net/de/projekt/orynzero-studio-am-start",
+  widgetUrl: "https://www.crowdify.net/de/projekt/orynzero-studio-am-start/widget/v3",
+};
+
 export const clients = [
   {
     name: "Parkour Day Stäfa",

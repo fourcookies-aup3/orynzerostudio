@@ -7,12 +7,21 @@ import { OrynLogo } from "./OrynLogo";
 import { useLocale, type Language, type Currency } from "@/context/LocaleContext";
 
 const nav = [
-  { href: "#storytelling", label: "Philosophy" },
-  { href: "#showreel", label: "Showreel" },
+  { href: "#services", label: "Services" },
   { href: "#portfolio", label: "Portfolio" },
   { href: "#team", label: "Team" },
+  { href: "#crowdfunding", label: "Crowdfunding" },
+  { href: "#careers", label: "Careers" },
+  { href: "#contact", label: "Contact" },
+] as const;
+
+const drawerNav = [
+  { href: "#storytelling", label: "Philosophy" },
+  { href: "#services", label: "Services" },
+  { href: "#portfolio", label: "Portfolio" },
+  { href: "#team", label: "Team" },
+  { href: "#crowdfunding", label: "Crowdfunding" },
   { href: "#careers", label: "Jobs & Career" },
-  { href: "#partners", label: "Network" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
@@ -26,10 +35,12 @@ export function SiteNav() {
 
   const getNavLabel = (href: string) => {
     if (href === "#storytelling") return t("nav.philosophy");
+    if (href === "#services") return t("nav.services") || "Services";
     if (href === "#showreel") return t("nav.showreel");
     if (href === "#portfolio") return t("nav.portfolio");
     if (href === "#team") return t("nav.team");
     if (href === "#careers") return t("nav.careers");
+    if (href === "#crowdfunding") return t("nav.crowdfunding") || "Crowdfunding";
     if (href === "#partners") return t("nav.network");
     if (href === "#contact") return t("nav.contact");
     return "";
@@ -41,7 +52,15 @@ export function SiteNav() {
 
       // Section highlighting logic
       if (currentPath === "/") {
-        const sections = nav.map((n) => n.href.substring(1));
+        const sections = [
+          "storytelling",
+          "services",
+          "portfolio",
+          "team",
+          "careers",
+          "crowdfunding",
+          "contact",
+        ];
         let current = "";
         for (const section of sections) {
           const element =
@@ -49,7 +68,7 @@ export function SiteNav() {
             document.querySelector(`[data-section="${section}"]`);
           if (element) {
             const rect = element.getBoundingClientRect();
-            if (rect.top <= 300 && rect.bottom >= 100) {
+            if (rect.top <= 280 && rect.bottom >= 100) {
               current = section;
             }
           }
@@ -62,35 +81,49 @@ export function SiteNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [currentPath]);
 
+  const scrollToTarget = (sectionName: string) => {
+    const target =
+      document.getElementById(sectionName) ||
+      document.querySelector(`[data-section="${sectionName}"]`);
+    if (target) {
+      const headerOffset = 90;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: "smooth",
+      });
+      if (typeof window !== "undefined" && window.history.replaceState) {
+        window.history.replaceState(null, "", `#${sectionName}`);
+      }
+      return true;
+    }
+    return false;
+  };
+
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
       e.preventDefault();
-      setOpen(false);
-      document.body.style.overflow = "";
       const sectionName = href.substring(1);
 
-      const performScroll = () => {
-        const target =
-          document.getElementById(sectionName) ||
-          document.querySelector(`[data-section="${sectionName}"]`);
-        if (target) {
-          const headerOffset = 90;
-          const elementPosition = target.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          window.scrollTo({
-            top: Math.max(0, offsetPosition),
-            behavior: "smooth",
-          });
-          if (window.history.replaceState) {
-            window.history.replaceState(null, "", `#${sectionName}`);
-          }
-        }
-      };
-
       if (currentPath === "/") {
-        // Run after modal close transition begins so layout isn't blocked
-        setTimeout(performScroll, 50);
+        if (open) {
+          setOpen(false);
+          document.body.style.overflow = "";
+          setTimeout(() => {
+            scrollToTarget(sectionName);
+          }, 80);
+        } else {
+          scrollToTarget(sectionName);
+        }
       } else {
+        setOpen(false);
+        document.body.style.overflow = "";
+        try {
+          sessionStorage.setItem("pendingScrollSection", sectionName);
+        } catch {
+          // ignore
+        }
         window.location.href = `/#${sectionName}`;
       }
     }
@@ -194,8 +227,8 @@ export function SiteNav() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
+            exit={{ opacity: 0, pointerEvents: "none" }}
+            transition={{ duration: 0.25 }}
             className="fixed inset-0 z-[60] flex flex-col justify-between bg-black/95 p-6 sm:p-10 backdrop-blur-2xl overflow-y-auto"
           >
             <div className="flex items-center justify-between">
@@ -213,14 +246,14 @@ export function SiteNav() {
             </div>
 
             <nav className="flex flex-col gap-2 py-8 max-w-2xl mx-auto w-full">
-              {nav.map((n, idx) => {
+              {drawerNav.map((n, idx) => {
                 const isActive = activeSection === n.href.substring(1);
                 return (
                   <motion.div
                     key={n.href}
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: idx * 0.04, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ delay: idx * 0.03, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <a
                       href={currentPath === "/" ? n.href : `/${n.href}`}

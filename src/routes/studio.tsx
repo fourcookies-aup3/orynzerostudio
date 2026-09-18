@@ -7,6 +7,8 @@ import { TeamMemberPlaceholder } from "@/components/site/TeamMemberPlaceholder";
 import { MemberImage } from "@/components/site/MemberImage";
 import nickPhoto from "@/assets/Nick.jpeg";
 import tatePhoto from "@/assets/Tate Rittscher.png";
+import { CrowdifyWidget, CROWDIFY_PROJECT_URL } from "@/components/site/CrowdifyWidget";
+import { ExternalLink, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/studio")({
   head: () => ({
@@ -185,6 +187,43 @@ function StudioPage() {
           >
             {t("studio.future.cta")}
           </Link>
+        </div>
+      </section>
+
+      {/* Studio Crowdfunding Campaign */}
+      <section className="border-b border-border bg-[#080808] px-6 py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-12 lg:grid-cols-12 items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <SectionLabel id="// 04">CROWDFUNDING INITIATIVE</SectionLabel>
+              <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1 font-mono text-[9px] uppercase tracking-widest text-accent">
+                <Sparkles className="size-3" />
+                <span>Live Campaign on Crowdify.net</span>
+              </div>
+              <h2 className="text-balance-tight text-3xl font-bold tracking-tight md:text-5xl">
+                OrynZERO Studio am Start
+              </h2>
+              <p className="text-base leading-relaxed text-muted-foreground max-w-2xl">
+                Help us establish ORYN ZERO as an officially registered Swiss production company and acquire a dedicated
+                Sony FX3 solo cinema rig for high-velocity solo filming, custom gimbal balancing, and aerial tracking.
+              </p>
+              <div className="pt-4 flex items-center gap-4">
+                <a
+                  href={CROWDIFY_PROJECT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 font-mono text-[9px] font-bold uppercase tracking-[0.25em] text-black hover:bg-white transition-colors"
+                >
+                  <span>Support on Crowdify.net</span>
+                  <ExternalLink className="size-3" />
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 flex justify-center">
+              <CrowdifyWidget />
+            </div>
+          </div>
         </div>
       </section>
 

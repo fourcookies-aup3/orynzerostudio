@@ -29,6 +29,9 @@ import { SectionLabel } from "@/components/site/SectionHeader";
 import { FadeInOnScroll } from "@/components/site/FadeInOnScroll";
 import { projects, Project } from "@/data/projects";
 import { PartnersClients } from "@/components/site/Partners";
+import { CrowdfundingSection } from "@/components/site/CrowdifyWidget";
+import { StickyOffersShowcase } from "@/components/site/StickyOffersShowcase";
+import { LuxuryScrollPopups } from "@/components/site/LuxuryScrollPopups";
 import { site, showreel } from "@/data/site";
 import { getCustomVideoUrl, saveCustomVideo, clearCustomVideo } from "@/lib/video-store";
 import hero1 from "@/assets/hero-1.jpg";
@@ -277,25 +280,49 @@ function HomePage() {
     setHasCustomVideo(false);
   };
 
-  // Job applications state with persistence
+  // Section hash scroll on mount with retry
   useEffect(() => {
-    if (window.location.hash) {
-      const sectionName = window.location.hash.substring(1);
-      const timer = setTimeout(() => {
+    const getTargetSection = () => {
+      if (typeof window === "undefined") return "";
+      if (window.location.hash && window.location.hash.length > 1) {
+        return window.location.hash.substring(1);
+      }
+      try {
+        return sessionStorage.getItem("pendingScrollSection") || "";
+      } catch {
+        return "";
+      }
+    };
+
+    const targetSection = getTargetSection();
+    if (targetSection) {
+      try {
+        sessionStorage.removeItem("pendingScrollSection");
+      } catch {
+        // ignore
+      }
+
+      const performScroll = () => {
         const target =
-          document.getElementById(sectionName) ||
-          document.querySelector(`[data-section="${sectionName}"]`);
+          document.getElementById(targetSection) ||
+          document.querySelector(`[data-section="${targetSection}"]`);
         if (target) {
           const headerOffset = 90;
           const elementPosition = target.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          const offsetPosition = elementPosition + window.scrollY - headerOffset;
           window.scrollTo({
             top: Math.max(0, offsetPosition),
             behavior: "smooth",
           });
         }
-      }, 150);
-      return () => clearTimeout(timer);
+      };
+
+      const t1 = setTimeout(performScroll, 100);
+      const t2 = setTimeout(performScroll, 350);
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+      };
     }
   }, []);
   const [applications, setApplications] = useState<
@@ -460,10 +487,20 @@ function HomePage() {
 
   const handleScrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
-    const el = document.querySelector('[data-section="contact"]') || document.getElementById("contact");
-    el?.scrollIntoView({ behavior: "smooth" });
-    if (typeof window !== "undefined" && window.history.replaceState) {
-      window.history.replaceState(null, "", window.location.pathname);
+    const el =
+      document.getElementById("contact") ||
+      document.querySelector('[data-section="contact"]');
+    if (el) {
+      const headerOffset = 90;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: "smooth",
+      });
+      if (typeof window !== "undefined" && window.history.replaceState) {
+        window.history.replaceState(null, "", "#contact");
+      }
     }
   };
 
@@ -489,32 +526,44 @@ function HomePage() {
           {/* Center Visual Core */}
           <div className="mx-auto max-w-4xl text-center">
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-5xl font-black uppercase leading-[0.9] tracking-tighter sm:text-7xl md:text-8xl text-white text-balance-tight"
+              transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="relative flex flex-col items-center justify-center text-center select-none"
             >
-              ORYN ZERO <span className="text-accent italic font-light lowercase">Studio</span>
+              <span className="font-script text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] text-accent capitalize leading-[0.85] tracking-normal -mb-2 sm:-mb-4 md:-mb-6 z-10 drop-shadow-[0_4px_25px_rgba(212,176,98,0.35)]">
+                Oryn
+              </span>
+              <div className="font-serif-luxury flex flex-wrap items-baseline justify-center gap-x-3 sm:gap-x-5 leading-[0.9] drop-shadow-[0_8px_30px_rgba(0,0,0,0.8)]">
+                <span className="text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] font-extrabold uppercase tracking-[0.06em] text-white">
+                  ZERO
+                </span>
+                <span className="text-4xl sm:text-6xl md:text-7xl lg:text-[7.5rem] font-normal italic tracking-normal text-accent font-serif-luxury">
+                  Studio
+                </span>
+              </div>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="mx-auto mt-6 max-w-xl text-lg font-light tracking-wide text-silver/80 leading-relaxed"
+              transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="mx-auto mt-8 max-w-lg text-sm sm:text-base font-light tracking-wide text-silver/70 leading-relaxed"
             >
-              Cinematic storytelling. High-end FPV. Minimal design.
+              High-velocity FPV aerials, precision ground cinematography, and Swiss-crafted visual storytelling.
             </motion.p>
 
+            {/* Minimalist Scroll Cue - Ultra clean, zero button clutter */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-12 flex flex-col items-center justify-center gap-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.2, delay: 0.5 }}
+              className="mt-16 flex flex-col items-center justify-center gap-3"
             >
-              <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-silver/40 animate-pulse">
+              <span className="font-mono text-[8px] uppercase tracking-[0.35em] text-silver/40">
                 Scroll To Explore
               </span>
+              <div className="h-6 w-px bg-gradient-to-b from-white/30 to-transparent" />
             </motion.div>
           </div>
         </section>
@@ -665,90 +714,21 @@ function HomePage() {
           </FadeInOnScroll>
         </section>
 
-        {/* ===================== SERVICES SECTION (WHAT WE OFFER) ===================== */}
-        <section
-          id="services"
-          data-section="services"
-          className="relative px-6 py-24 sm:py-32 md:px-16 bg-gradient-to-b from-black/20 to-transparent scroll-mt-28"
-        >
-          <FadeInOnScroll direction="up" distance={40}>
-            <div className="mx-auto max-w-5xl">
-              <div className="mb-16">
-                <SectionLabel id="// 03">Capabilities</SectionLabel>
-                <h3 className="text-balance-tight text-3xl font-bold tracking-tight md:text-4xl text-white mt-4">
-                  What We Offer
-                </h3>
-                <p className="mt-4 text-xs leading-relaxed text-silver/50 max-w-md">
-                  A comprehensive production pipeline designed to handle demanding creative goals.
-                  From concept to Swiss-crafted final grade.
-                </p>
-              </div>
-
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {servicesList.map((service, idx) => {
-                  const Icon = service.icon;
-                  return (
-                    <motion.div
-                      key={service.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: idx * 0.05 }}
-                      className="group relative border border-white/5 bg-white/[0.01] p-8 rounded-3xl transition-all duration-500 hover:border-accent/30 hover:bg-white/[0.02]"
-                    >
-                      {/* Subtle ambient card glow */}
-                      <div className="pointer-events-none absolute inset-0 -z-10 rounded-3xl bg-radial-gradient(ellipse at center, rgba(212,176,98,0.02), transparent 70%) opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-                      <div className="mb-6 flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-black/40 text-accent transition-all duration-500 group-hover:scale-110 group-hover:border-accent/40 group-hover:bg-accent/10">
-                        <Icon className="size-5" />
-                      </div>
-
-                      <h4 className="font-display text-lg font-bold text-white uppercase tracking-tight">
-                        {service.title}
-                      </h4>
-
-                      <p className="mt-3 text-xs leading-relaxed text-silver/60">
-                        {service.description}
-                      </p>
-                    </motion.div>
-                  );
-                })}
-
-                {/* "Much More" Custom Card */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 6 * 0.05 }}
-                  className="group relative border border-white/5 bg-white/[0.01] p-8 rounded-3xl transition-all duration-500 hover:border-accent/30 hover:bg-white/[0.02] flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="mb-6 flex size-12 items-center justify-center rounded-2xl border border-accent/20 bg-accent/5 text-accent">
-                      <Sparkles className="size-5 animate-pulse" />
-                    </div>
-                    <h4 className="font-display text-lg font-bold text-white uppercase tracking-tight">
-                      And Much More
-                    </h4>
-                    <p className="mt-3 text-xs leading-relaxed text-silver/60">
-                      Bespoke drone rigs, photogrammetry scanning, raw media transcoding, and
-                      customizable creative treatments calibrated to your exact vision.
-                    </p>
-                  </div>
-                  <div className="mt-8">
-                    <button
-                      type="button"
-                      onClick={handleScrollToContact}
-                      className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-widest text-accent group-hover:text-white transition-colors cursor-pointer"
-                    >
-                      Discuss project{" "}
-                      <ArrowUpRight className="size-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </button>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </FadeInOnScroll>
-        </section>
+        {/* ===================== SERVICES SECTION (STICKY LOCKED STAGE) ===================== */}
+        <StickyOffersShowcase
+          onSelectService={(serviceTitle) => {
+            setContactForm((prev) => ({
+              ...prev,
+              discipline: serviceTitle,
+            }));
+            const el = document.getElementById("contact");
+            if (el) {
+              const offset = 90;
+              const pos = el.getBoundingClientRect().top + window.scrollY - offset;
+              window.scrollTo({ top: pos, behavior: "smooth" });
+            }
+          }}
+        />
 
         {/* ===================== PROJECTS SECTION (CASE STUDY) ===================== */}
         <section id="portfolio" data-section="portfolio" className="relative px-6 py-24 sm:py-32 md:px-16 scroll-mt-28">
@@ -1313,6 +1293,9 @@ function HomePage() {
           </FadeInOnScroll>
         </section>
 
+        {/* ===================== CROWDFUNDING INITIATIVE ===================== */}
+        <CrowdfundingSection />
+
         {/* ===================== PARTNERS NETWORK ===================== */}
         <div id="partners" data-section="partners" className="scroll-mt-28">
           <PartnersClients />
@@ -1417,14 +1400,16 @@ function HomePage() {
                           onChange={(e) =>
                             setContactForm({ ...contactForm, discipline: e.target.value })
                           }
-                          className="w-full border-b border-white/10 bg-[#030303] py-2.5 text-xs tracking-wider text-white/50 focus:border-accent focus:outline-none transition-colors"
+                          className="w-full border-b border-white/10 bg-[#030303] py-2.5 text-xs tracking-wider text-white/70 focus:border-accent focus:outline-none transition-colors"
                         >
-                          <option>FPV Cinematography</option>
-                          <option>Event Highlight Production</option>
-                          <option>Commercial Brand Film</option>
-                          <option>Photography</option>
-                          <option>Video Editing</option>
-                          <option>Others</option>
+                          <option value="Videography">Videography (Camera Systems & Rigs)</option>
+                          <option value="Event Filming">Event Filming & High-Speed FPV</option>
+                          <option value="Cinematic Editing">Cinematic Editing & ACES Color Grade</option>
+                          <option value="CGI & VFX">CGI & VFX Integration</option>
+                          <option value="Sound Design">Spatial Sound Design & Foley</option>
+                          <option value="Project Supporting">Project Supporting & Airspace Permits</option>
+                          <option value="And Much More">Custom Innovation & Specialized Rigs</option>
+                          <option value="Full Production">Comprehensive End-to-End Production</option>
                         </select>
                       </div>
                     </div>
@@ -1712,6 +1697,9 @@ function HomePage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Clean Luxury Scroll Popups & Floating Telemetry HUD */}
+      <LuxuryScrollPopups />
     </div>
   );
 }

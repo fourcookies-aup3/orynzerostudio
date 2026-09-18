@@ -110,7 +110,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,700..900;1,6..96,700..900&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,700..900;1,600&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap",
       },
     ],
     scripts: [
@@ -147,10 +147,13 @@ function RootComponent() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      if (window.location.hash) {
-        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      const hasHash = Boolean(window.location.hash && window.location.hash.length > 1);
+      const hasPending =
+        typeof sessionStorage !== "undefined" &&
+        Boolean(sessionStorage.getItem("pendingScrollSection"));
+      if (!hasHash && !hasPending) {
+        window.scrollTo(0, 0);
       }
-      window.scrollTo(0, 0);
     }
   }, []);
 

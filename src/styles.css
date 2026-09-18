@@ -31,6 +31,7 @@
   --color-silver: var(--silver);
   --color-graphite: var(--graphite);
   --font-display: var(--font-display);
+  --font-luxury: var(--font-luxury);
   --font-mono: var(--font-mono);
   --font-sans: var(--font-display);
 }
@@ -58,8 +59,19 @@
   --ring: #d4b062;
   --silver: #a3a3a3;
   --graphite: #0f0f0f;
-  --font-display: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter Tight", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-luxury: "Inter Tight", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif-luxury: "Bodoni Moda", "Playfair Display", Didot, serif;
+  --font-script: "Pinyon Script", "Alex Brush", cursive;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+}
+
+.font-serif-luxury {
+  font-family: var(--font-serif-luxury), "Bodoni Moda", "Playfair Display", Didot, serif;
+}
+
+.font-script {
+  font-family: var(--font-script), "Pinyon Script", cursive;
 }
 
 .dark {
