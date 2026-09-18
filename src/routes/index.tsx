@@ -31,7 +31,6 @@ import { projects, Project } from "@/data/projects";
 import { PartnersClients } from "@/components/site/Partners";
 import { CrowdfundingSection } from "@/components/site/CrowdifyWidget";
 import { StickyOffersShowcase } from "@/components/site/StickyOffersShowcase";
-import { LuxuryScrollPopups } from "@/components/site/LuxuryScrollPopups";
 import { site, showreel } from "@/data/site";
 import { getCustomVideoUrl, saveCustomVideo, clearCustomVideo } from "@/lib/video-store";
 import hero1 from "@/assets/hero-1.jpg";
@@ -1697,9 +1696,6 @@ function HomePage() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Clean Luxury Scroll Popups & Floating Telemetry HUD */}
-      <LuxuryScrollPopups />
     </div>
   );
 }
