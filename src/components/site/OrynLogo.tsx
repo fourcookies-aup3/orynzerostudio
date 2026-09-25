@@ -82,8 +82,10 @@ export function OrynLogo({ className, iconOnly = false, size = "md", animated = 
       </svg>
 
       {!iconOnly && (
-        <span className="font-display font-black uppercase tracking-[0.25em] text-white transition-colors duration-300 group-hover:text-accent">
-          ORYN <span className="font-light text-silver">ZERO</span>
+        <span className="font-display tracking-[0.08em] transition-colors duration-300">
+          <span className="font-extrabold text-accent">Oryn</span>
+          <span className="font-extrabold text-white">ZERO</span>{" "}
+          <span className="font-serif-luxury font-normal italic text-accent">Studio</span>
         </span>
       )}
     </div>

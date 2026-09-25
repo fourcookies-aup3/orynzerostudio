@@ -22,6 +22,8 @@ export type Project = {
   cover: string;
   video?: string;
   overview: string;
+  objective: string;
+  exactRole: string;
   challenge: string;
   concept: string;
   production: string;
@@ -38,34 +40,35 @@ export const projects: Project[] = [
     slug: "parkour-day-staefa",
     id: "01",
     title: "Parkour Day Stäfa",
-    category: "Event Film & High-Velocity FPV",
+    category: "Event Film & FPV Perspectives",
     year: 2026,
     client: "Parkour Day Stäfa",
     location: "Stäfa, Zürich, CH",
     cover: "https://img.youtube.com/vi/4mwIvmZ5y7c/maxresdefault.jpg",
     video: "https://youtu.be/4mwIvmZ5y7c",
+    exactRole: "Co-Filming & FPV Drone Cinematography",
+    objective:
+      "Document the kinetic energy, obstacle runs, and athletic flow of Parkour Day Stäfa through low-altitude proximity FPV lines and synchronized ground angles.",
     credits: {
       mainRecordingEditing: "VISURE GMBH",
-      coFilmingDroneShots: "Finn Ryf",
+      coFilmingDroneShots: "Finn Ryf (ORYN ZERO)",
       formattedText: "Main Recording/Editing: VISURE GMBH · Co-Filming/Drone Shots: Finn Ryf",
     },
     overview:
-      "A premium high-velocity event film capturing the extreme movement, athletic flow, and precision of Parkour Day Stäfa through cinematic ground views and custom close-proximity FPV tracking.",
+      "A collaborative event film capturing the agility and community atmosphere of Parkour Day Stäfa. ORYN ZERO provided close-proximity FPV chase lines following athletes across outdoor obstacles in tandem with VISURE GMBH's ground camera team.",
     challenge:
-      "Chasing highly agile athletes through complex architectural structures with zero margin for error, preserving the raw kinetic energy of parkour while maintaining cinematic composition.",
+      "Tracking agile athletes through crowded outdoor structures with strict safety margins, matching flight speed to physical jumps without interfering with participants or spectators.",
     concept:
-      "Dynamic flow. Aligning the FPV drone's flight vectors directly with the physical momentum of the athletes to create a seamless, continuous feeling of movement.",
+      "Movement continuity. Matching drone flight paths with the physical momentum of athletes over rails, walls, and mats to keep the perspective close and grounded.",
     production:
-      "An intensive collaborative production. Main Recording/Editing: VISURE GMBH · Co-Filming/Drone Shots: Finn Ryf. Utilizing synchronized high-speed drone pilots and steady ground cameras, following coordinated lines across pre-scouted urban obstacles.",
+      "Collaborative shoot in Stäfa. Main recording, principal ground cinematography, edit, and color grading were carried out by VISURE GMBH. Finn Ryf (ORYN ZERO) operated high-agility FPV drones for close-pass tracking and dynamic aerial coverage.",
     result:
-      "A fast-paced, high-impact brand film delivering outstanding engagement and setting a new visual benchmark for regional athletic event coverage.",
+      "A fast, engaging event recap used across social channels to showcase the local athlete community and promote future editions of the event.",
     services: [
-      "Videography",
-      "FPV Shots",
-      "SFX",
-      "VFX",
-      "Color Grading",
-      "Editing",
+      "FPV Drone Cinematography",
+      "Close-Proximity Flight Lines",
+      "Aerial Coordination",
+      "On-Site Co-Filming",
     ],
     status: "Released",
     featured: true,

@@ -11,9 +11,17 @@ function getYoutubeId(url: string) {
   return match ? match[1] : null;
 }
 
+declare global {
+  interface Window {
+    YT?: any;
+    onYouTubeIframeAPIReady?: () => void;
+  }
+}
+
 /**
  * Fullscreen looping background video component.
  * Supports HTML5 video (mp4, webm, blob URL) and YouTube embeds.
+ * Explicitly forces 4K (2160p / highres) stream quality.
  * Dynamically reacts to user-uploaded custom videos.
  */
 export function HeroReel({ className, src }: { className?: string; src?: string }) {
@@ -54,16 +62,85 @@ export function HeroReel({ className, src }: { className?: string; src?: string 
 
   const youtubeId = getYoutubeId(activeSrc);
 
+  // Enforce 4K UHD playback quality on YouTube player
+  useEffect(() => {
+    if (!youtubeId || typeof window === "undefined") return;
+
+    if (!window.YT) {
+      const scriptTag = document.createElement("script");
+      scriptTag.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(scriptTag);
+    }
+
+    let playerInstance: any = null;
+    let cancelled = false;
+
+    const setup4KPlayer = () => {
+      if (cancelled) return;
+      const iframeEl = document.getElementById("hero-4k-bg-frame");
+      if (window.YT && window.YT.Player && iframeEl) {
+        try {
+          playerInstance = new window.YT.Player("hero-4k-bg-frame", {
+            events: {
+              onReady: (event: any) => {
+                try {
+                  event.target.mute();
+                  event.target.playVideo();
+                  if (typeof event.target.setPlaybackQuality === "function") {
+                    event.target.setPlaybackQuality("highres");
+                  }
+                  if (typeof event.target.setPlaybackQualityRange === "function") {
+                    event.target.setPlaybackQualityRange("hd2160", "highres");
+                  }
+                } catch {
+                  // ignore
+                }
+              },
+              onPlaybackQualityChange: (event: any) => {
+                if (event.data !== "hd2160" && event.data !== "highres") {
+                  try {
+                    event.target.setPlaybackQuality("highres");
+                  } catch {
+                    // ignore
+                  }
+                }
+              },
+            },
+          });
+        } catch {
+          // ignore
+        }
+      } else {
+        setTimeout(setup4KPlayer, 300);
+      }
+    };
+
+    setup4KPlayer();
+
+    return () => {
+      cancelled = true;
+      if (playerInstance && typeof playerInstance.destroy === "function") {
+        try {
+          playerInstance.destroy();
+        } catch {
+          // ignore
+        }
+      }
+    };
+  }, [youtubeId]);
+
   return (
     <div className={cn("absolute inset-0 overflow-hidden pointer-events-none select-none", className)}>
       <div className="relative w-full h-full pointer-events-none">
         {youtubeId ? (
           <iframe
-            src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&rel=0&loop=1&playlist=${youtubeId}&modestbranding=1&playsinline=1&enablejsapi=1`}
-            className="absolute top-1/2 left-1/2 w-[350vw] h-[350vw] sm:w-[200vw] sm:h-[200vw] md:w-[160vw] md:h-[160vw] -translate-x-1/2 -translate-y-1/2 opacity-80 scale-125 pointer-events-none select-none border-0"
+            id="hero-4k-bg-frame"
+            src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&rel=0&loop=1&playlist=${youtubeId}&modestbranding=1&playsinline=1&enablejsapi=1&vq=hd2160&vq=highres`}
+            className="absolute top-1/2 left-1/2 w-[350vw] h-[350vw] sm:w-[200vw] sm:h-[200vw] md:w-[160vw] md:h-[160vw] -translate-x-1/2 -translate-y-1/2 opacity-85 scale-125 pointer-events-none select-none border-0"
             allow="autoplay; encrypted-media"
             frameBorder="0"
             tabIndex={-1}
+            title="ORYN ZERO 4K Background Reel"
           />
         ) : (
           <video

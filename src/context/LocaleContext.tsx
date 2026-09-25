@@ -29,20 +29,23 @@ const CURRENCY_SYMBOLS: Record<Currency, string> = {
 const translations: Record<Language, Record<string, string>> = {
   en: {
     // Nav & General
+    "nav.work": "Work",
+    "nav.studio": "Studio",
     "nav.philosophy": "Philosophy",
-    "nav.showreel": "Featured Motion",
+    "nav.showreel": "Showreel",
     "nav.services": "Services",
-    "nav.portfolio": "Portfolio",
+    "nav.portfolio": "Selected Work",
     "nav.team": "Team",
-    "nav.careers": "Jobs & Career",
+    "nav.careers": "Careers",
     "nav.crowdfunding": "Crowdfunding",
     "nav.network": "Network",
     "nav.contact": "Contact",
-    "nav.schedule": "Schedule",
-    "nav.scheduleCall": "Schedule a Call",
+    "nav.discuss": "Discuss a Project",
+    "nav.schedule": "Book a Call",
+    "nav.scheduleCall": "Book a 30-Minute Call",
 
     // Pricing General
-    "pricing.eyebrow": "// Editions",
+    "pricing.eyebrow": "Editions",
     "pricing.title": "Tailored cinematic editions.",
     "pricing.intro":
       "Three engagement models designed for different scopes — from focused single-story pieces to full brand-film productions.",
@@ -72,40 +75,40 @@ const translations: Record<Language, Record<string, string>> = {
     "pricing.premium.f4": "Owned + earned distribution assets",
 
     // Team Section
-    "team.eyebrow": "// 04 Core Unit",
-    "team.title": "The Team",
+    "team.eyebrow": "The Team",
+    "team.title": "Studio Crew",
     "team.intro":
-      "An elite assembly of specialists driving visual boundaries. Guided by movement, precision, high-quality production, and strong teamwork.",
-    "team.finn.role": "Founder · Editor · Pilot · SFX · VFX",
+      "A small, focused team combining FPV flying, ground cinematography, and post-production based in Stäfa, Switzerland.",
+    "team.finn.role": "Founder · FPV Pilot & Cinematographer",
     "team.finn.bio":
-      "Directing cinematic concepts and high-velocity motion. Shaping narratives through seamless teamwork, creative vision, and high-quality production.",
-    "team.nick.role": "Co-Founder · Editor · Photographer · Videographer",
+      "Directs flight lines, close-proximity camera tracking, and editorial assembly for dynamic visual stories.",
+    "team.nick.role": "Co-Founder · Cinematography & Visual Media",
     "team.nick.bio":
-      "Co-piloting creative direction and crafting premium brand assets. Specialising in pristine visual composition, high-fidelity photography, and rhythm-based visual editing.",
+      "Focuses on ground camera packages, brand photography, lighting schemes, and visual continuity.",
     "team.nicola.role": "FPV Pilot",
     "team.nicola.bio":
       "Capturing dynamic motion and fluid perspectives through precision flight lines and collaborative teamwork.",
-    "team.tate.role": "Freelancer · Videographer · Editor",
+    "team.tate.role": "Freelancer · Camera Operator & Editor",
     "team.tate.bio":
-      "Experienced freelancer specializing in high-end events, film production, and operating professional cinema equipment. Delivering top-tier visual productions with precision.",
-    "team.vacant.title": "You Could Be Here",
+      "Experienced freelance camera operator supporting high-tempo event coverage, b-roll, and editorial cuts.",
+    "team.vacant.title": "Open Collaborations",
     "team.vacant.bio":
-      "We're expanding. If you're a world-class creator with high visual standards and a hunger for premium cinematography, claim one of our vacant team slots.",
-    "team.vacant.cta": "Claim Your Slot",
+      "We regularly collaborate with local pilots, sound designers, and camera operators for larger shoots.",
+    "team.vacant.cta": "Get in Touch",
 
     // Careers Section
-    "careers.eyebrow": "// 05 Flight Crew Allocation",
-    "careers.title": "Jobs & Career",
+    "careers.eyebrow": "Opportunities",
+    "careers.title": "Collaborator Network",
     "careers.intro":
-      "We are building an agile network of world-class creators. Secure your slot in our Swiss cinematic production ecosystem. Max 3 applications per job.",
-    "careers.slotsAvailable": "Available",
-    "careers.slotsBooked": "All Slots Claimed",
-    "careers.apply": "Apply for Slot",
-    "careers.parameters": "Ideal Parameters",
-    "careers.telemetry": "Telemetry / Allocated Slots Tracker (Max 3)",
-    "careers.slotClaimed": "Slot Claimed",
-    "careers.slotOpen": "Slot Open",
-    "careers.vacantTelemetry": "Vacant Telemetry",
+      "We connect with freelance pilots, camera operators, and post-production specialists for upcoming commercial shoots in Switzerland.",
+    "careers.slotsAvailable": "Open Opportunities",
+    "careers.slotsBooked": "Applications in Review",
+    "careers.apply": "Submit Portfolio",
+    "careers.parameters": "Profile & Experience",
+    "careers.telemetry": "Open Roles",
+    "careers.slotClaimed": "Under Review",
+    "careers.slotOpen": "Open for Applications",
+    "careers.vacantTelemetry": "Open for application",
 
     // Job Roles Details
     "job.fpv.title": "FPV Drone Pilot & Aerial Operator",
@@ -165,25 +168,25 @@ const translations: Record<Language, Record<string, string>> = {
     "job.creative.req3": "A keen eye for modern brand aesthetics and high-velocity pacing",
 
     // Application Form
-    "form.claimSlot": "Claim Slot",
+    "form.claimSlot": "Apply for Role",
     "form.yourName": "Your Name *",
     "form.email": "Email Address *",
     "form.portfolio": "Portfolio / Reel URL",
     "form.about": "Tell us about yourself",
     "form.submit": "Submit Application",
     "form.cancel": "Cancel",
-    "form.secured": "Slot Secured",
+    "form.secured": "Application Received",
     "form.stored":
-      "Your application has been stored. You are now officially registered on the tracker!",
+      "Thank you for applying. We have received your application and will review your portfolio.",
     "form.errorRequired": "Name and Email are required.",
     "form.errorBooked": "This role is already fully booked.",
 
     // Studio Page
-    "studio.eyebrow": "// Studio",
+    "studio.eyebrow": "Studio",
     "studio.title": "Led by perspective. Built for movement.",
     "studio.intro":
       "ORYN ZERO is a cinematic production studio creating immersive visual experiences through FPV, aerial cinematography and storytelling.",
-    "studio.team.eyebrow": "// 01 Core Unit",
+    "studio.team.eyebrow": "Core Studio",
     "studio.team.title": "A studio of one — for now.",
     "studio.team.bio":
       "ORYN ZERO is currently led by its founder, creating cinematic films through FPV, aerial cinematography and storytelling. As the studio grows, new creative talents and collaborators will become part of the journey.",
@@ -191,7 +194,7 @@ const translations: Record<Language, Record<string, string>> = {
     "studio.skills.founder": "Founder",
     "studio.skills.pilot": "FPV Pilot",
     "studio.skills.editor": "Editor",
-    "studio.future.eyebrow": "// 02 Future Collaborators",
+    "studio.future.eyebrow": "Future Collaborators",
     "studio.future.title": "Roles that will shape the next chapter.",
     "studio.future.open": "Open",
     "studio.future.role1": "Cinematographers",
@@ -200,11 +203,11 @@ const translations: Record<Language, Record<string, string>> = {
     "studio.future.role4": "Motion Designers",
     "studio.future.role5": "Photographers",
     "studio.future.cta": "View careers →",
-    "studio.focus.eyebrow": "// Focus",
+    "studio.focus.eyebrow": "Focus",
     "studio.focus.text": "Emotion. Movement. Perspective. Quality — held above everything else.",
 
     // Services Page
-    "services.eyebrow": "// Services",
+    "services.eyebrow": "Services",
     "services.title": "Five disciplines. One studio.",
     "services.intro":
       "A tight range of services, each executed at cinematic quality. Every project is built around a single question: what does the frame need to say?",
@@ -232,7 +235,7 @@ const translations: Record<Language, Record<string, string>> = {
     "services.cta": "Start a project",
 
     // Careers Page
-    "page.careers.eyebrow": "// Careers",
+    "page.careers.eyebrow": "Careers",
     "page.careers.title": "Join ORYN ZERO.",
     "page.careers.intro":
       "We're building a network of creative professionals who share our passion for cinematic storytelling.",
@@ -310,20 +313,23 @@ const translations: Record<Language, Record<string, string>> = {
   },
   de: {
     // Nav & General
+    "nav.work": "Arbeit",
+    "nav.studio": "Studio",
     "nav.philosophy": "Philosophie",
-    "nav.showreel": "Ausgewählte Arbeiten",
-    "nav.services": "Services",
-    "nav.portfolio": "Portfolio",
+    "nav.showreel": "Showreel",
+    "nav.services": "Leistungen",
+    "nav.portfolio": "Ausgewählte Arbeiten",
     "nav.team": "Team",
-    "nav.careers": "Jobs & Karriere",
+    "nav.careers": "Karriere",
     "nav.crowdfunding": "Crowdfunding",
     "nav.network": "Netzwerk",
     "nav.contact": "Kontakt",
-    "nav.schedule": "Planen",
-    "nav.scheduleCall": "Gespräch vereinbaren",
+    "nav.discuss": "Projekt anfragen",
+    "nav.schedule": "Gespräch buchen",
+    "nav.scheduleCall": "30-Minuten-Gespräch",
 
     // Pricing General
-    "pricing.eyebrow": "// Editionen",
+    "pricing.eyebrow": "Editionen",
     "pricing.title": "Massgeschneiderte Film-Editionen.",
     "pricing.intro":
       "Drei Kooperationsmodelle für unterschiedliche Anforderungen — von fokussierten Einzelproduktionen bis hin zu umfassenden Markenfilmen.",
@@ -353,40 +359,40 @@ const translations: Record<Language, Record<string, string>> = {
     "pricing.premium.f4": "Eigene + bezahlte Distributions-Assets",
 
     // Team Section
-    "team.eyebrow": "// 04 Kern-Einheit",
-    "team.title": "Das Team",
+    "team.eyebrow": "Das Team",
+    "team.title": "Studio Crew",
     "team.intro":
-      "Eine Elite-Auswahl an Spezialisten, die visuelle Grenzen verschieben. Geleitet von Bewegung, Präzision, hoher Qualität und starkem Teamwork.",
-    "team.finn.role": "Gründer · Editor · Pilot · SFX · VFX",
+      "Ein kleines, fokussiertes Team für FPV-Flug, Boden-Kinematografie und Postproduktion mit Sitz in Stäfa, Schweiz.",
+    "team.finn.role": "Gründer · FPV-Pilot & Kameramann",
     "team.finn.bio":
-      "Regie für kinoreife Konzepte und dynamische Bewegung. Gestaltung von Erzählungen durch nahtloses Teamwork und höchste visuelle Qualität.",
-    "team.nick.role": "Mitgründer · Editor · Fotograf · Videograf",
+      "Leitet Fluglinien, Nahaufnahmen und Schnittmontagen für dynamische visuelle Geschichten.",
+    "team.nick.role": "Mitgründer · Kamera & Visuelle Medien",
     "team.nick.bio":
-      "Co-Steuerung der kreativen Ausrichtung und Gestaltung von Premium-Markenwerten. Spezialisiert auf makellose Bildkomposition, High-Fidelity-Fotografie und rhythmisches Editing.",
+      "Koordiniert Bodenkameras, Lichtsetups, Markenästhetik und Fotografie.",
     "team.nicola.role": "FPV-Pilot",
     "team.nicola.bio":
       "Fängt dynamische Aufnahmen und flüssige Bewegungen durch präzise Fluglinien und nahtloses Teamwork ein.",
-    "team.tate.role": "Freelancer · Videograf · Editor",
+    "team.tate.role": "Freelancer · Kamera & Schnitt",
     "team.tate.bio":
-      "Erfahrener Freelancer mit Expertise in Highend-Events, Filmproduktion und professionellem Equipment. Liefert erstklassige visuelle Produktionen mit höchster Präzision.",
-    "team.vacant.title": "Du könntest hier sein",
+      "Erfahrener freiberuflicher Kameraoperator für Event-Dokumentationen und B-Roll.",
+    "team.vacant.title": "Offene Kooperationen",
     "team.vacant.bio":
-      "Wir expandieren. Wenn du ein erstklassiger Creator mit hohem visuellem Anspruch und Hunger auf Premium-Kinematografie bist, sichere dir einen unserer freien Plätze.",
-    "team.vacant.cta": "Sichere dir deinen Platz",
+      "Wir arbeiten bei größeren Drehs regelmäßig mit lokalen Piloten, Tonmeistern und Kameraoperatoren zusammen.",
+    "team.vacant.cta": "Kontakt aufnehmen",
 
     // Careers Section
-    "careers.eyebrow": "// 05 Crew-Zuweisung",
-    "careers.title": "Jobs & Karriere",
+    "careers.eyebrow": "Möglichkeiten",
+    "careers.title": "Kollaborations-Netzwerk",
     "careers.intro":
-      "Wir bauen ein agiles Netzwerk von Weltklasse-Kreativen auf. Sichere dir deinen Platz in unserem Schweizer Kinoproduktions-Ökosystem. Max. 3 Bewerbungen pro Job.",
-    "careers.slotsAvailable": "Verfügbar",
-    "careers.slotsBooked": "Alle Plätze besetzt",
-    "careers.apply": "Bewerben",
-    "careers.parameters": "Ideale Anforderungen",
-    "careers.telemetry": "Telemetry / Bewerbungs-Tracker (Max 3)",
-    "careers.slotClaimed": "Platz besetzt",
-    "careers.slotOpen": "Platz frei",
-    "careers.vacantTelemetry": "Freier Platz",
+      "Wir vernetzen uns mit freiberuflichen Piloten, Kameraoperatoren und Editoren für anstehende Produktionen in der Schweiz.",
+    "careers.slotsAvailable": "Offene Stellen",
+    "careers.slotsBooked": "Bewerbungen in Prüfung",
+    "careers.apply": "Portfolio einreichen",
+    "careers.parameters": "Anforderungen",
+    "careers.telemetry": "Offene Rollen",
+    "careers.slotClaimed": "In Prüfung",
+    "careers.slotOpen": "Bewerbung offen",
+    "careers.vacantTelemetry": "Offen für Bewerbung",
 
     // Job Roles Details
     "job.fpv.title": "FPV Drohnenpilot & Kameraoperator",
@@ -444,25 +450,25 @@ const translations: Record<Language, Record<string, string>> = {
     "job.creative.req3": "Ein geschultes Auge für moderne Markenästhetik und Dynamik",
 
     // Application Form
-    "form.claimSlot": "Platz belegen",
+    "form.claimSlot": "Jetzt bewerben",
     "form.yourName": "Dein Name *",
     "form.email": "E-Mail-Adresse *",
     "form.portfolio": "Portfolio / Showreel URL",
     "form.about": "Erzähl uns von dir",
     "form.submit": "Bewerbung absenden",
     "form.cancel": "Abbrechen",
-    "form.secured": "Platz gesichert",
+    "form.secured": "Bewerbung erhalten",
     "form.stored":
-      "Deine Bewerbung wurde gespeichert. Du bist jetzt offiziell im Bewerbungs-Tracker eingetragen!",
+      "Deine Bewerbung wurde erfolgreich übermittelt. Wir melden uns in Kürze bei dir!",
     "form.errorRequired": "Name und E-Mail sind Pflichtfelder.",
     "form.errorBooked": "Diese Stelle ist bereits vollständig besetzt.",
 
     // Studio Page
-    "studio.eyebrow": "// Studio",
+    "studio.eyebrow": "Studio",
     "studio.title": "Geführt von Perspektive. Gebaut für Bewegung.",
     "studio.intro":
       "ORYN ZERO ist ein kinoreifes Produktionsstudio, das durch FPV, Luftaufnahmen und Storytelling immersive visuelle Erlebnisse schafft.",
-    "studio.team.eyebrow": "// 01 Kern-Einheit",
+    "studio.team.eyebrow": "Kreative Leitung",
     "studio.team.title": "Ein Studio von einem — vorerst.",
     "studio.team.bio":
       "ORYN ZERO wird derzeit von seinem Gründer geführt und erstellt kinoreife Filme durch FPV, Luftaufnahmen und Storytelling. Mit dem Wachstum des Studios werden neue kreative Talente Teil der Reise werden.",
@@ -470,7 +476,7 @@ const translations: Record<Language, Record<string, string>> = {
     "studio.skills.founder": "Gründer",
     "studio.skills.pilot": "FPV-Pilot",
     "studio.skills.editor": "Editor",
-    "studio.future.eyebrow": "// 02 Zukünftige Partner",
+    "studio.future.eyebrow": "Zukünftige Partner",
     "studio.future.title": "Rollen, die das nächste Kapitel prägen werden.",
     "studio.future.open": "Offen",
     "studio.future.role1": "Kameraleute",
@@ -479,11 +485,11 @@ const translations: Record<Language, Record<string, string>> = {
     "studio.future.role4": "Motion Designer",
     "studio.future.role5": "Fotografen",
     "studio.future.cta": "Karriere ansehen →",
-    "studio.focus.eyebrow": "// Fokus",
+    "studio.focus.eyebrow": "Fokus",
     "studio.focus.text": "Emotion. Bewegung. Perspektive. Qualität — über alles andere gestellt.",
 
     // Services Page
-    "services.eyebrow": "// Dienstleistungen",
+    "services.eyebrow": "Dienstleistungen",
     "services.title": "Fünf Disziplinen. Ein Studio.",
     "services.intro":
       "Ein fokussiertes Angebot an Dienstleistungen, jeweils in Kinoqualität ausgeführt. Jedes Projekt baut auf einer einzigen Frage auf: Was muss das Bild aussagen?",
@@ -511,7 +517,7 @@ const translations: Record<Language, Record<string, string>> = {
     "services.cta": "Projekt starten",
 
     // Careers Page
-    "page.careers.eyebrow": "// Karriere",
+    "page.careers.eyebrow": "Karriere",
     "page.careers.title": "Tritt ORYN ZERO bei.",
     "page.careers.intro":
       "Wir bauen ein Netzwerk von kreativen Fachkräften auf, die unsere Leidenschaft für filmisches Storytelling teilen.",
@@ -591,20 +597,23 @@ const translations: Record<Language, Record<string, string>> = {
   },
   fr: {
     // Nav & General
+    "nav.work": "Projets",
+    "nav.studio": "Studio",
     "nav.philosophy": "Philosophie",
-    "nav.showreel": "Travaux en Vedette",
+    "nav.showreel": "Showreel",
     "nav.services": "Services",
-    "nav.portfolio": "Portfolio",
+    "nav.portfolio": "Projets Choisis",
     "nav.team": "Équipe",
-    "nav.careers": "Emplois & Carrière",
+    "nav.careers": "Carrières",
     "nav.crowdfunding": "Financement participatif",
     "nav.network": "Réseau",
     "nav.contact": "Contact",
-    "nav.schedule": "Planifier",
-    "nav.scheduleCall": "Planifier un appel",
+    "nav.discuss": "Discuter d'un projet",
+    "nav.schedule": "Réserver un appel",
+    "nav.scheduleCall": "Appel découverte de 30 min",
 
     // Pricing General
-    "pricing.eyebrow": "// Éditions",
+    "pricing.eyebrow": "Éditions",
     "pricing.title": "Éditions cinématographiques sur mesure.",
     "pricing.intro":
       "Trois modèles d'engagement conçus pour différents budgets — du projet unique de storytelling aux productions complètes de films de marque.",
@@ -635,40 +644,40 @@ const translations: Record<Language, Record<string, string>> = {
     "pricing.premium.f4": "Actifs de distribution propriétaires et payants",
 
     // Team Section
-    "team.eyebrow": "// 04 Unité Principale",
-    "team.title": "L'Équipe",
+    "team.eyebrow": "L'Équipe",
+    "team.title": "Studio Crew",
     "team.intro":
-      "Un rassemblement d'élite de spécialistes repoussant les limites visuelles. Guidés par le mouvement, la précision et la technologie de pointe.",
-    "team.finn.role": "Fondateur · Monteur · Pilote · SFX · VFX",
+      "Une petite équipe dédiée combinant vol FPV, cinématographie au sol et post-production basée à Stäfa en Suisse.",
+    "team.finn.role": "Fondateur · Pilote FPV & Cadreur",
     "team.finn.bio":
-      "Réalisation de concepts cinématographiques et de lignes de vol à haute vitesse dans les Alpes. Façonnage des récits du premier coup de gaz aux effets visuels finaux.",
-    "team.nick.role": "Co-fondateur · Monteur · Photographe · Vidéaste",
+      "Dirige les lignes de vol, le suivi en basse altitude et le montage narratif pour des vidéos percutantes.",
+    "team.nick.role": "Co-fondateur · Caméra & Médias Visuels",
     "team.nick.bio":
-      "Co-pilotage de la direction créative et création d'atouts de marque haut de gamme. Spécialisé dans les installations d'éclairage impeccables, la photographie haute fidélité et le montage visuel rythmé.",
+      "Gère les installations au sol, la photographie de marque, les éclairages et la direction visuelle.",
     "team.nicola.role": "Pilote FPV",
     "team.nicola.bio":
-      "Naviguer à travers des structures spatiales complexes avec une vitesse et une précision de drone extrêmes. Capturer des plans de proximité dynamiques et des mouvements fluides à haute vitesse.",
-    "team.tate.role": "Freelancer · Vidéaste · Monteur",
+      "Naviguer à travers des structures spatiales complexes avec une vitesse et une précision de drone extrêmes.",
+    "team.tate.role": "Freelancer · Cadreur & Monteur",
     "team.tate.bio":
-      "Freelance expérimenté spécialisé dans les événements haut de gamme, la production cinématographique et l'utilisation d'équipements professionnels.",
-    "team.vacant.title": "Vous pourriez être ici",
+      "Cadreur freelance expérimenté intervenant sur les événements dynamiques et les plans b-roll.",
+    "team.vacant.title": "Collaborations Ouvertes",
     "team.vacant.bio":
-      "Nous nous agrandissons. Si vous êtes un créateur de classe mondiale avec des standards visuels élevés et une soif de cinématographie premium, réservez une de nos places libres.",
-    "team.vacant.cta": "Réservez votre place",
+      "Nous collaborons régulièrement avec des pilotes locaux, ingénieurs du son et cadreurs pour nos tournages d'envergure.",
+    "team.vacant.cta": "Prendre Contact",
 
     // Careers Section
-    "careers.eyebrow": "// 05 Allocation de l'Équipage",
-    "careers.title": "Emplois & Carrière",
+    "careers.eyebrow": "Opportunités",
+    "careers.title": "Réseau de Collaborateurs",
     "careers.intro":
-      "Nous construisons un réseau agile de créateurs de niveau international. Sécurisez votre place dans notre écosystème de production cinématographique suisse. Max 3 candidatures par poste.",
-    "careers.slotsAvailable": "Disponible",
-    "careers.slotsBooked": "Toutes les places sont prises",
-    "careers.apply": "Postuler pour la place",
-    "careers.parameters": "Paramètres Idéaux",
-    "careers.telemetry": "Télémétrie / Suivi des Places Allouées (Max 3)",
-    "careers.slotClaimed": "Place occupée",
-    "careers.slotOpen": "Place libre",
-    "careers.vacantTelemetry": "Télémétrie vacante",
+      "Nous échangeons avec des pilotes indépendants, cadreurs et spécialistes de post-production pour nos prochains tournages en Suisse.",
+    "careers.slotsAvailable": "Opportunités Ouvertes",
+    "careers.slotsBooked": "Dossiers en Examen",
+    "careers.apply": "Envoyer son Portfolio",
+    "careers.parameters": "Profil & Expérience",
+    "careers.telemetry": "Rôles Ouverts",
+    "careers.slotClaimed": "En Examen",
+    "careers.slotOpen": "Candidature Ouverte",
+    "careers.vacantTelemetry": "Ouvert aux candidatures",
 
     // Job Roles Details
     "job.fpv.title": "Pilote de Drone FPV & Opérateur Aérien",
@@ -728,25 +737,25 @@ const translations: Record<Language, Record<string, string>> = {
     "job.creative.req3": "Un œil aiguisé pour l'esthétique des marques et le rythme soutenu",
 
     // Application Form
-    "form.claimSlot": "Réserver la place",
+    "form.claimSlot": "Postuler",
     "form.yourName": "Votre Nom *",
     "form.email": "Adresse E-mail *",
     "form.portfolio": "URL de Portfolio / Reel",
     "form.about": "Parlez-nous de vous",
     "form.submit": "Soumettre la candidature",
     "form.cancel": "Annuler",
-    "form.secured": "Place sécurisée",
+    "form.secured": "Candidature Reçue",
     "form.stored":
-      "Votre candidature a été enregistrée. Vous êtes officiellement sur le tableau de suivi !",
+      "Merci pour votre candidature. Vos informations ont bien été transmises !",
     "form.errorRequired": "Le nom et l'e-mail sont requis.",
     "form.errorBooked": "Ce poste est déjà complet.",
 
     // Studio Page
-    "studio.eyebrow": "// Studio",
+    "studio.eyebrow": "Studio",
     "studio.title": "Guidé par la perspective. Conçu pour le mouvement.",
     "studio.intro":
       "ORYN ZERO est un studio de production cinématographique créant des expériences visuelles immersives à travers le FPV, la cinématographie aérienne et le storytelling.",
-    "studio.team.eyebrow": "// 01 Unité Principale",
+    "studio.team.eyebrow": "Direction Créative",
     "studio.team.title": "Un studio d'une personne — pour l'instant.",
     "studio.team.bio":
       "ORYN ZERO est actuellement dirigé par son fondateur, créant des films cinématographiques grâce au FPV, à la cinématographie aérienne et au storytelling. Au fur et à mesure que le studio grandira, de nouveaux talents créatifs rejoindront l'aventure.",
@@ -754,7 +763,7 @@ const translations: Record<Language, Record<string, string>> = {
     "studio.skills.founder": "Fondateur",
     "studio.skills.pilot": "Pilote FPV",
     "studio.skills.editor": "Monteur",
-    "studio.future.eyebrow": "// 02 Futurs Collaborateurs",
+    "studio.future.eyebrow": "Futurs Collaborateurs",
     "studio.future.title": "Des rôles qui façonneront le prochain chapitre.",
     "studio.future.open": "Ouvert",
     "studio.future.role1": "Cinéastes",
@@ -763,11 +772,11 @@ const translations: Record<Language, Record<string, string>> = {
     "studio.future.role4": "Motion Designers",
     "studio.future.role5": "Photographes",
     "studio.future.cta": "Voir les carrières →",
-    "studio.focus.eyebrow": "// Focus",
+    "studio.focus.eyebrow": "Vision",
     "studio.focus.text": "Émotion. Mouvement. Perspective. Qualité — placée au-dessus de tout.",
 
     // Services Page
-    "services.eyebrow": "// Services",
+    "services.eyebrow": "Services",
     "services.title": "Cinq disciplines. Un studio.",
     "services.intro":
       "Une gamme serrée de services, chacun exécuté avec une qualité cinématographique. Chaque projet est construit autour d'une seule question : qu'est-ce que l'image doit exprimer ?",
@@ -795,7 +804,7 @@ const translations: Record<Language, Record<string, string>> = {
     "services.cta": "Démarrer un projet",
 
     // Careers Page
-    "page.careers.eyebrow": "// Carrières",
+    "page.careers.eyebrow": "Carrières",
     "page.careers.title": "Rejoignez ORYN ZERO.",
     "page.careers.intro":
       "Nous construisons un réseau de professionnels de la création qui partagent notre passion pour le storytelling cinématographique.",

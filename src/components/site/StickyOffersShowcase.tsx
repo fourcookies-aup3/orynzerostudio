@@ -1,191 +1,132 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
+  Compass,
   Video,
-  Camera,
-  Sliders,
-  Cpu,
-  Volume2,
-  Briefcase,
-  Sparkles,
+  Film,
+  SlidersHorizontal,
   ArrowUpRight,
-  ChevronDown,
+  CheckCircle2,
+  ShieldCheck,
+  Cpu,
+  Layers,
 } from "lucide-react";
 import { SectionLabel } from "./SectionHeader";
+import { FadeInOnScroll } from "./FadeInOnScroll";
 
-export interface OfferItem {
+export interface ServiceGroup {
   id: string;
-  category: string;
+  number: string;
   title: string;
-  subtitle: string;
+  tagline: string;
   description: string;
+  capabilities: string[];
   specs: { label: string; value: string }[];
-  highlight: string;
+  deliverables: string;
   icon: React.ComponentType<{ className?: string }>;
 }
 
-export const OFFERS: OfferItem[] = [
+export const CORE_SERVICES: ServiceGroup[] = [
   {
-    id: "videography",
-    category: "CINEMA ACQUISITION",
-    title: "Videography",
-    subtitle: "Precision multi-camera capture, custom active stabilization, and optical treatments.",
+    id: "fpv-aerial",
+    number: "01",
+    title: "FPV & Aerial",
+    tagline: "Dynamic indoor, outdoor, event, automotive, sport, and location-based filming.",
     description:
-      "High-end cinematic image acquisition using state-of-the-art camera systems, tailored lens packages, and active stabilization. Calibrated for agile solo operations with our Sony FX3 rig as well as heavy-lift airborne setups.",
-    specs: [
-      { label: "OPTICS", value: "ARRI PL & Sony G-Master Glass" },
-      { label: "FORMAT", value: "4K / 6K RAW · 10-Bit 4:2:2" },
-      { label: "STABILIZATION", value: "Ronin Active & Gyroflow Tuned" },
+      "We operate specialized FPV drones and aerial camera platforms capable of chasing fast-moving subjects, flying smooth indoor single-takes, and navigating spaces conventional camera cranes and helicopters cannot reach. From high-speed automotive lines to close-proximity athlete tracking, every flight is planned for safety and cinematic flow.",
+    capabilities: [
+      "High-speed chase tracking (up to 140 km/h)",
+      "Proximity indoor fly-throughs & architectural tours",
+      "Sub-250g lightweight quads for tight, delicate spaces",
+      "Cinematic mountain, landscape & location aerials",
     ],
-    highlight: "Equipped with dedicated cinema rigs calibrated for zero vibration and rapid deployment.",
+    specs: [
+      { label: "Flight Speeds", value: "0 to 140 km/h Chase Lines" },
+      { label: "Resolutions", value: "4K / 5.3K 10-Bit RAW / Log" },
+      { label: "Certifications", value: "Swiss BAZL / FOCA & EASA A1/A3, A2" },
+    ],
+    deliverables: "Stabilized high-bitrate aerial takes, color-ready Log/RAW footage, and synchronized audio.",
+    icon: Compass,
+  },
+  {
+    id: "event-brand-films",
+    number: "02",
+    title: "Event & Brand Films",
+    tagline: "Creative planning, ground cinematography, FPV coverage, and complete film production.",
+    description:
+      "We handle complete film productions from visual storyboard concepts and location planning to live multi-angle filming. By pairing grounded cinema cameras (Sony FX3 rigs) with synchronized FPV aerial perspectives, we deliver cohesive, high-energy visual stories for brands, festivals, sports events, hotels, and architectural spaces.",
+    capabilities: [
+      "Concept development, shot-lists & storyboarding",
+      "Ground cinematography with Sony FX3 cinema packages",
+      "Synchronized multi-operator coverage (FPV + ground)",
+      "Commercial brand films, teasers & social cutdowns",
+    ],
+    specs: [
+      { label: "Camera Packages", value: "Sony FX3 & Cinema Primes" },
+      { label: "Coverage", value: "Synchronized Ground & FPV Crew" },
+      { label: "Formats", value: "DCI 4K Scope + 9:16 Social Masters" },
+    ],
+    deliverables: "Full 4K commercial masters, teaser edits for immediate launch, and tailored social ratios.",
+    icon: Film,
+  },
+  {
+    id: "post-production",
+    number: "03",
+    title: "Post-Production",
+    tagline: "Editing, color grading, sound design, and selected VFX.",
+    description:
+      "A film succeeds in the edit. We take raw footage through a disciplined post-production workflow: rhythm-based cutting that respects physical motion, custom DaVinci Resolve color grading for a rich filmic palette, tactile sound design and Foley that give aerodynamic speed tangible weight, and clean visual cleanup or tracking.",
+    capabilities: [
+      "Rhythm-based narrative and fast-paced montage editing",
+      "DaVinci Resolve color grading (ACES color managed)",
+      "Tactile sound design, Foley & spatial audio mixes",
+      "Motion tracking, screen replacement & cleanups",
+    ],
+    specs: [
+      { label: "Grading Suite", value: "DaVinci Resolve Studio (ACES)" },
+      { label: "Sound Design", value: "Tactile Foley & Sub-Bass Soundscapes" },
+      { label: "Delivery", value: "ProRes 422 HQ / H.265 Master Files" },
+    ],
+    deliverables: "Finished mastered films, stems for audio, calibrated SDR/HDR grades, and multi-format exports.",
+    icon: SlidersHorizontal,
+  },
+];
+
+const SUPPORTING_EXPERTISE = [
+  {
+    title: "Specialized Cinema Rigs",
+    desc: "Custom balanced Sony FX3 solo rigs, lightweight cinewhoops, and low-vibration damping systems.",
     icon: Video,
   },
   {
-    id: "event-filming",
-    category: "HIGH-OCTANE DOCUMENTATION",
-    title: "Event Filming",
-    subtitle: "Dynamic real-time documentation of luxury brand activations, motorsports, and festivals.",
-    description:
-      "Dynamic multi-perspective coverage that captures the raw atmosphere and key milestones of your production. High-speed FPV tracking and synchronized ground operators capture angles unreachable by conventional cranes.",
-    specs: [
-      { label: "VELOCITY", value: "0 to 140 km/h Chase Tracking" },
-      { label: "COVERAGE", value: "Multi-Operator Synced Timecode" },
-      { label: "DELIVERY", value: "Same-Night Teasers + 4K Master" },
-    ],
-    highlight: "Smooth, continuous sequence shots that place viewers directly in the action.",
-    icon: Camera,
+    title: "Swiss Airspace Coordination",
+    desc: "Coordination with the Federal Office of Civil Aviation (BAZL / FOCA), CTR controlled airspace permits, and insurance.",
+    icon: ShieldCheck,
   },
   {
-    id: "cinematic-editing",
-    category: "POST-PRODUCTION PIPELINE",
-    title: "Cinematic Editing",
-    subtitle: "Rhythm-based montage, narrative pacing, and seamless visual architecture.",
-    description:
-      "Bespoke post-production services including precision rhythm editing, narrative structure sculpting, dynamic sound synchronization, and film-emulation color grading crafted to elevate raw footage into a cohesive cinematic piece.",
-    specs: [
-      { label: "WORKFLOW", value: "DaVinci Resolve Studio & Premiere" },
-      { label: "COLOR PIPELINE", value: "ACES Color Managed & Film Print" },
-      { label: "OUTPUT", value: "DCI 4K Scope & Social Formats" },
-    ],
-    highlight: "Frame-by-frame pacing engineered to command viewer engagement across every screen.",
-    icon: Sliders,
-  },
-  {
-    id: "cgi-vfx",
-    category: "VISUAL SIMULATION",
-    title: "CGI & VFX",
-    subtitle: "Camera motion tracking, synthetic physics simulations, and photoreal visual integration.",
-    description:
-      "Integrating highly accurate 3D simulations, physical camera motion tracking, virtual environments, and seamless visual effects directly into aerial and physical frames to expand visual possibilities beyond reality.",
-    specs: [
-      { label: "TRACKING", value: "3D Camera Spatial Solver" },
-      { label: "SIMULATION", value: "Unreal Engine 5 & Houdini" },
-      { label: "COMPOSITING", value: "Nuke & After Effects 32-Bit" },
-    ],
-    highlight: "Photorealistic digital augmentations that blend imperceptibly into camera optics.",
+    title: "Custom Drone Builds",
+    desc: "Hand-tuned flight controllers, calibrated Gyroflow stabilization, and redundant communication links.",
     icon: Cpu,
   },
   {
-    id: "sound-design",
-    category: "SPATIAL AUDIO ARCHITECTURE",
-    title: "Sound Design",
-    subtitle: "Tactile Foley capture, low-frequency atmospheric sub-bass, and spatial soundscapes.",
-    description:
-      "Custom ambient audio creation, tactile soundscapes, high-fidelity Foley capture, and room-filling spatial audio that reinforces visual speed, heightens emotional impact, and drives the pulse of the edit.",
-    specs: [
-      { label: "FIELD AUDIO", value: "32-Bit Float Ambisonic Mics" },
-      { label: "ACOUSTIC MIX", value: "Stereo Master + Dolby Atmos" },
-      { label: "TEXTURES", value: "Custom Analog Synthesizer FX" },
-    ],
-    highlight: "Audio calibrated to give physical weight to every aerodynamic pass and frame cut.",
-    icon: Volume2,
-  },
-  {
-    id: "project-supporting",
-    category: "REGULATORY & LOGISTICS",
-    title: "Project Supporting",
-    subtitle: "Full Swiss airspace clearance, SORA approvals, location scout logistics, and permits.",
-    description:
-      "End-to-end production logistics covering Swiss Federal Office of Civil Aviation (BAZL/FOCA) clearances, controlled CTR airspace waivers, location scouting, storyboard breakdown, and on-site flight safety coordination.",
-    specs: [
-      { label: "REGULATION", value: "BAZL / FOCA & EASA Certified" },
-      { label: "PERMITS", value: "Controlled CTR Airspace Clearances" },
-      { label: "INSURANCE", value: "Up to 5M CHF Commercial Liability" },
-    ],
-    highlight: "Full Swiss regulatory compliance ensuring your production proceeds without legal friction.",
-    icon: Briefcase,
-  },
-  {
-    id: "bespoke-innovations",
-    category: "CUSTOM INNOVATION",
-    title: "And Much More",
-    subtitle: "Custom drone prototyping, photogrammetry scanning, and specialized technical builds.",
-    description:
-      "When standard off-the-shelf equipment cannot achieve your vision, we engineer custom hardware in our Stäfa studio — from sub-250g indoor proximity drones to heavy-lift gimbal rigs and photogrammetry reality meshes.",
-    specs: [
-      { label: "PROTOTYPING", value: "In-House Carbon Fiber Builds" },
-      { label: "SPECIALTY", value: "LiDAR & 3D Reality Capture" },
-      { label: "SOLUTIONS", value: "Tailored Multi-Cam Rigs" },
-    ],
-    highlight: "Engineered in Switzerland for directors who require unprecedented camera perspectives.",
-    icon: Sparkles,
+    title: "Camera Motion Tracking & CGI",
+    desc: "Spatial 3D camera solving and photoreal visual integration where practical filming requires digital support.",
+    icon: Layers,
   },
 ];
 
 interface StickyOffersShowcaseProps {
-  onSelectService?: (serviceName: string) => void;
+  onSelectService?: (serviceTitle: string) => void;
 }
 
-export const StickyOffersShowcase: React.FC<StickyOffersShowcaseProps> = ({
-  onSelectService,
-}) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
+export const StickyOffersShowcase: React.FC<StickyOffersShowcaseProps> = ({ onSelectService }) => {
+  const [activeId, setActiveId] = useState<string>(CORE_SERVICES[0].id);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const totalScrollable = rect.height - window.innerHeight;
-      if (totalScrollable <= 0) return;
+  const activeService = CORE_SERVICES.find((s) => s.id === activeId) || CORE_SERVICES[0];
 
-      const scrolled = -rect.top;
-      const currentProgress = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
-      setProgress(currentProgress);
-
-      const totalItems = OFFERS.length;
-      // Calculate active index across the expanded slower scroll runway
-      const rawIndex = Math.floor(currentProgress * totalItems);
-      const boundedIndex = Math.min(Math.max(rawIndex, 0), totalItems - 1);
-
-      setActiveIndex((prev) => (prev !== boundedIndex ? boundedIndex : prev));
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const currentOffer = OFFERS[activeIndex];
-  const Icon = currentOffer.icon;
-
-  const handleJumpToOffer = (idx: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const totalScrollable = rect.height - window.innerHeight;
-    const targetScrollY = window.scrollY + rect.top + (idx / OFFERS.length) * totalScrollable + 20;
-
-    window.scrollTo({
-      top: targetScrollY,
-      behavior: "smooth",
-    });
-  };
-
-  const handleInquire = () => {
+  const handleSelect = (serviceTitle: string) => {
     if (onSelectService) {
-      onSelectService(currentOffer.title);
+      onSelectService(serviceTitle);
     } else {
       const el = document.getElementById("contact");
       if (el) {
@@ -197,137 +138,208 @@ export const StickyOffersShowcase: React.FC<StickyOffersShowcaseProps> = ({
   };
 
   return (
-    <div
+    <section
       id="services"
       data-section="services"
-      ref={containerRef}
-      // Slower, luxurious scroll runway (750vh allows ~100vh of scroll per offer)
-      className="relative min-h-[750vh] bg-[#070708] border-t border-b border-white/[0.06] scroll-mt-24"
+      className="relative px-6 py-20 sm:py-28 md:px-16 scroll-mt-28 bg-gradient-to-b from-transparent via-black/40 to-transparent"
     >
-      {/* Pinned Sticky Viewport */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden px-6 sm:px-12 md:px-16 lg:px-24 py-8 sm:py-10 z-20">
-        {/* Subtle Obsidian Lighting */}
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_50%_at_50%_45%,rgba(212,176,98,0.03),transparent_80%)]" />
-
-        {/* Minimalist Top Bar */}
-        <div className="flex items-center justify-between border-b border-white/[0.06] pb-4">
-          <div className="flex items-center gap-3">
-            <SectionLabel id="// 03">CAPABILITIES</SectionLabel>
-            <span className="hidden sm:inline-block text-silver/30 font-mono text-[9px]">/</span>
-            <span className="hidden sm:inline-block font-mono text-[9px] uppercase tracking-[0.25em] text-silver/50">
-              DISCIPLINE 0{activeIndex + 1} OF 0{OFFERS.length}
-            </span>
+      <FadeInOnScroll direction="up" distance={35}>
+        <div className="mx-auto max-w-5xl">
+          {/* Header */}
+          <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <SectionLabel id="02">What We Do</SectionLabel>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl text-white">
+                Three Core Services
+              </h2>
+            </div>
+            <p className="max-w-md text-xs sm:text-sm text-silver/70 font-light leading-relaxed">
+              Every production is built around client needs. We offer standalone FPV filming, complete
+              event coverage, and specialized post-production.
+            </p>
           </div>
 
-          {/* Clean Stepper Indicators */}
-          <div className="flex items-center gap-2">
-            {OFFERS.map((offer, idx) => {
-              const isActive = activeIndex === idx;
+          {/* Interactive 3-Service Grid / Switcher */}
+          <div className="grid gap-4 md:grid-cols-3 mb-8">
+            {CORE_SERVICES.map((service) => {
+              const isSelected = service.id === activeId;
+              const Icon = service.icon;
+
               return (
                 <button
-                  key={offer.id}
+                  key={service.id}
                   type="button"
-                  onClick={() => handleJumpToOffer(idx)}
-                  className={`transition-all duration-300 ${
-                    isActive
-                      ? "h-1.5 w-6 bg-accent rounded-full"
-                      : "size-1.5 bg-white/20 hover:bg-white/40 rounded-full"
+                  onClick={() => setActiveId(service.id)}
+                  className={`group relative text-left p-6 rounded-2xl border transition-all duration-300 cursor-pointer ${
+                    isSelected
+                      ? "border-accent/60 bg-[#0d0d10] shadow-[0_8px_30px_rgba(212,176,98,0.12)]"
+                      : "border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]"
                   }`}
-                  aria-label={`Jump to ${offer.title}`}
-                />
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <span
+                      className={`font-mono text-[10px] uppercase tracking-widest font-semibold ${
+                        isSelected ? "text-accent" : "text-silver/50"
+                      }`}
+                    >
+                      {service.number}
+                    </span>
+                    <div
+                      className={`flex size-9 items-center justify-center rounded-xl transition-colors ${
+                        isSelected
+                          ? "bg-accent text-black"
+                          : "bg-white/5 text-silver/70 group-hover:text-white"
+                      }`}
+                    >
+                      <Icon className="size-4" />
+                    </div>
+                  </div>
+
+                  <h3 className="text-lg font-bold text-white tracking-tight">{service.title}</h3>
+                  <p className="mt-2 text-xs text-silver/60 line-clamp-2 leading-relaxed">
+                    {service.tagline}
+                  </p>
+
+                  <div className="mt-4 flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider text-silver/40 group-hover:text-accent transition-colors">
+                    <span>{isSelected ? "Active Details" : "View Scope"}</span>
+                    <ArrowUpRight className="size-3" />
+                  </div>
+                </button>
               );
             })}
           </div>
-        </div>
 
-        {/* Center Stage: The Active Offer Card (JUST POPPING UP) */}
-        <div className="my-auto w-full max-w-3xl mx-auto py-2">
+          {/* Active Service Detailed Panel */}
           <AnimatePresence mode="wait">
             <motion.div
-              key={currentOffer.id}
-              // Crisp pop-up animation: scales and springs straight up into view
-              initial={{ opacity: 0, scale: 0.88, y: 28 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.94, y: -16 }}
-              transition={{
-                type: "spring",
-                stiffness: 350,
-                damping: 25,
-                mass: 0.7,
-              }}
-              className="relative rounded-3xl border border-white/[0.08] bg-[#0c0c0e]/90 p-8 sm:p-11 md:p-12 shadow-[0_25px_80px_rgba(0,0,0,0.85)] backdrop-blur-2xl"
+              key={activeService.id}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="rounded-3xl border border-white/10 bg-[#0a0a0d] p-7 sm:p-10 md:p-12 shadow-2xl relative"
             >
-              {/* Minimal Top Hairline */}
-              <div className="absolute top-0 left-12 right-12 h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+              <div className="grid gap-10 lg:grid-cols-12 items-start">
+                {/* Left: Detailed Overview */}
+                <div className="lg:col-span-7 space-y-6">
+                  <div>
+                    <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent font-semibold block mb-2">
+                      Service {activeService.number} · Client Solution
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                      {activeService.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-silver/80 font-light leading-relaxed">
+                      {activeService.tagline}
+                    </p>
+                  </div>
 
-              {/* Tag & Index */}
-              <div className="flex items-center justify-between gap-3 mb-6">
-                <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
-                  // 0{activeIndex + 1} · {currentOffer.category}
-                </span>
-                <span className="font-mono text-[10px] text-silver/40">
-                  0{activeIndex + 1} / 0{OFFERS.length}
-                </span>
-              </div>
-
-              {/* Title & Icon */}
-              <div className="flex items-start gap-5 mb-5">
-                <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.02] text-accent">
-                  <Icon className="size-6 text-accent" />
-                </div>
-                <div>
-                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] font-display">
-                    {currentOffer.title}
-                  </h3>
-                  <p className="mt-1.5 text-xs sm:text-sm font-light text-silver/70 leading-snug">
-                    {currentOffer.subtitle}
+                  <p className="text-xs sm:text-sm text-silver/70 leading-relaxed font-light">
+                    {activeService.description}
                   </p>
+
+                  <div className="pt-2">
+                    <span className="font-mono text-[8px] uppercase tracking-widest text-silver/40 block mb-3">
+                      Included Capabilities
+                    </span>
+                    <ul className="grid gap-2.5 sm:grid-cols-2 text-xs text-silver/80">
+                      {activeService.capabilities.map((cap, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <CheckCircle2 className="size-3.5 text-accent shrink-0 mt-0.5" />
+                          <span>{cap}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="pt-4 border-t border-white/5 flex flex-wrap items-center gap-4">
+                    <button
+                      type="button"
+                      onClick={() => handleSelect(activeService.title)}
+                      className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-black hover:bg-white transition-all cursor-pointer shadow-[0_0_20px_rgba(212,176,98,0.2)]"
+                    >
+                      <span>Discuss {activeService.title}</span>
+                      <ArrowUpRight className="size-3.5" />
+                    </button>
+                    <span className="text-xs text-silver/50 font-light">
+                      Direct response within 24h
+                    </span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Body Description */}
-              <p className="text-xs sm:text-sm leading-relaxed text-silver/80 font-light mb-8">
-                {currentOffer.description}
-              </p>
+                {/* Right: Technical Specs & Output */}
+                <div className="lg:col-span-5 space-y-4">
+                  <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 space-y-4">
+                    <span className="font-mono text-[8px] uppercase tracking-widest text-silver/40 block">
+                      Production Specs
+                    </span>
+                    <div className="space-y-3">
+                      {activeService.specs.map((spec) => (
+                        <div key={spec.label} className="border-b border-white/5 pb-2.5 last:border-none last:pb-0">
+                          <span className="font-mono text-[8px] uppercase tracking-widest text-silver/40 block">
+                            {spec.label}
+                          </span>
+                          <span className="text-xs text-white font-medium block mt-0.5">
+                            {spec.value}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-              {/* Action Row */}
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/[0.06]">
-                <span className="text-[11px] sm:text-xs text-silver/50 font-light">
-                  {currentOffer.highlight}
-                </span>
-
-                <button
-                  type="button"
-                  onClick={handleInquire}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-5 py-2 font-mono text-[9px] uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-all cursor-pointer"
-                >
-                  <span>Inquire Discipline</span>
-                  <ArrowUpRight className="size-3" />
-                </button>
+                  <div className="rounded-2xl border border-accent/20 bg-accent/5 p-5">
+                    <span className="font-mono text-[8px] uppercase tracking-widest text-accent font-semibold block mb-1">
+                      Deliverable Focus
+                    </span>
+                    <p className="text-xs text-silver/80 leading-relaxed font-light">
+                      {activeService.deliverables}
+                    </p>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
 
-        {/* Minimalist Bottom Bar: Scroll Status */}
-        <div className="border-t border-white/[0.06] pt-4 flex items-center justify-between text-silver/50 font-mono text-[9px]">
-          <div className="flex items-center gap-2">
-            <ChevronDown className="size-3 text-accent animate-bounce" />
-            <span>
-              {activeIndex < OFFERS.length - 1
-                ? `SCROLL TO REVEAL OFFER 0${activeIndex + 2}`
-                : "ALL 7 OFFERS REVEALED · CONTINUE SCROLLING"}
-            </span>
-          </div>
+          {/* Supporting Technical Expertise */}
+          <div className="mt-14 pt-10 border-t border-white/10">
+            <div className="mb-6 flex items-center justify-between">
+              <div>
+                <span className="font-mono text-[8px] uppercase tracking-[0.25em] text-silver/40 block">
+                  Supporting Capabilities
+                </span>
+                <h4 className="text-lg font-bold text-white tracking-tight mt-1">
+                  Technical Foundation
+                </h4>
+              </div>
+              <span className="font-mono text-[9px] text-silver/40 uppercase tracking-widest">
+                Stäfa, Switzerland
+              </span>
+            </div>
 
-          <div className="w-28 sm:w-40 h-1 bg-white/[0.08] rounded-full overflow-hidden">
-            <div
-              className="h-full bg-accent transition-all duration-200"
-              style={{ width: `${Math.max(10, progress * 100)}%` }}
-            />
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {SUPPORTING_EXPERTISE.map((item, idx) => {
+                const ItemIcon = item.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="p-5 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-white/15 transition-all"
+                  >
+                    <div className="size-8 rounded-lg bg-white/5 flex items-center justify-center text-accent mb-3">
+                      <ItemIcon className="size-4" />
+                    </div>
+                    <h5 className="text-xs font-bold text-white uppercase tracking-wider">
+                      {item.title}
+                    </h5>
+                    <p className="mt-2 text-xs text-silver/60 font-light leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </FadeInOnScroll>
+    </section>
   );
 };

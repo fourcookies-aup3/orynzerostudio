@@ -77,23 +77,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ORYN ZERO — Cinematic Films & FPV Experiences" },
+      { title: "OrynZERO Studio — Swiss Cinematic Films & FPV Experiences" },
       {
         name: "description",
         content:
-          "ORYN ZERO is a Swiss cinematic production studio creating immersive brand films through FPV, aerial cinematography and storytelling.",
+          "OrynZERO Studio is a Swiss cinematic production studio creating immersive brand films through FPV, aerial cinematography and storytelling.",
       },
-      { name: "author", content: "ORYN ZERO" },
+      { name: "author", content: "OrynZERO Studio" },
       { name: "theme-color", content: "#050505" },
-      { property: "og:site_name", content: "ORYN ZERO" },
-      { property: "og:title", content: "ORYN ZERO — Cinematic Films & FPV Experiences" },
+      { property: "og:site_name", content: "OrynZERO Studio" },
+      { property: "og:title", content: "OrynZERO Studio — Swiss Cinematic Films & FPV Experiences" },
       {
         property: "og:description",
         content: "A Swiss cinematic production studio. FPV, aerial cinematography, brand films.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "ORYN ZERO" },
+      { name: "twitter:title", content: "OrynZERO Studio" },
       {
         name: "twitter:description",
         content: "Cinematic Films & FPV Experiences — Switzerland.",

@@ -7,22 +7,10 @@ import { OrynLogo } from "./OrynLogo";
 import { useLocale, type Language, type Currency } from "@/context/LocaleContext";
 
 const nav = [
-  { href: "#services", label: "Services" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#team", label: "Team" },
-  { href: "#crowdfunding", label: "Crowdfunding" },
-  { href: "#careers", label: "Careers" },
-  { href: "#contact", label: "Contact" },
-] as const;
-
-const drawerNav = [
-  { href: "#storytelling", label: "Philosophy" },
-  { href: "#services", label: "Services" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#team", label: "Team" },
-  { href: "#crowdfunding", label: "Crowdfunding" },
-  { href: "#careers", label: "Jobs & Career" },
-  { href: "#contact", label: "Contact" },
+  { id: "work", href: "#work", path: "/work", labelKey: "nav.work", defaultLabel: "Work" },
+  { id: "services", href: "#services", path: "/services", labelKey: "nav.services", defaultLabel: "Services" },
+  { id: "studio", href: "#studio", path: "/studio", labelKey: "nav.studio", defaultLabel: "Studio" },
+  { id: "contact", href: "#contact", path: "/contact", labelKey: "nav.contact", defaultLabel: "Contact" },
 ] as const;
 
 export function SiteNav() {
@@ -31,19 +19,10 @@ export function SiteNav() {
   const [activeSection, setActiveSection] = useState("");
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
-  const { language, setLanguage, currency, setCurrency, t } = useLocale();
+  const { t } = useLocale();
 
-  const getNavLabel = (href: string) => {
-    if (href === "#storytelling") return t("nav.philosophy");
-    if (href === "#services") return t("nav.services") || "Services";
-    if (href === "#showreel") return t("nav.showreel");
-    if (href === "#portfolio") return t("nav.portfolio");
-    if (href === "#team") return t("nav.team");
-    if (href === "#careers") return t("nav.careers");
-    if (href === "#crowdfunding") return t("nav.crowdfunding") || "Crowdfunding";
-    if (href === "#partners") return t("nav.network");
-    if (href === "#contact") return t("nav.contact");
-    return "";
+  const getNavLabel = (item: (typeof nav)[number]) => {
+    return t(item.labelKey) || item.defaultLabel;
   };
 
   useEffect(() => {
@@ -52,15 +31,7 @@ export function SiteNav() {
 
       // Section highlighting logic
       if (currentPath === "/") {
-        const sections = [
-          "storytelling",
-          "services",
-          "portfolio",
-          "team",
-          "careers",
-          "crowdfunding",
-          "contact",
-        ];
+        const sections = ["work", "services", "studio", "team", "contact"];
         let current = "";
         for (const section of sections) {
           const element =
@@ -69,7 +40,7 @@ export function SiteNav() {
           if (element) {
             const rect = element.getBoundingClientRect();
             if (rect.top <= 280 && rect.bottom >= 100) {
-              current = section;
+              current = section === "team" ? "studio" : section;
             }
           }
         }
@@ -101,31 +72,22 @@ export function SiteNav() {
     return false;
   };
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("#")) {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: (typeof nav)[number]) => {
+    if (currentPath === "/") {
       e.preventDefault();
-      const sectionName = href.substring(1);
-
-      if (currentPath === "/") {
-        if (open) {
-          setOpen(false);
-          document.body.style.overflow = "";
-          setTimeout(() => {
-            scrollToTarget(sectionName);
-          }, 80);
-        } else {
-          scrollToTarget(sectionName);
-        }
-      } else {
+      if (open) {
         setOpen(false);
         document.body.style.overflow = "";
-        try {
-          sessionStorage.setItem("pendingScrollSection", sectionName);
-        } catch {
-          // ignore
-        }
-        window.location.href = `/#${sectionName}`;
+        setTimeout(() => {
+          scrollToTarget(item.id);
+        }, 80);
+      } else {
+        scrollToTarget(item.id);
       }
+    } else {
+      // Navigate to page route
+      setOpen(false);
+      document.body.style.overflow = "";
     }
   };
 
@@ -139,25 +101,25 @@ export function SiteNav() {
 
   return (
     <>
-      {/* Floating Pill Header */}
+      {/* Floating Header */}
       <motion.header
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={cn(
           "fixed inset-x-0 top-0 z-50 flex justify-center px-4 transition-all duration-500",
-          scrolled ? "top-4 sm:top-6" : "top-6 sm:top-8",
+          scrolled ? "top-3 sm:top-5" : "top-5 sm:top-7",
         )}
       >
         <div
           className={cn(
-            "flex w-full max-w-5xl items-center justify-between border border-white/5 px-4 sm:px-6 py-3 transition-all duration-500",
+            "flex w-full max-w-5xl items-center justify-between border border-white/10 px-5 sm:px-7 py-3 transition-all duration-500",
             scrolled
-              ? "rounded-full bg-black/40 shadow-[0_10px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl border-white/10"
-              : "rounded-full bg-black/10 backdrop-blur-sm",
+              ? "rounded-full bg-black/75 shadow-[0_12px_40px_rgba(0,0,0,0.7)] backdrop-blur-xl border-white/15"
+              : "rounded-full bg-black/40 backdrop-blur-md",
           )}
         >
-          {/* Brand Logo with a gold dot */}
+          {/* Brand Logo */}
           <Link
             to="/"
             onClick={() => {
@@ -165,53 +127,53 @@ export function SiteNav() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="flex items-center pl-1 cursor-pointer shrink-0"
+            className="flex items-center cursor-pointer shrink-0"
           >
             <OrynLogo size="sm" />
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {nav.map((n) => {
-              const isActive = activeSection === n.href.substring(1);
+          {/* Desktop Navigation Links — Clean typography without static pills */}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+            {nav.map((item) => {
+              const isActive =
+                currentPath === item.path || (currentPath === "/" && activeSection === item.id);
               return (
-                <a
-                  key={n.href}
-                  href={currentPath === "/" ? n.href : `/${n.href}`}
-                  onClick={(e) => handleScrollTo(e, n.href)}
+                <Link
+                  key={item.id}
+                  to={item.path}
+                  onClick={(e) => handleNavClick(e, item)}
                   className={cn(
-                    "px-3 py-1.5 rounded-full font-mono text-[9px] uppercase tracking-[0.2em] transition-all duration-300",
+                    "text-xs uppercase tracking-[0.2em] font-medium transition-colors duration-200 py-1",
                     isActive
-                      ? "bg-white/10 text-accent font-bold"
-                      : "text-silver/70 hover:text-white hover:bg-white/5",
+                      ? "text-accent font-semibold border-b border-accent/70"
+                      : "text-silver/80 hover:text-white",
                   )}
                 >
-                  {getNavLabel(n.href)}
-                </a>
+                  {getNavLabel(item)}
+                </Link>
               );
             })}
           </nav>
 
-          {/* Premium CTA Buttons & Menu Trigger */}
+          {/* Primary Client CTA & Mobile Menu Trigger */}
           <div className="flex items-center gap-3 shrink-0">
             <Link
-              to="/freelancers"
-              className="hidden sm:inline-block rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[9px] font-bold uppercase tracking-[0.2em] text-silver transition-all hover:border-accent hover:text-white"
+              to="/contact"
+              onClick={(e) => {
+                if (currentPath === "/") {
+                  e.preventDefault();
+                  scrollToTarget("contact");
+                }
+              }}
+              className="inline-flex items-center justify-center rounded-full bg-accent px-5 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-black shadow-[0_0_20px_rgba(212,176,98,0.2)] transition-all hover:bg-white hover:text-black cursor-pointer"
             >
-              Sign Up as Freelancer
+              Discuss a Project
             </Link>
 
-            <Link
-              to="/booking"
-              className="hidden sm:inline-block rounded-full border border-accent/20 bg-accent/5 px-5 py-2 text-[9px] font-bold uppercase tracking-[0.2em] text-accent transition-all hover:bg-accent hover:text-black hover:border-transparent shadow-[0_0_15px_rgba(212,176,98,0.05)]"
-            >
-              {t("nav.schedule")}
-            </Link>
-
-            {/* Menu trigger (Three lines icon) */}
+            {/* Mobile menu trigger */}
             <button
               type="button"
-              className="flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all hover:bg-white/20 hover:border-accent/40"
+              className="flex md:hidden size-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all hover:bg-white/15"
               aria-label="Open menu"
               onClick={() => setOpen(true)}
             >
@@ -221,7 +183,7 @@ export function SiteNav() {
         </div>
       </motion.header>
 
-      {/* Navigation Drawer (Luxury Fullscreen) */}
+      {/* Navigation Drawer */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -229,7 +191,7 @@ export function SiteNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, pointerEvents: "none" }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[60] flex flex-col justify-between bg-black/95 p-6 sm:p-10 backdrop-blur-2xl overflow-y-auto"
+            className="fixed inset-0 z-[60] flex flex-col justify-between bg-black/98 p-6 sm:p-10 backdrop-blur-2xl overflow-y-auto"
           >
             <div className="flex items-center justify-between">
               <Link to="/" onClick={() => setOpen(false)} className="flex items-center">
@@ -237,7 +199,7 @@ export function SiteNav() {
               </Link>
               <button
                 type="button"
-                className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white hover:bg-white/20 transition-all"
+                className="flex size-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white hover:bg-white/20 transition-all"
                 aria-label="Close menu"
                 onClick={() => setOpen(false)}
               >
@@ -245,26 +207,27 @@ export function SiteNav() {
               </button>
             </div>
 
-            <nav className="flex flex-col gap-2 py-8 max-w-2xl mx-auto w-full">
-              {drawerNav.map((n, idx) => {
-                const isActive = activeSection === n.href.substring(1);
+            <nav className="flex flex-col gap-4 py-12 max-w-xl mx-auto w-full">
+              {nav.map((item, idx) => {
+                const isActive =
+                  currentPath === item.path || (currentPath === "/" && activeSection === item.id);
                 return (
                   <motion.div
-                    key={n.href}
+                    key={item.id}
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: idx * 0.03, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ delay: idx * 0.04, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <a
-                      href={currentPath === "/" ? n.href : `/${n.href}`}
-                      onClick={(e) => handleScrollTo(e, n.href)}
+                    <Link
+                      to={item.path}
+                      onClick={(e) => handleNavClick(e, item)}
                       className={cn(
-                        "block py-2.5 text-2xl sm:text-3xl font-bold uppercase tracking-widest transition-all hover:translate-x-1",
-                        isActive ? "text-accent" : "text-silver/70 hover:text-white",
+                        "block py-3 text-3xl sm:text-4xl font-bold uppercase tracking-widest transition-all hover:translate-x-1.5",
+                        isActive ? "text-accent" : "text-silver/80 hover:text-white",
                       )}
                     >
-                      {getNavLabel(n.href)}
-                    </a>
+                      {getNavLabel(item)}
+                    </Link>
                   </motion.div>
                 );
               })}
@@ -274,23 +237,36 @@ export function SiteNav() {
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.25 }}
-              className="border-t border-white/10 pt-6 space-y-3 max-w-2xl mx-auto w-full"
+              transition={{ delay: 0.2 }}
+              className="border-t border-white/10 pt-6 space-y-4 max-w-xl mx-auto w-full"
             >
               <Link
-                to="/freelancers"
-                onClick={() => setOpen(false)}
-                className="block w-full rounded-full border border-white/20 bg-white/5 py-3.5 text-center text-xs font-bold uppercase tracking-[0.25em] text-silver hover:border-accent hover:text-white transition-all"
-              >
-                Sign Up as Freelancer
-              </Link>
-              <Link
-                to="/booking"
-                onClick={() => setOpen(false)}
+                to="/contact"
+                onClick={(e) => {
+                  setOpen(false);
+                  if (currentPath === "/") {
+                    e.preventDefault();
+                    scrollToTarget("contact");
+                  }
+                }}
                 className="block w-full rounded-full bg-accent py-4 text-center text-xs font-bold uppercase tracking-[0.25em] text-black shadow-[0_4px_25px_rgba(212,176,98,0.25)] hover:bg-white transition-all"
               >
-                {t("nav.scheduleCall")}
+                Discuss a Project
               </Link>
+              <div className="flex items-center justify-center gap-6 pt-2 font-mono text-[9px] uppercase tracking-widest text-silver/50">
+                <Link to="/careers" onClick={() => setOpen(false)} className="hover:text-white transition-colors">
+                  Careers
+                </Link>
+                <span>·</span>
+                <a
+                  href="https://www.crowdify.net/de/projekt/orynzero-studio-am-start"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors"
+                >
+                  Crowdfunding ↗
+                </a>
+              </div>
             </motion.div>
           </motion.div>
         )}

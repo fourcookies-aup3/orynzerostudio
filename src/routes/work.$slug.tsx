@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Play, CheckCircle2, ShieldCheck } from "lucide-react";
 import { VideoPlayer } from "@/components/site/VideoPlayer";
 import { getProject, projects } from "@/data/projects";
 import { showreel } from "@/data/site";
@@ -19,9 +19,9 @@ export const Route = createFileRoute("/work/$slug")({
     const p = loaderData.project;
     return {
       meta: [
-        { title: `${p.title} — ORYN ZERO` },
+        { title: `${p.title} — Case Study — ORYN ZERO Studio` },
         { name: "description", content: p.overview },
-        { property: "og:title", content: `${p.title} — ORYN ZERO` },
+        { property: "og:title", content: `${p.title} — Case Study — ORYN ZERO Studio` },
         { property: "og:description", content: p.overview },
         { property: "og:type", content: "article" },
         { property: "og:image", content: p.cover },
@@ -41,12 +41,12 @@ function ProjectNotFound() {
         <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-silver">
           Project not found
         </p>
-        <h1 className="mt-6 font-display text-5xl font-bold tracking-tighter">Off the slate.</h1>
+        <h1 className="mt-6 font-display text-4xl sm:text-5xl font-bold tracking-tight">Case Study Not Found.</h1>
         <Link
           to="/work"
-          className="mt-8 inline-block border border-border px-6 py-3 text-[10px] uppercase tracking-widest hover:bg-foreground hover:text-background"
+          className="mt-8 inline-block rounded-full bg-accent px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-black hover:bg-white"
         >
-          Return to index
+          Return to Work
         </Link>
       </div>
     </div>
@@ -55,146 +55,224 @@ function ProjectNotFound() {
 
 function ProjectPage() {
   const { project: p } = Route.useLoaderData();
-  const next = projects[(projects.findIndex((x) => x.slug === p.slug) + 1) % projects.length];
+  const currentIndex = projects.findIndex((x) => x.slug === p.slug);
+  const otherProjects = projects.filter((x) => x.slug !== p.slug);
+  const nextProject = otherProjects.length > 0 ? otherProjects[0] : null;
 
   return (
-    <>
+    <div className="min-h-screen bg-[#050507] text-white">
       {/* Hero */}
-      <section className="relative">
-        <div className="pt-28">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="mb-6 flex items-baseline justify-between font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              <Link to="/work" className="hover:text-silver">
-                ← Selected Work
-              </Link>
-              <span>
-                {p.id} · {p.year}
-              </span>
-            </div>
-            <div className="mb-8 flex items-baseline gap-4 text-silver">
-              <span className="font-mono text-[10px] uppercase tracking-widest">{p.category}</span>
-              {p.status && (
-                <span className="border border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest">
-                  {p.status}
-                </span>
-              )}
-            </div>
-            <h1 className="text-balance-tight text-6xl font-bold leading-[0.9] md:text-8xl">
-              {p.title}
-            </h1>
+      <section className="relative pt-32 pb-12">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mb-6 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-silver/50">
+            <Link to="/work" className="hover:text-accent transition-colors">
+              ← Back to Selected Work
+            </Link>
+            <span>
+              {p.id} · {p.year}
+            </span>
           </div>
+
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-accent font-semibold">
+              {p.category}
+            </span>
+            <span className="size-1 rounded-full bg-white/20" />
+            <span className="font-mono text-[10px] uppercase tracking-wider text-silver/60">
+              {p.location}
+            </span>
+          </div>
+
+          <h1 className="text-balance-tight text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight">
+            {p.title}
+          </h1>
+
+          <p className="mt-6 text-base sm:text-lg text-silver/80 font-light max-w-3xl leading-relaxed">
+            {p.overview}
+          </p>
         </div>
 
-        <div className="mx-auto mt-16 max-w-7xl px-6">
-          <VideoPlayer src={p.video || showreel.src} poster={p.cover} aspect="cinemascope" />
+        {/* Video Player */}
+        <div className="mx-auto mt-12 max-w-6xl px-6">
+          <div className="overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl">
+            <VideoPlayer src={p.video || showreel.src} poster={p.cover} aspect="cinemascope" />
+          </div>
 
-          {/* Explicit Video / Project Credits Bar */}
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.02] px-6 py-4 font-mono text-[10px]">
+          {/* Transparent Credits Bar */}
+          <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5 font-mono text-[10px]">
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-              <span className="uppercase tracking-widest text-accent font-semibold">
-                Credits:
+              <span className="uppercase tracking-widest text-accent font-bold">
+                Production Credits:
               </span>
               <span className="text-white">
-                <strong className="text-silver/60 font-normal">Main Recording/Editing:</strong> VISURE GMBH
+                <strong className="text-silver/50 font-normal">Main Recording / Editing:</strong> VISURE GMBH
               </span>
               <span className="text-white">
-                <strong className="text-silver/60 font-normal">Co-Filming/Drone Shots:</strong> Finn Ryf
+                <strong className="text-silver/50 font-normal">Co-Filming / FPV Aerials:</strong> Finn Ryf (ORYN ZERO)
               </span>
             </div>
-            <span className="uppercase tracking-widest text-silver/40">
-              {p.location}
+            <span className="text-silver/50 uppercase tracking-widest shrink-0">
+              Released 2026
             </span>
           </div>
         </div>
       </section>
 
-      {/* Project meta grid */}
-      <section className="border-t border-border px-6 py-24">
-        <div className="mx-auto grid max-w-7xl gap-16 md:grid-cols-3">
-          <div className="md:col-span-2">
-            <h2 className="text-3xl font-bold italic md:text-4xl">Project Overview</h2>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{p.overview}</p>
-            <div className="mt-16 grid gap-12 md:grid-cols-2">
-              <Block label="Challenge" body={p.challenge} />
-              <Block label="Concept" body={p.concept} />
-              <Block label="Production" body={p.production} />
-              <Block label="Result" body={p.result} />
-            </div>
-          </div>
-
-          <aside className="space-y-8 border border-white/5 rounded-3xl bg-white/[0.01] p-8">
-            {/* Explicit Production Credits in Aside */}
-            <div className="border border-accent/20 bg-accent/5 p-5 rounded-2xl space-y-2.5 font-mono">
-              <p className="text-[9px] uppercase tracking-widest text-accent font-bold">
-                Production Credits
+      {/* Case Study Details Grid */}
+      <section className="border-t border-white/10 px-6 py-20">
+        <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-12 items-start">
+          <div className="lg:col-span-8 space-y-12">
+            <div>
+              <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent block mb-2">
+                Project Scope
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                Objective & Challenge
+              </h2>
+              <p className="mt-4 text-sm sm:text-base leading-relaxed text-silver/80 font-light">
+                {p.objective || p.overview}
               </p>
-              <div className="space-y-1 text-xs">
-                <p className="text-white font-sans">
-                  <span className="text-silver/60 block font-mono text-[9px] uppercase tracking-wider">Main Recording/Editing</span>
-                  VISURE GMBH
+            </div>
+
+            <div className="grid gap-8 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-6 space-y-2">
+                <span className="font-mono text-[8px] uppercase tracking-widest text-accent block">
+                  Production Challenge
+                </span>
+                <p className="text-xs sm:text-sm text-silver/70 font-light leading-relaxed">
+                  {p.challenge}
                 </p>
-                <p className="text-white font-sans mt-2">
-                  <span className="text-silver/60 block font-mono text-[9px] uppercase tracking-wider">Co-Filming/Drone Shots</span>
-                  Finn Ryf
+              </div>
+
+              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-6 space-y-2">
+                <span className="font-mono text-[8px] uppercase tracking-widest text-accent block">
+                  Visual Concept
+                </span>
+                <p className="text-xs sm:text-sm text-silver/70 font-light leading-relaxed">
+                  {p.concept}
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-6 space-y-2">
+                <span className="font-mono text-[8px] uppercase tracking-widest text-accent block">
+                  On-Site Execution
+                </span>
+                <p className="text-xs sm:text-sm text-silver/70 font-light leading-relaxed">
+                  {p.production}
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-6 space-y-2">
+                <span className="font-mono text-[8px] uppercase tracking-widest text-accent block">
+                  Final Output & Result
+                </span>
+                <p className="text-xs sm:text-sm text-silver/70 font-light leading-relaxed">
+                  {p.result}
                 </p>
               </div>
             </div>
+          </div>
 
-            <Meta label="Production" value="ORYN ZERO" />
-            <Meta label="Client" value={p.client} />
-            <Meta label="Location" value={p.location} />
-            <Meta label="Year" value={String(p.year)} />
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                Services
-              </p>
-              <ul className="mt-3 space-y-1 text-sm text-silver/60">
-                {p.services.map((s: string) => (
-                  <li key={s}>· {s}</li>
-                ))}
-              </ul>
+          {/* Sidebar Metadata */}
+          <aside className="lg:col-span-4 space-y-6">
+            <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-7 space-y-5">
+              <div className="rounded-2xl border border-accent/20 bg-accent/5 p-4 space-y-1.5">
+                <span className="font-mono text-[8px] uppercase tracking-widest text-accent font-bold block">
+                  ORYN ZERO Exact Role
+                </span>
+                <p className="text-xs font-semibold text-white">
+                  {p.exactRole}
+                </p>
+              </div>
+
+              <div className="space-y-4 pt-2 font-mono text-[10px]">
+                <div>
+                  <span className="text-silver/40 uppercase block text-[8px]">Client</span>
+                  <span className="text-white font-sans text-sm font-bold block mt-0.5">
+                    {p.client}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-silver/40 uppercase block text-[8px]">Location</span>
+                  <span className="text-white font-sans text-sm block mt-0.5">
+                    {p.location}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-silver/40 uppercase block text-[8px]">Year</span>
+                  <span className="text-white font-sans text-sm block mt-0.5">
+                    {p.year}
+                  </span>
+                </div>
+              </div>
+
+              <div className="border-t border-white/5 pt-4">
+                <span className="font-mono text-[8px] uppercase tracking-widest text-silver/40 block mb-2">
+                  Delivered Services
+                </span>
+                <ul className="space-y-1.5 text-xs text-silver/80">
+                  {p.services.map((s: string) => (
+                    <li key={s} className="flex items-center gap-2">
+                      <span className="size-1 rounded-full bg-accent" />
+                      <span>{s}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-2">
+                <Link
+                  to="/contact"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent py-3 font-mono text-[9px] font-bold uppercase tracking-widest text-black hover:bg-white transition-colors"
+                >
+                  <span>Discuss Similar Project</span>
+                  <ArrowUpRight className="size-3.5" />
+                </Link>
+              </div>
             </div>
           </aside>
         </div>
       </section>
 
-      {/* Next */}
-      <section className="border-t border-border px-6 py-24">
-        <div className="mx-auto flex max-w-7xl items-end justify-between">
-          <div>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              Next project
-            </p>
-            <Link
-              to="/work/$slug"
-              params={{ slug: next.slug }}
-              className="mt-4 flex items-center gap-4 text-4xl font-bold tracking-tighter hover:text-silver md:text-6xl"
-            >
-              {next.title} <ArrowUpRight className="size-8" />
-            </Link>
-          </div>
+      {/* Next Project / Return navigation */}
+      <section className="border-t border-white/10 px-6 py-20 bg-gradient-to-b from-transparent to-black/60">
+        <div className="mx-auto max-w-6xl flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          {nextProject ? (
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-silver/50">
+                Next Case Study
+              </p>
+              <Link
+                to="/work/$slug"
+                params={{ slug: nextProject.slug }}
+                className="mt-2 flex items-center gap-3 text-2xl sm:text-4xl font-bold tracking-tight text-white hover:text-accent transition-colors"
+              >
+                {nextProject.title} <ArrowUpRight className="size-6 text-accent" />
+              </Link>
+            </div>
+          ) : (
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-silver/50">
+                Studio Archive
+              </p>
+              <Link
+                to="/work"
+                className="mt-2 flex items-center gap-3 text-2xl sm:text-3xl font-bold tracking-tight text-white hover:text-accent transition-colors"
+              >
+                Explore Selected Work & Showreel <ArrowUpRight className="size-5 text-accent" />
+              </Link>
+            </div>
+          )}
+
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-black hover:bg-accent transition-all shrink-0"
+          >
+            <span>Start a Project</span>
+            <ArrowUpRight className="size-3.5" />
+          </Link>
         </div>
       </section>
-    </>
-  );
-}
-
-function Block({ label, body }: { label: string; body: string }) {
-  return (
-    <div>
-      <p className="font-mono text-[10px] uppercase tracking-widest text-silver">{label}</p>
-      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
-    </div>
-  );
-}
-
-function Meta({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-        {label}
-      </p>
-      <p className="mt-1 text-sm">{value}</p>
     </div>
   );
 }

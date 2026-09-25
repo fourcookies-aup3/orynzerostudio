@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ExternalLink, Sparkles, ShieldCheck, Camera, Building2, CheckCircle2 } from "lucide-react";
+import { ExternalLink, ShieldCheck, Camera, Building2, CheckCircle2 } from "lucide-react";
 import { SectionLabel } from "./SectionHeader";
 import { FadeInOnScroll } from "./FadeInOnScroll";
 
@@ -80,9 +80,9 @@ export function CrowdfundingSection() {
         <div className="mx-auto max-w-6xl">
           {/* Header */}
           <div className="mb-14 max-w-3xl">
-            <SectionLabel id="// 06">Crowdfunding Initiative</SectionLabel>
+            <SectionLabel id="06">Crowdfunding Initiative</SectionLabel>
             <h3 className="mt-4 text-balance-tight text-3xl font-bold tracking-tight md:text-5xl text-white">
-              ORYN ZERO Studio am Start
+              OrynZERO Studio am Start
             </h3>
             <p className="mt-4 text-base md:text-lg leading-relaxed text-silver/70 font-light">
               We are officially taking ORYN ZERO to the next level: financing a dedicated Sony FX3 solo rig
@@ -94,10 +94,9 @@ export function CrowdfundingSection() {
             {/* Details & Motivation */}
             <div className="lg:col-span-7 space-y-8">
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 font-mono text-[9px] uppercase tracking-widest text-accent">
-                  <Sparkles className="size-3" />
-                  <span>Where Your Support Goes</span>
-                </div>
+                <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent font-semibold block">
+                  Where Your Support Goes
+                </span>
                 <h4 className="text-2xl font-bold text-white tracking-tight">
                   Transparent Allocation of Campaign Funds
                 </h4>

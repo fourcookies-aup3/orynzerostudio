@@ -27,11 +27,11 @@ export const showreel = {
 
 export const site = {
   name: "ORYN ZERO",
-  tagline: "Cinematic Films & FPV Experiences",
+  tagline: "Films built around movement",
   description:
-    "ORYN ZERO is a Swiss cinematic production studio creating immersive visual experiences through FPV, aerial cinematography and storytelling.",
-  email: "orynzerostudio@gmail.com",
-  location: "Switzerland",
+    "Boutique film studio based in Stäfa, Switzerland. Combining dynamic FPV aerials, ground cinematography, and post-production for brands, events, and places.",
+  email: "studio@orynzero.ch",
+  location: "Stäfa, Switzerland",
   social: {
     instagram: "https://www.instagram.com/orynzerostudio/",
     youtube: "https://www.youtube.com/channel/UCfKo2itRTq1j1FoOkjG6m3w",

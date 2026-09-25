@@ -1,9 +1,10 @@
 import { cn } from "@/lib/utils";
 
 export function SectionLabel({ children, id }: { children: string; id?: string }) {
+  const cleanId = id ? id.replace(/^\/\/\s*/, "").trim() : null;
   return (
-    <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-silver">
-      {id ? <span className="mr-3 text-muted-foreground">{id}</span> : null}
+    <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-silver/80">
+      {cleanId ? <span className="mr-2 text-accent font-semibold">{cleanId} ·</span> : null}
       {children}
     </span>
   );
