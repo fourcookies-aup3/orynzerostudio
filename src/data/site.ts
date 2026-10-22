@@ -50,9 +50,7 @@ export const site = {
   },
 };
 
-export const partners = [
-  { name: "VISURE GMBH", note: "Production Partner", url: "https://visure.ch" },
-];
+export const partners = [];
 
 export const crowdfunding = {
   title: "OrynZERO Studio am Start",
