@@ -30,7 +30,7 @@ export const site = {
   tagline: "Films built around movement",
   description:
     "Boutique film studio based in Stäfa, Switzerland. Combining dynamic FPV aerials, ground cinematography, and post-production for brands, events, and places.",
-  email: "studio@orynzero.ch",
+  email: "orynzerostudio@gmail.com",
   location: "Stäfa, Switzerland",
   social: {
     instagram: "https://www.instagram.com/orynzerostudio/",
@@ -50,7 +50,9 @@ export const site = {
   },
 };
 
-export const partners = [{ name: "VISURE GMBH", note: "Production Partner" }];
+export const partners = [
+  { name: "VISURE GMBH", note: "Production Partner", url: "https://visure.ch" },
+];
 
 export const crowdfunding = {
   title: "OrynZERO Studio am Start",
