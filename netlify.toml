@@ -1,11 +1,3 @@
-[build]
-  command = "npm run build"
-  publish = ".output/public"
-
-[build.environment]
-  NITRO_PRESET = "netlify"
-
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/server"
-  status = 200
+# GitHub Pages hosting configuration only.
+# Netlify deployment settings have been disabled for this repository.
+# The live site is managed via GitHub Pages and DNS records.
