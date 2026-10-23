@@ -2,7 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import { PageHero } from "@/components/site/SectionHeader";
-import { CheckCircle, Mail, Phone, MapPin, Clock, ArrowUpRight, Loader2, Send } from "lucide-react";
+import {
+  CheckCircle,
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  ArrowUpRight,
+  Loader2,
+  Send,
+} from "lucide-react";
 import { site } from "@/data/site";
 
 export const Route = createFileRoute("/contact")({
@@ -12,7 +21,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Start a project or send a project brief to ORYN ZERO Studio in Switzerland. Hear directly from the founder within one working day.",
+          "Start a project or send a project brief to ORYN ZERO Studio in Stäfa, Switzerland. Hear directly from the founder within one working day.",
       },
       { property: "og:title", content: "Contact & Project Brief — ORYN ZERO Studio" },
       { property: "og:url", content: "/contact" },
@@ -66,14 +75,16 @@ function ContactPage() {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const parsed = schema.safeParse(formData);
+
     if (!parsed.success) {
       const errs: Record<string, string> = {};
-      parsed.error.issues.forEach((i) => {
-        errs[String(i.path[0])] = i.message;
+      parsed.error.issues.forEach((issue) => {
+        errs[String(issue.path[0])] = issue.message;
       });
       setErrors(errs);
       return;
     }
+
     setErrors({});
     setLoading(true);
 
@@ -90,7 +101,7 @@ function ContactPage() {
         }),
       });
     } catch {
-      // Allow user experience to proceed
+      // Allow the user experience to proceed even if external delivery fails.
     } finally {
       setLoading(false);
       setSent(true);
@@ -113,8 +124,8 @@ function ContactPage() {
                 <span className="font-mono text-[9px] uppercase tracking-widest text-silver/40 block">
                   Studio Location
                 </span>
-                <p className="mt-1 text-sm font-semibold text-white">Switzerland</p>
-                <p className="text-xs text-silver/60 mt-0.5">Available across Switzerland</p>
+                <p className="mt-1 text-sm font-semibold text-white">Stäfa, Zürich, Switzerland</p>
+                <p className="text-xs text-silver/60 mt-0.5">Available across Switzerland and Europe</p>
               </div>
 
               <div className="border-t border-white/5 pt-5">
@@ -151,6 +162,21 @@ function ContactPage() {
                 </a>
               </div>
             </div>
+
+            <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-6 space-y-3 font-mono text-[9px] text-silver/60">
+              <div className="flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-accent" />
+                <span>Swiss BAZL / FOCA Compliant</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-accent" />
+                <span>EASA Certified Drone Pilots (A1/A3, A2)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-accent" />
+                <span>Commercial Aviation Liability Insurance</span>
+              </div>
+            </div>
           </aside>
 
           <div className="lg:col-span-8">
@@ -160,9 +186,7 @@ function ContactPage() {
                   <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-accent/10 border border-accent/30 text-accent">
                     <CheckCircle className="size-8" />
                   </div>
-                  <h2 className="text-3xl font-bold text-white tracking-tight">
-                    Project Brief Received
-                  </h2>
+                  <h2 className="text-3xl font-bold text-white tracking-tight">Project Brief Received</h2>
                   <p className="text-sm text-silver/70 max-w-md mx-auto font-light leading-relaxed">
                     Thank you for reaching out. We have received your project details and will review your timeline and requirements. Finn will get back to you within one working day.
                   </p>
@@ -190,9 +214,7 @@ function ContactPage() {
               ) : (
                 <form onSubmit={onSubmit} className="space-y-6" noValidate>
                   <div>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                      Project Brief
-                    </h2>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Project Brief</h2>
                     <p className="mt-1 text-xs text-silver/60 font-light">
                       Fill out the fields below or email us directly at {site.email}.
                     </p>
@@ -209,9 +231,9 @@ function ContactPage() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="Finn Ryf"
-                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transitio[...]
+                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transition-colors"
                       />
-                      {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
+                      {errors.name && <p className="mt-1 text-xs text-red-400">{errors.name}</p>}
                     </div>
 
                     <div>
@@ -223,7 +245,7 @@ function ContactPage() {
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         placeholder="Brand / Agency / Venue"
-                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transitio[...]
+                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transition-colors"
                       />
                     </div>
                   </div>
@@ -239,9 +261,9 @@ function ContactPage() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="hello@company.ch"
-                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transitio[...]
+                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transition-colors"
                       />
-                      {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
+                      {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
                     </div>
 
                     <div>
@@ -253,7 +275,7 @@ function ContactPage() {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+41 00 000 00 00"
-                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transitio[...]
+                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transition-colors"
                       />
                     </div>
                   </div>
@@ -268,9 +290,9 @@ function ContactPage() {
                         onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
                         className="w-full rounded-xl border border-white/10 bg-[#0d0d10] px-4 py-3 text-sm text-white focus:border-accent focus:outline-none transition-colors"
                       >
-                        {PROJECT_TYPES.map((t) => (
-                          <option key={t} value={t}>
-                            {t}
+                        {PROJECT_TYPES.map((type) => (
+                          <option key={type} value={type}>
+                            {type}
                           </option>
                         ))}
                       </select>
@@ -285,9 +307,9 @@ function ContactPage() {
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                         className="w-full rounded-xl border border-white/10 bg-[#0d0d10] px-4 py-3 text-sm text-white focus:border-accent focus:outline-none transition-colors"
                       >
-                        {BUDGET_OPTIONS.map((b) => (
-                          <option key={b} value={b}>
-                            {b}
+                        {BUDGET_OPTIONS.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
                           </option>
                         ))}
                       </select>
@@ -304,16 +326,16 @@ function ContactPage() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Where does the shoot take place? What are your key dates, goals, or desired visual references?"
-                      className="w-full rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none resize-none trans[...]
+                      className="w-full rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none resize-none transition-colors"
                     />
-                    {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
+                    {errors.message && <p className="mt-1 text-xs text-red-400">{errors.message}</p>}
                   </div>
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-white/5">
                     <button
                       type="submit"
                       disabled={loading}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-4 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-black hover:bg-whit[...]
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-4 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-black hover:bg-white transition-colors disabled:opacity-60"
                     >
                       {loading ? (
                         <>
