@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/SectionHeader";
-import { ArrowUpRight, Compass, Film, SlidersHorizontal, CheckCircle2, ShieldCheck, Video, Cpu } from "lucide-react";
+import { ArrowUpRight, Compass, Film, SlidersHorizontal, CheckCircle2, Video, Cpu } from "lucide-react";
 import { CORE_SERVICES } from "@/components/site/StickyOffersShowcase";
 
 export const Route = createFileRoute("/services")({
@@ -10,7 +10,7 @@ export const Route = createFileRoute("/services")({
       {
         name: "description",
         content:
-          "FPV aerial cinematography, event & brand films, and post-production by ORYN ZERO Studio in Stäfa, Switzerland.",
+          "FPV aerial cinematography, event & brand films, and post-production by ORYN ZERO Studio in Switzerland.",
       },
       { property: "og:title", content: "Services — ORYN ZERO Studio" },
       { property: "og:url", content: "/services" },
@@ -124,47 +124,46 @@ function ServicesPage() {
           })}
         </div>
 
-        {/* Supporting technical foundation */}
         <div className="mx-auto max-w-6xl mt-20 pt-12 border-t border-white/10">
           <div className="mb-8">
             <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent block">
-              Supporting Foundation
+              Production Support
             </span>
             <h3 className="text-2xl font-bold text-white tracking-tight mt-1">
-              Safety, Logistics & Equipment
+              Flexible, Swiss-Based Production Coverage
             </h3>
             <p className="mt-2 text-xs text-silver/60 max-w-lg leading-relaxed">
-              We manage all Swiss Federal Office of Civil Aviation (BAZL / FOCA) airspace clearances, CTR waivers, and commercial liability insurance.
+              Based in Switzerland, we work closely with brands, agencies, and events to plan locations, capture footage, and deliver a polished production on schedule.
             </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01]">
               <Video className="size-5 text-accent mb-3" />
-              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Cinema Rigs</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Location Planning</h4>
               <p className="mt-2 text-xs text-silver/60 font-light leading-relaxed">
-                Sony FX3 cinema packages with prime glass and calibrated electronic stabilization.
+                Smart scouting and route planning to align the story with the environment.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01]">
-              <ShieldCheck className="size-5 text-accent mb-3" />
-              <h4 className="text-xs font-bold uppercase tracking-wider text-white">BAZL Airspace Clearance</h4>
+              <Compass className="size-5 text-accent mb-3" />
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Creative Direction</h4>
               <p className="mt-2 text-xs text-silver/60 font-light leading-relaxed">
-                Full compliance with Swiss aviation authorities and EASA category certificates.
+                Clear visual strategy, shot planning, and pacing that fits the brief.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01]">
               <Cpu className="size-5 text-accent mb-3" />
-              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Custom Drone Builds</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Equipment Readiness</h4>
               <p className="mt-2 text-xs text-silver/60 font-light leading-relaxed">
-                Lightweight indoor quads and high-speed chase rigs with customized camera dampers.
+                Flight-ready setups, camera systems, and production support tailored to each job.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01]">
               <SlidersHorizontal className="size-5 text-accent mb-3" />
-              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Post Pipeline</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Delivery</h4>
               <p className="mt-2 text-xs text-silver/60 font-light leading-relaxed">
-                ACES color management in DaVinci Resolve Studio with tactile custom sound design.
+                Final edits, exports, and asset delivery shaped for the right channel and audience.
               </p>
             </div>
           </div>
@@ -172,7 +171,7 @@ function ServicesPage() {
           <div className="mt-16 text-center">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-[10px] font-bold uppercase tracking-[0.25em] text-black hover:bg-white transition-all shadow-[0_0_25px_rgba(212,176,98,0.25)]"
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-[10px] font-bold uppercase tracking-[0.25em] text-black hover:bg-white transition-all shadow-[0_0_25px_rgba(212,176,98,0.22)]"
             >
               <span>Discuss a Project</span>
               <ArrowUpRight className="size-4" />

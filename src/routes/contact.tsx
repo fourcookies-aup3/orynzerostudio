@@ -12,7 +12,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Start a project or send a project brief to ORYN ZERO Studio in Stäfa, Switzerland. Hear directly from the founder within one working day.",
+          "Start a project or send a project brief to ORYN ZERO Studio in Switzerland. Hear directly from the founder within one working day.",
       },
       { property: "og:title", content: "Contact & Project Brief — ORYN ZERO Studio" },
       { property: "og:url", content: "/contact" },
@@ -107,15 +107,14 @@ function ContactPage() {
 
       <section className="px-6 py-20">
         <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-12 items-start">
-          {/* Left: Contact Info & Response Promise */}
           <aside className="lg:col-span-4 space-y-8">
             <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-8 space-y-6">
               <div>
                 <span className="font-mono text-[9px] uppercase tracking-widest text-silver/40 block">
                   Studio Location
                 </span>
-                <p className="mt-1 text-sm font-semibold text-white">Stäfa, Zürich, Switzerland</p>
-                <p className="text-xs text-silver/60 mt-0.5">Available across Switzerland and Europe</p>
+                <p className="mt-1 text-sm font-semibold text-white">Switzerland</p>
+                <p className="text-xs text-silver/60 mt-0.5">Available across Switzerland</p>
               </div>
 
               <div className="border-t border-white/5 pt-5">
@@ -152,25 +151,8 @@ function ContactPage() {
                 </a>
               </div>
             </div>
-
-            {/* Credibility badges */}
-            <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-6 space-y-3 font-mono text-[9px] text-silver/60">
-              <div className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-accent" />
-                <span>Swiss BAZL / FOCA Compliant</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-accent" />
-                <span>EASA Certified Drone Pilots (A1/A3, A2)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-accent" />
-                <span>Commercial Aviation Liability Insurance</span>
-              </div>
-            </div>
           </aside>
 
-          {/* Right: Project Brief Form */}
           <div className="lg:col-span-8">
             <div className="rounded-3xl border border-white/10 bg-[#0a0a0d] p-8 sm:p-12 shadow-2xl">
               {sent ? (
@@ -227,7 +209,7 @@ function ContactPage() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="Finn Ryf"
-                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transition-colors"
+                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transitio[...]
                       />
                       {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
                     </div>
@@ -241,7 +223,7 @@ function ContactPage() {
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         placeholder="Brand / Agency / Venue"
-                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transition-colors"
+                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transitio[...]
                       />
                     </div>
                   </div>
@@ -257,7 +239,7 @@ function ContactPage() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="hello@company.ch"
-                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transition-colors"
+                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transitio[...]
                       />
                       {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
                     </div>
@@ -271,7 +253,7 @@ function ContactPage() {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+41 00 000 00 00"
-                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transition-colors"
+                        className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transitio[...]
                       />
                     </div>
                   </div>
@@ -322,7 +304,7 @@ function ContactPage() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Where does the shoot take place? What are your key dates, goals, or desired visual references?"
-                      className="w-full rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none resize-none transition-colors"
+                      className="w-full rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none resize-none trans[...]
                     />
                     {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
                   </div>
@@ -331,7 +313,7 @@ function ContactPage() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-4 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-black hover:bg-white transition-all shadow-[0_0_20px_rgba(212,176,98,0.2)] disabled:opacity-70 cursor-pointer"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-4 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-black hover:bg-whit[...]
                     >
                       {loading ? (
                         <>

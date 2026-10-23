@@ -61,7 +61,6 @@ function ProjectPage() {
 
   return (
     <div className="min-h-screen bg-[#050507] text-white">
-      {/* Hero */}
       <section className="relative pt-32 pb-12">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-6 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-silver/50">
@@ -92,23 +91,21 @@ function ProjectPage() {
           </p>
         </div>
 
-        {/* Video Player */}
         <div className="mx-auto mt-12 max-w-6xl px-6">
           <div className="overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl">
             <VideoPlayer src={p.video || showreel.src} poster={p.cover} aspect="cinemascope" />
           </div>
 
-          {/* Transparent Credits Bar */}
           <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5 font-mono text-[10px]">
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
               <span className="uppercase tracking-widest text-accent font-bold">
                 Production Credits:
               </span>
               <span className="text-white">
-                <strong className="text-silver/50 font-normal">Main Recording / Editing:</strong> VISURE GMBH
+                <strong className="text-silver/50 font-normal">Main Recording / Editing:</strong> ORYN ZERO Studio
               </span>
               <span className="text-white">
-                <strong className="text-silver/50 font-normal">Co-Filming / FPV Aerials:</strong> Finn Ryf (ORYN ZERO)
+                <strong className="text-silver/50 font-normal">Co-Filming / FPV Aerials:</strong> Finn Ryf
               </span>
             </div>
             <span className="text-silver/50 uppercase tracking-widest shrink-0">
@@ -118,7 +115,6 @@ function ProjectPage() {
         </div>
       </section>
 
-      {/* Case Study Details Grid */}
       <section className="border-t border-white/10 px-6 py-20">
         <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-12 items-start">
           <div className="lg:col-span-8 space-y-12">
@@ -173,7 +169,6 @@ function ProjectPage() {
             </div>
           </div>
 
-          {/* Sidebar Metadata */}
           <aside className="lg:col-span-4 space-y-6">
             <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-7 space-y-5">
               <div className="rounded-2xl border border-accent/20 bg-accent/5 p-4 space-y-1.5">
@@ -223,7 +218,7 @@ function ProjectPage() {
               <div className="pt-2">
                 <Link
                   to="/contact"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent py-3 font-mono text-[9px] font-bold uppercase tracking-widest text-black hover:bg-white transition-colors"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent py-3 font-mono text-[9px] font-bold uppercase tracking-widest text-black hover:bg-white transition-all"
                 >
                   <span>Discuss Similar Project</span>
                   <ArrowUpRight className="size-3.5" />
@@ -234,7 +229,6 @@ function ProjectPage() {
         </div>
       </section>
 
-      {/* Next Project / Return navigation */}
       <section className="border-t border-white/10 px-6 py-20 bg-gradient-to-b from-transparent to-black/60">
         <div className="mx-auto max-w-6xl flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           {nextProject ? (
@@ -266,7 +260,7 @@ function ProjectPage() {
 
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-black hover:bg-accent transition-all shrink-0"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-black hover:bg-accent transition-all"
           >
             <span>Start a Project</span>
             <ArrowUpRight className="size-3.5" />

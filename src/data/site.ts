@@ -15,7 +15,7 @@ export const heroReels = [
     youtubeUrl: "https://youtu.be/4mwIvmZ5y7c",
     poster: "https://img.youtube.com/vi/4mwIvmZ5y7c/maxresdefault.jpg",
     label: "Parkour Day Stäfa / Event Film",
-    credits: "Main Recording/Editing: VISURE GMBH · Co-Filming/Drone Shots: Finn Ryf",
+    credits: "Main Recording/Editing: ORYN ZERO Studio · Co-Filming/Drone Shots: Finn Ryf",
   },
 ];
 
@@ -29,9 +29,9 @@ export const site = {
   name: "ORYN ZERO",
   tagline: "Films built around movement",
   description:
-    "Boutique film studio based in Stäfa, Switzerland. Combining dynamic FPV aerials, ground cinematography, and post-production for brands, events, and places.",
-  email: "orynzerostudio@gmail.com",
-  location: "Stäfa, Switzerland",
+    "Boutique film studio based in Switzerland. Combining dynamic FPV aerials, ground cinematography, and post-production for brands, events, and places.",
+  email: "project@orynzerostudio.ch",
+  location: "Switzerland",
   social: {
     instagram: "https://www.instagram.com/orynzerostudio/",
     youtube: "https://www.youtube.com/channel/UCfKo2itRTq1j1FoOkjG6m3w",
@@ -63,6 +63,6 @@ export const clients = [
   {
     name: "Parkour Day Stäfa",
     note: "Event Film",
-    credits: "Main Recording/Editing: VISURE GMBH · Co-Filming/Drone Shots: Finn Ryf",
+    credits: "Main Recording/Editing: ORYN ZERO Studio · Co-Filming/Drone Shots: Finn Ryf",
   },
 ];
