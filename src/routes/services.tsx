@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/SectionHeader";
-import { ArrowUpRight, Compass, Film, SlidersHorizontal, CheckCircle2, Video, Cpu } from "lucide-react";
+import { ArrowUpRight, Compass, Film, SlidersHorizontal, CheckCircle2, ShieldCheck, Video, Cpu } from "lucide-react";
 import { CORE_SERVICES } from "@/components/site/StickyOffersShowcase";
 
 export const Route = createFileRoute("/services")({
@@ -85,7 +85,7 @@ function ServicesPage() {
                   <div className="lg:col-span-5 space-y-5 lg:pl-6 lg:border-l lg:border-white/5">
                     <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 space-y-4">
                       <span className="font-mono text-[8px] uppercase tracking-widest text-silver/40 block">
-                        Technical Specifications
+                        Production Scope
                       </span>
                       <div className="space-y-3">
                         {s.specs.map((spec) => (
@@ -124,46 +124,47 @@ function ServicesPage() {
           })}
         </div>
 
+        {/* Supporting technical foundation */}
         <div className="mx-auto max-w-6xl mt-20 pt-12 border-t border-white/10">
           <div className="mb-8">
             <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent block">
-              Production Support
+              Supporting Foundation
             </span>
             <h3 className="text-2xl font-bold text-white tracking-tight mt-1">
-              Flexible, Swiss-Based Production Coverage
+              Safety, Logistics & Flight Craft
             </h3>
             <p className="mt-2 text-xs text-silver/60 max-w-lg leading-relaxed">
-              Based in Switzerland, we work closely with brands, agencies, and events to plan locations, capture footage, and deliver a polished production on schedule.
+              We manage all Swiss Federal Office of Civil Aviation (BAZL / FOCA) airspace clearances, CTR waivers, and commercial liability insurance.
             </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01]">
               <Video className="size-5 text-accent mb-3" />
-              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Location Planning</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Ground Cinematography</h4>
               <p className="mt-2 text-xs text-silver/60 font-light leading-relaxed">
-                Smart scouting and route planning to align the story with the environment.
+                Fluid ground camera work and dynamic tracking matching aerial movement.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01]">
-              <Compass className="size-5 text-accent mb-3" />
-              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Creative Direction</h4>
+              <ShieldCheck className="size-5 text-accent mb-3" />
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white">BAZL Airspace Clearance</h4>
               <p className="mt-2 text-xs text-silver/60 font-light leading-relaxed">
-                Clear visual strategy, shot planning, and pacing that fits the brief.
+                Full compliance with Swiss aviation authorities (BAZL / FOCA) and EASA A1 & A3 certificates.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01]">
               <Cpu className="size-5 text-accent mb-3" />
-              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Equipment Readiness</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Custom Drone Builds</h4>
               <p className="mt-2 text-xs text-silver/60 font-light leading-relaxed">
-                Flight-ready setups, camera systems, and production support tailored to each job.
+                Lightweight indoor quads and high-speed chase platforms built for flight precision.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01]">
               <SlidersHorizontal className="size-5 text-accent mb-3" />
-              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Delivery</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Post Pipeline</h4>
               <p className="mt-2 text-xs text-silver/60 font-light leading-relaxed">
-                Final edits, exports, and asset delivery shaped for the right channel and audience.
+                Disciplined narrative editing, refined color grading, and tactile custom sound design.
               </p>
             </div>
           </div>
@@ -171,7 +172,7 @@ function ServicesPage() {
           <div className="mt-16 text-center">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-[10px] font-bold uppercase tracking-[0.25em] text-black hover:bg-white transition-all shadow-[0_0_25px_rgba(212,176,98,0.22)]"
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-[10px] font-bold uppercase tracking-[0.25em] text-black hover:bg-white transition-all shadow-[0_0_25px_rgba(212,176,98,0.25)]"
             >
               <span>Discuss a Project</span>
               <ArrowUpRight className="size-4" />

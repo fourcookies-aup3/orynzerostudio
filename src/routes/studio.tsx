@@ -31,9 +31,10 @@ function StudioPage() {
       <PageHero
         eyebrow="The Studio"
         title="Films Built Around Movement"
-        intro="We are a small production team based in Switzerland. We combine FPV flying, ground cinematography, and post-production to create films built around movement. For larger productions, we also coordinate local crews and creative delivery needs across Europe."
+        intro="We are a small production team based in Switzerland. We combine FPV flying, ground cinematography, and post-production to create films built around movement. For larger productions, we work with trusted local partners."
       />
 
+      {/* Founder Focus */}
       <section className="border-b border-white/10 px-6 py-20 sm:py-24">
         <div className="mx-auto grid max-w-6xl items-start gap-14 md:grid-cols-2">
           <div className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 bg-black">
@@ -55,10 +56,10 @@ function StudioPage() {
               Hands-on cinematography and flight precision.
             </h3>
             <p className="text-sm leading-relaxed text-silver/80 font-light">
-              Finn directs and flies ORYN ZERO's productions. With deep experience building and tuning high-speed FPV quads as well as operating ground cinema packages, he bridges technical flight planning with a strong editorial eye.
+              Finn directs and flies ORYN ZERO's productions. With deep experience building and tuning high-speed FPV quads as well as operating ground cinema packages, he bridges technical flight precision with human-led visual storytelling.
             </p>
             <p className="text-xs sm:text-sm leading-relaxed text-silver/60 font-light">
-              Rather than relying on abstract studio layers, Finn is directly on location on every shoot—scouting lines, coordinating flight safety, and executing close-proximity tracking shots in a way that feels natural and intentional.
+              Rather than relying on abstract studio layers, Finn is directly on location on every shoot—scouting lines, coordinating flight safety, and executing close-proximity tracking shots in close synchronization with athletes and brand directors.
             </p>
 
             <div className="pt-2">
@@ -66,7 +67,7 @@ function StudioPage() {
                 Core Disciplines
               </span>
               <div className="flex flex-wrap gap-2 text-xs">
-                {["FPV Chase Cinematography", "Indoor Proximity Passes", "Sony FX3 Camera Systems", "DaVinci Resolve Editing", "Tactile Sound Design"].map((item) => (
+                {["FPV Chase Cinematography", "Indoor Proximity Passes", "Ground Cinematography", "Editorial & Color Grading", "Tactile Sound Design"].map((item) => (
                   <span
                     key={item}
                     className="rounded-lg border border-white/10 bg-white/[0.02] px-3.5 py-1.5 font-mono text-[10px] text-silver/80"
@@ -109,6 +110,7 @@ function StudioPage() {
         </div>
       </section>
 
+      {/* Core Team & Collaborators */}
       <section className="border-b border-white/10 px-6 py-20 sm:py-24 bg-gradient-to-b from-transparent to-black/30">
         <div className="mx-auto max-w-6xl space-y-12">
           <div>
@@ -122,6 +124,7 @@ function StudioPage() {
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Finn Ryf */}
             <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 space-y-4">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-black border border-white/5">
                 <FounderImage className="size-full object-cover grayscale" />
@@ -146,6 +149,7 @@ function StudioPage() {
               </div>
             </div>
 
+            {/* Nick Honstetter */}
             <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 space-y-4">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-black border border-white/5">
                 <MemberImage src={nickPhoto} alt="Nick Honstetter" />
@@ -166,6 +170,7 @@ function StudioPage() {
               </div>
             </div>
 
+            {/* Tate Rittscher */}
             <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 space-y-4">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-black border border-white/5 relative">
                 <div className="absolute top-3 left-3 z-10 rounded-full bg-accent/90 px-3 py-1 font-mono text-[8px] font-bold uppercase tracking-wider text-black">
@@ -192,18 +197,81 @@ function StudioPage() {
         </div>
       </section>
 
+      {/* Safety & Compliance */}
+      <section className="border-b border-white/10 px-6 py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="rounded-3xl border border-white/10 bg-[#0a0a0d] p-8 sm:p-12">
+            <div className="grid gap-8 md:grid-cols-12 items-center">
+              <div className="md:col-span-8 space-y-4">
+                <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent font-semibold block">
+                  Legal Compliance & Flight Safety
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                  Swiss Aviation Compliance & Insurance
+                </h3>
+                <p className="text-xs sm:text-sm text-silver/70 font-light leading-relaxed">
+                  We operate strictly within Swiss and European civil aviation regulations. Every commercial flight is insured and coordinated through official airspace clearance protocols.
+                </p>
+
+                <div className="grid gap-4 sm:grid-cols-2 pt-2 text-xs text-silver/80">
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-white block font-medium">Swiss BAZL / FOCA</strong>
+                      <span className="text-silver/60 text-[11px]">Official aviation compliance and flight logs.</span>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-white block font-medium">EASA Certified</strong>
+                      <span className="text-silver/60 text-[11px]">A1 and A3 open-category drone certifications.</span>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-white block font-medium">Fully Insured</strong>
+                      <span className="text-silver/60 text-[11px]">Commercial aviation third-party liability coverage.</span>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-white block font-medium">VISURE GMBH</strong>
+                      <span className="text-silver/60 text-[11px]">Trusted Swiss production collaboration partner, Supporting Foundation.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="md:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl border border-white/5 bg-white/[0.01] text-center space-y-2">
+                <ShieldCheck className="size-12 text-accent" />
+                <span className="font-mono text-[10px] uppercase tracking-widest text-white font-bold block">
+                  Certified & Insured
+                </span>
+                <span className="text-xs text-silver/50 font-light">
+                  Switzerland · Worldwide Availability
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Honest Crowdfunding Note */}
       <section className="px-6 py-20 bg-[#070709]">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-12 items-center">
             <div className="lg:col-span-7 space-y-4">
               <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent font-semibold block">
-                Equipment & Studio Setup
+                Studio Launch & Expansion
               </span>
               <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Crowdify.net Equipment Campaign
+                Crowdify.net Studio Campaign
               </h3>
               <p className="text-xs sm:text-sm text-silver/70 font-light leading-relaxed">
-                To support the studio's next production step and expand our in-house gear with a dedicated Sony FX3 solo package, we launched an honest crowdfunding campaign.
+                To support the studio's commercial setup in Switzerland and expand our independent production capabilities, we launched an honest crowdfunding campaign on Crowdify.net.
               </p>
               <div className="pt-2">
                 <a

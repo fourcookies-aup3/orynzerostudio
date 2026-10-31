@@ -6,13 +6,13 @@ import { ExternalLink, CheckCircle2, Video, FileText } from "lucide-react";
 export const Route = createFileRoute("/crowdfunding")({
   head: () => ({
     meta: [
-      { title: "Crowdfunding Campaign — ORYN ZERO Studio" },
+      { title: "Studio Launch Campaign — ORYN ZERO Studio" },
       {
         name: "description",
         content:
-          "Support the official equipment and commercial setup of ORYN ZERO Studio on Crowdify.net.",
+          "Support the official launch and commercial setup of ORYN ZERO Studio on Crowdify.net.",
       },
-      { property: "og:title", content: "Crowdfunding Campaign — ORYN ZERO Studio" },
+      { property: "og:title", content: "Studio Launch Campaign — ORYN ZERO Studio" },
       { property: "og:url", content: "/crowdfunding" },
     ],
     links: [{ rel: "canonical", href: "/crowdfunding" }],
@@ -26,7 +26,7 @@ function CrowdfundingPage() {
       <PageHero
         eyebrow="Studio Initiative"
         title="OrynZERO Studio am Start"
-        intro="An honest look at our launch phase: supporting our official Swiss company registration and expanding our cinema equipment setup."
+        intro="An honest look at our launch phase: supporting our official Swiss company registration and expanding our independent production setup."
       />
 
       <section className="px-6 py-20">
@@ -37,10 +37,10 @@ function CrowdfundingPage() {
                 Crowdify.net Swiss Campaign
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-                Building our technical independence.
+                Building our creative independence.
               </h2>
               <p className="text-sm leading-relaxed text-silver/80 font-light">
-                We started ORYN ZERO with high-performance FPV equipment and on-site flight expertise. To take on full-scale commercial productions independently, we launched a community crowdfunding campaign on the Swiss platform Crowdify.net.
+                We started ORYN ZERO with dedicated FPV aerial systems and direct flight craft. To take on full-scale commercial productions independently, we launched a community crowdfunding campaign on the Swiss platform Crowdify.net.
               </p>
 
               <div className="space-y-4 pt-2">
@@ -49,9 +49,9 @@ function CrowdfundingPage() {
                     <Video className="size-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-white">Dedicated Solo Cinema Rig (Sony FX3)</h3>
+                    <h3 className="text-sm font-bold text-white">Dedicated Ground Cinematography Package</h3>
                     <p className="text-xs text-silver/60 font-light mt-1 leading-relaxed">
-                      Enabling agile ground cinematography, calibrated electronic stabilization, and 10-bit 4K RAW capture paired with our aerial setups.
+                      Enabling fluid ground-level filming, dynamic motion tracking, and cohesive visual storytelling alongside our aerial perspectives.
                     </p>
                   </div>
                 </div>
@@ -63,7 +63,7 @@ function CrowdfundingPage() {
                   <div>
                     <h3 className="text-sm font-bold text-white">Official Swiss Commercial Registration</h3>
                     <p className="text-xs text-silver/60 font-light mt-1 leading-relaxed">
-                      Completing the legal and administrative registration of ORYN ZERO Studio in the canton of Zürich.
+                      Completing the legal and administrative registration of ORYN ZERO Studio in Switzerland.
                     </p>
                   </div>
                 </div>

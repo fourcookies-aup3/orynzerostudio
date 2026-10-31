@@ -95,7 +95,7 @@ const softwares = [
     name: "DaVinci Resolve",
     category: "Color & Editing",
     description:
-      "Our premier post-production workspace for advanced color grading, RAW conforming, and final theatrical finishing.",
+      "Our premier post-production workspace for advanced color grading, timeline conforming, and final theatrical finishing.",
     logoUrl: "https://cdn.simpleicons.org/davinciresolve/white",
     glow: "rgba(255, 255, 255, 0.12)",
   },
@@ -191,8 +191,8 @@ export function Tools3D() {
             Workflow & Software
           </h3>
           <p className="mt-3 max-w-lg text-xs leading-relaxed text-silver/60">
-            A focused post-production pipeline where high-bitrate footage is refined, stabilized,
-            and graded to produce luxury cinematic experiences.
+            A disciplined post-production workflow where cinematic footage is assembled, stabilized,
+            and graded for brand and event storytelling.
           </p>
         </div>
 

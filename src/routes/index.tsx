@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Boutique film studio based in Stäfa, Switzerland. Combining dynamic FPV aerials, ground cinematography, and post-production for brands, events, and places.",
+          "Boutique film studio based in Switzerland. Combining dynamic FPV aerials, ground cinematography, and post-production for brands, events, and places.",
       },
       {
         property: "og:title",
@@ -43,7 +43,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Boutique film studio based in Stäfa, Switzerland. Combining dynamic FPV aerials, ground cinematography, and post-production for brands, events, and places.",
+          "Boutique film studio based in Switzerland. Combining dynamic FPV aerials, ground cinematography, and post-production for brands, events, and places.",
       },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
@@ -116,7 +116,7 @@ function HomePage() {
 
   return (
     <div className="relative min-h-screen text-white bg-[#030303] selection:bg-accent selection:text-black">
-      {/* 4K Background Video */}
+      {/* Cinematic Background Reel */}
       <HeroReel className="fixed inset-0 z-0 pointer-events-none" />
 
       {/* Controlled Dark Overlay for Guaranteed Text Contrast */}
@@ -145,7 +145,7 @@ function HomePage() {
               </span>
               <span className="text-white/30">·</span>
               <span className="font-mono text-[9px] uppercase tracking-widest text-silver/70">
-                Stäfa, Switzerland
+                Switzerland
               </span>
             </motion.div>
 
@@ -284,7 +284,7 @@ function HomePage() {
 
                     <div className="absolute top-4 left-4 right-4 flex items-center justify-between font-mono text-[9px] uppercase tracking-widest text-silver/60">
                       <span className="text-accent font-semibold">Client Project</span>
-                      <span>Stäfa, CH</span>
+                      <span>Switzerland</span>
                     </div>
 
                     <div className="absolute bottom-5 left-5 right-5">
@@ -352,17 +352,17 @@ function HomePage() {
                 <div className="md:col-span-4">
                   <SectionLabel id="03">Studio Story</SectionLabel>
                   <h3 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-white">
-                    Based in Stäfa, Switzerland.
+                    Based in Switzerland.
                   </h3>
                   <div className="mt-6 font-mono text-[9px] uppercase tracking-widest text-silver/50 space-y-1">
-                    <p>Zürich Region · Lake Zürich</p>
+                    <p>Switzerland</p>
                     <p>Available Across Europe</p>
                   </div>
                 </div>
 
                 <div className="md:col-span-8 space-y-6">
                   <p className="text-xl sm:text-2xl font-light leading-snug text-silver tracking-tight">
-                    We are a small production team based in Stäfa, Switzerland. We combine{" "}
+                    We are a small production team based in Switzerland. We combine{" "}
                     <span className="font-semibold text-white">FPV flying, ground cinematography, and post-production</span>{" "}
                     to create films built around movement. For larger productions, we work with trusted local partners.
                   </p>
@@ -377,11 +377,11 @@ function HomePage() {
                       <span className="mt-0.5 block">Swiss BAZL Compliant</span>
                     </div>
                     <div>
-                      <span className="block text-xl font-bold font-sans text-accent">4K</span>
-                      <span className="mt-0.5 block">High-Bitrate Masters</span>
+                      <span className="block text-xl font-bold font-sans text-accent">A1 & A3</span>
+                      <span className="mt-0.5 block">EASA Certified</span>
                     </div>
                     <div>
-                      <span className="block text-xl font-bold font-sans text-accent">1 Day</span>
+                      <span className="block text-xl font-bold font-sans text-accent">24h</span>
                       <span className="mt-0.5 block">Direct Founder Response</span>
                     </div>
                   </div>
@@ -493,8 +493,8 @@ function HomePage() {
             Swiss BAZL Compliance, EASA certifications, Insurance, VISURE partner
         ================================================================= */}
         <section className="relative px-6 py-14 md:px-16 border-t border-white/10 bg-[#070709]">
-          <div className="mx-auto max-w-5xl">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 font-mono text-[10px]">
+          <div className="mx-auto max-w-6xl">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5 font-mono text-[10px]">
               <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-5 flex items-start gap-3">
                 <ShieldCheck className="size-5 text-accent shrink-0 mt-0.5" />
                 <div>
@@ -507,7 +507,7 @@ function HomePage() {
                 <ShieldCheck className="size-5 text-accent shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold text-white uppercase block">EASA Certified</span>
-                  <span className="text-silver/60 text-[9px] block mt-1">A1/A3 and A2 category drone licenses.</span>
+                  <span className="text-silver/60 text-[9px] block mt-1">A1 and A3 open-category drone certifications.</span>
                 </div>
               </div>
 
@@ -524,6 +524,14 @@ function HomePage() {
                 <div>
                   <span className="font-bold text-white uppercase block">VISURE GMBH</span>
                   <span className="text-silver/60 text-[9px] block mt-1">Trusted Swiss production collaboration partner.</span>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-5 flex items-start gap-3">
+                <ShieldCheck className="size-5 text-accent shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold text-white uppercase block">Supporting Foundation</span>
+                  <span className="text-silver/60 text-[9px] block mt-1">Recognized foundation patron & supporter.</span>
                 </div>
               </div>
             </div>
@@ -570,7 +578,7 @@ function HomePage() {
                       </div>
                       <div>
                         <span className="text-silver/40 uppercase block text-[8px]">Location</span>
-                        <span className="text-white text-xs block mt-0.5">Stäfa, Zürich, Switzerland</span>
+                        <span className="text-white text-xs block mt-0.5">Switzerland</span>
                       </div>
                       <div>
                         <span className="text-silver/40 uppercase block text-[8px]">Schedule Call</span>

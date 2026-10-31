@@ -1,19 +1,20 @@
-import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/SectionHeader";
 import { useLocale } from "@/context/LocaleContext";
 import { CalEmbed } from "@/components/site/CalEmbed";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, PhoneCall, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/booking")({
   head: () => ({
     meta: [
-      { title: "Book a Meeting — ORYN ZERO" },
+      { title: "Schedule a Call — ORYN ZERO Studio" },
       {
         name: "description",
-        content: "Schedule a discovery call, project meeting or consultation with ORYN ZERO directly via Cal.com.",
+        content:
+          "Book a 30-minute discovery call or project planning session directly with founder Finn Ryf.",
       },
-      { property: "og:title", content: "Book a Meeting — ORYN ZERO" },
+      { property: "og:title", content: "Schedule a Call — ORYN ZERO Studio" },
       { property: "og:url", content: "/booking" },
     ],
     links: [{ rel: "canonical", href: "/booking" }],
@@ -21,141 +22,192 @@ export const Route = createFileRoute("/booking")({
   component: BookingPage,
 });
 
+interface MeetingOption {
+  id: string;
+  calLink: string;
+  title: string;
+  duration: string;
+  description: string;
+  badge: string;
+  isDefault?: boolean;
+}
+
+const MEETING_OPTIONS: MeetingOption[] = [
+  {
+    id: "discovery",
+    calLink: "oryn-29f422/discovery-call",
+    title: "Discovery Call",
+    duration: "30 min",
+    description:
+      "Initial conversation to discuss your creative brief, location feasibility, airspace clearance requirements, and preliminary budget.",
+    badge: "Recommended",
+    isDefault: true,
+  },
+  {
+    id: "project-planning",
+    calLink: "oryn-29f422/project-meeting",
+    title: "Project Planning",
+    duration: "60 min",
+    description:
+      "In-depth pre-production session for confirmed productions: shot-list review, flight logistics, and schedule planning.",
+    badge: "Active Briefs",
+  },
+];
+
 function BookingPage() {
   const { t } = useLocale();
-
-  // Define the 3 phases matching Cal.com availabilities
-  const phases = [
-    {
-      id: "B/01",
-      slug: "discovery-call",
-      calLink: "oryn-29f422/discovery-call",
-      title: t("booking.b01.title"), // "Discovery Call"
-      duration: "30 min",
-      body: t("booking.b01.body"),
-      tag: "Phase 1 · Intro",
-    },
-    {
-      id: "B/02",
-      slug: "project-meeting",
-      calLink: "oryn-29f422/project-meeting",
-      title: t("booking.b02.title"), // "Project Meeting"
-      duration: "60 min",
-      body: t("booking.b02.body"),
-      tag: "Phase 2 · Production",
-    },
-    {
-      id: "B/03",
-      slug: "consultation",
-      calLink: "oryn-29f422/consultation",
-      title: t("booking.b03.title"), // "Consultation"
-      duration: "45 min",
-      body: t("booking.b03.body"),
-      tag: "Phase 3 · Advisory",
-    },
-  ];
-
-  const [selectedPhaseId, setSelectedPhaseId] = useState<string>("B/01");
+  const [selectedMeetingId, setSelectedMeetingId] = useState<string>("discovery");
   const [showAllAvailabilities, setShowAllAvailabilities] = useState<boolean>(false);
 
-  const activePhase = phases.find((p) => p.id === selectedPhaseId) || phases[0];
+  // Guarantee page loads at top and resists any iframe auto-scroll
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      const timer1 = setTimeout(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      }, 100);
+      const timer2 = setTimeout(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      }, 400);
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      };
+    }
+  }, []);
 
-  const activeCalLink = showAllAvailabilities ? "oryn-29f422" : activePhase.calLink;
+  const activeMeeting =
+    MEETING_OPTIONS.find((m) => m.id === selectedMeetingId) || MEETING_OPTIONS[0];
+
+  const activeCalLink = showAllAvailabilities ? "oryn-29f422" : activeMeeting.calLink;
   const activeTitle = showAllAvailabilities
     ? "All Availabilities — Cal.com"
-    : `${activePhase.title} (${activePhase.duration})`;
+    : `${activeMeeting.title} (${activeMeeting.duration})`;
 
   return (
-    <>
+    <div className="w-full max-w-full overflow-x-hidden bg-[#050507] text-white">
       <PageHero
-        eyebrow={t("booking.eyebrow")}
-        title={t("booking.title")}
-        intro={t("booking.intro")}
+        eyebrow="Direct Studio Contact"
+        title="Schedule a Call"
+        intro="Book a direct 30-minute discovery call with studio founder Finn Ryf to discuss your project scope, location, and creative ideas."
       />
 
-      {/* Booking Phases Selection */}
-      <section className="px-6 py-12">
-        <div className="mx-auto max-w-7xl space-y-10">
-          <div>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-accent">
-              Select Availability Phase
+      <section className="px-6 py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl space-y-10">
+          {/* Meeting Selection Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
+            <div>
+              <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent font-semibold block">
+                Meeting Scope
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-1">
+                Choose a meeting type
+              </h2>
+            </div>
+            <p className="font-mono text-[10px] text-silver/50 uppercase tracking-widest">
+              Direct Founder Call · No Account Required
             </p>
-            <h2 className="mt-1 text-2xl font-bold tracking-tight text-foreground">
-              Choose a meeting scope to schedule directly
-            </h2>
           </div>
 
-          {/* Phase Selection Cards */}
-          <div className="grid gap-4 md:grid-cols-3">
-            {phases.map((phase) => {
-              const isSelected = selectedPhaseId === phase.id && !showAllAvailabilities;
+          {/* Simple, intuitive Meeting Cards (Discovery Call default) */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {MEETING_OPTIONS.map((m) => {
+              const isSelected = selectedMeetingId === m.id && !showAllAvailabilities;
               return (
                 <div
-                  key={phase.id}
+                  key={m.id}
                   onClick={() => {
-                    setSelectedPhaseId(phase.id);
+                    setSelectedMeetingId(m.id);
                     setShowAllAvailabilities(false);
                   }}
-                  className={`cursor-pointer border p-6 transition flex flex-col justify-between ${
+                  className={`cursor-pointer rounded-2xl border p-6 transition-all duration-300 flex flex-col justify-between ${
                     isSelected
-                      ? "border-accent bg-accent/10 shadow-lg"
-                      : "border-border bg-background hover:border-silver/50"
+                      ? "border-accent bg-accent/10 shadow-[0_0_20px_rgba(212,176,98,0.15)] ring-1 ring-accent/30"
+                      : "border-white/10 bg-white/[0.01] hover:border-white/20 hover:bg-white/[0.02]"
                   }`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                        {phase.id} · {phase.duration}
+                      <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-silver/70">
+                        <Clock className="size-3 text-accent" />
+                        <span>{m.duration}</span>
                       </span>
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-accent border border-accent/30 px-2 py-0.5">
-                        {phase.tag}
+                      <span
+                        className={`text-[9px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
+                          m.isDefault
+                            ? "border-accent/40 bg-accent/20 text-accent font-bold"
+                            : "border-white/10 bg-white/5 text-silver/60"
+                        }`}
+                      >
+                        {m.badge}
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-foreground">{phase.title}</h3>
-                    <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
-                      {phase.body}
+                    <h3 className="text-xl font-bold text-white tracking-tight">{m.title}</h3>
+                    <p className="mt-2 text-xs text-silver/70 font-light leading-relaxed">
+                      {m.description}
                     </p>
                   </div>
 
-                  <div className="mt-6 flex items-center justify-between border-t border-border/60 pt-4 font-mono text-[11px] uppercase tracking-wider">
-                    <span className={isSelected ? "text-accent font-bold" : "text-silver"}>
-                      {isSelected ? "Selected Phase" : "Select Phase"}
+                  <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-4 font-mono text-[10px] uppercase tracking-wider">
+                    <span className={isSelected ? "text-accent font-bold" : "text-silver/50"}>
+                      {isSelected ? "Selected Option" : "Select This Scope"}
                     </span>
-                    <ArrowRight className={`h-4 w-4 transition ${isSelected ? "text-accent translate-x-1" : "text-muted-foreground"}`} />
+                    <ArrowRight
+                      className={`size-4 transition-transform ${
+                        isSelected ? "text-accent translate-x-1" : "text-silver/40"
+                      }`}
+                    />
                   </div>
                 </div>
               );
             })}
           </div>
 
-          {/* All Availabilities Toggle */}
-          <div className="flex flex-wrap items-center justify-between gap-4 border border-border bg-graphite/20 p-4">
-            <span className="text-xs text-muted-foreground">
-              Prefer to see all availabilities at once on a single overview page?
+          {/* Quick Toggle to Overview View */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-white/5 bg-white/[0.01] p-4 text-xs">
+            <span className="text-silver/70 font-light">
+              Looking for flexible times across all meeting types on a single calendar?
             </span>
             <button
+              type="button"
               onClick={() => setShowAllAvailabilities(!showAllAvailabilities)}
-              className={`px-4 py-2 border font-mono text-[11px] uppercase tracking-wider transition ${
+              className={`rounded-full border px-4 py-2 font-mono text-[9px] uppercase tracking-wider transition-colors shrink-0 ${
                 showAllAvailabilities
-                  ? "border-accent bg-accent text-background font-bold"
-                  : "border-border bg-background text-silver hover:text-foreground"
+                  ? "border-accent bg-accent text-black font-bold"
+                  : "border-white/15 bg-white/5 text-silver/80 hover:text-white hover:border-white/30"
               }`}
             >
-              {showAllAvailabilities ? "Show Phase View" : "View All Availabilities"}
+              {showAllAvailabilities ? "Show Selected Scope" : "View All Availabilities"}
             </button>
           </div>
 
-          {/* Embedded Cal.com Component */}
-          <div className="pt-4">
+          {/* Cal.com Embedded Widget */}
+          <div className="pt-2 scroll-mt-28">
             <CalEmbed
               calLink={activeCalLink}
               title={activeTitle}
-              description={`Book your ${activeTitle} directly below with real-time availability.`}
+              description={`Select a date and time slot below for your ${activeTitle}. You'll receive a calendar invite and video link immediately.`}
             />
+          </div>
+
+          {/* Alternative direct inquiry note */}
+          <div className="rounded-2xl border border-white/10 bg-white/[0.01] p-6 text-center space-y-2">
+            <p className="text-xs text-silver/70 font-light">
+              Prefer writing down your project details before scheduling a call?
+            </p>
+            <div>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-accent hover:underline font-semibold"
+              >
+                <span>Submit our Quick Project Brief instead</span>
+                <ArrowRight className="size-3" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

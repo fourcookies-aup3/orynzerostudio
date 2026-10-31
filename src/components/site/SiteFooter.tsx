@@ -10,7 +10,7 @@ export function SiteFooter() {
           <div className="md:col-span-2">
             <OrynLogo size="md" />
             <p className="mt-4 max-w-sm text-xs leading-relaxed text-silver/70">
-              Boutique film studio based in Stäfa, Switzerland. Combining dynamic FPV flying,
+              Boutique film studio based in Switzerland. Combining dynamic FPV flying,
               ground cinematography, and post-production for brands, events, and places.
             </p>
             <div className="mt-6">
@@ -102,13 +102,13 @@ export function SiteFooter() {
               href={`mailto:${site.email}`}
               className="text-xs uppercase tracking-widest text-silver/80 hover:text-white transition-colors"
             >
-              studio@orynzero.ch
+              {site.email}
             </a>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-6 font-mono text-[9px] uppercase tracking-[0.2em] text-silver/50 sm:flex-row sm:items-center">
-          <span>© 2026 ORYN ZERO Studio. All rights reserved. Stäfa, Switzerland.</span>
+          <span>© 2026 ORYN ZERO Studio. All rights reserved. Switzerland.</span>
           <div className="flex gap-6">
             <Link to="/legal/impressum" className="hover:text-white transition-colors">
               Impressum

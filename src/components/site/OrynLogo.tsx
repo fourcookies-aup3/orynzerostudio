@@ -7,79 +7,26 @@ type LogoProps = {
   animated?: boolean;
 };
 
-export function OrynLogo({ className, iconOnly = false, size = "md", animated = true }: LogoProps) {
+export function OrynLogo({ className, iconOnly = false, size = "md" }: LogoProps) {
   const sizeClasses = {
-    xs: "h-4",
-    sm: "h-5",
-    md: "h-7",
-    lg: "h-10",
-    xl: "h-16",
+    xs: "h-5 w-5",
+    sm: "h-6 w-6",
+    md: "h-8 w-8",
+    lg: "h-11 w-11",
+    xl: "h-16 w-16",
   };
 
   return (
     <div className={cn("flex items-center gap-2.5 select-none group cursor-pointer", className)}>
-      {/* Golden Geometric Icon */}
-      <svg
-        viewBox="0 0 100 100"
+      {/* Official Golden Brushed Emblem */}
+      <img
+        src="/favicon.png"
+        alt="ORYN ZERO"
         className={cn(
           sizeClasses[size],
-          "aspect-square fill-none transition-transform duration-700 ease-[0.16,1,0.3,1] group-hover:rotate-180",
+          "aspect-square rounded-full object-cover transition-transform duration-500 group-hover:scale-105 shadow-[0_0_12px_rgba(212,176,98,0.25)]",
         )}
-      >
-        <defs>
-          <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#F9E29B" />
-            <stop offset="35%" stopColor="#D4B062" />
-            <stop offset="70%" stopColor="#B48E42" />
-            <stop offset="100%" stopColor="#8A6726" />
-          </linearGradient>
-          <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#D4B062" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#D4B062" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-
-        {/* Ambient background glow */}
-        <circle
-          cx="50%"
-          cy="50%"
-          r="45"
-          fill="url(#goldGlow)"
-          className="opacity-40 group-hover:opacity-100 transition-opacity duration-700"
-        />
-
-        {/* Outer Circle (representing "O" for Oryn) */}
-        <circle
-          cx="50%"
-          cy="50%"
-          r="38"
-          stroke="url(#goldGradient)"
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeDasharray="200 40"
-          className="origin-center transition-all duration-1000 ease-out group-hover:rotate-90"
-        />
-
-        {/* Sharp inner "Z" (representing "Z" for Zero) */}
-        <path
-          d="M34 34 H66 L34 66 H66"
-          stroke="url(#goldGradient)"
-          strokeWidth="6.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="transition-all duration-700 ease-out"
-        />
-
-        {/* Precision Core Lens Indicator (white core center) */}
-        <circle
-          cx="50%"
-          cy="50%"
-          r="4.5"
-          fill="#FFFFFF"
-          className={animated ? "animate-pulse" : ""}
-          style={{ filter: "drop-shadow(0px 0px 4px rgba(212, 176, 98, 0.8))" }}
-        />
-      </svg>
+      />
 
       {!iconOnly && (
         <span className="font-display tracking-[0.08em] transition-colors duration-300">

@@ -1,29 +1,32 @@
-import { useState } from "react";
-import { ExternalLink, Calendar } from "lucide-react";
+import { Calendar, ExternalLink } from "lucide-react";
 
 interface CalEmbedProps {
-  calLink?: string; // e.g. "oryn-29f422" or "oryn-29f422/discovery-call"
+  calLink?: string; // e.g. "oryn-29f422/discovery-call"
   title?: string;
   description?: string;
 }
 
-export function CalEmbed({ calLink = "oryn-29f422", title, description }: CalEmbedProps) {
+export function CalEmbed({
+  calLink = "oryn-29f422/discovery-call",
+  title = "Discovery Call (30 min)",
+  description,
+}: CalEmbedProps) {
   const calUrl = `https://cal.com/${calLink}`;
 
   return (
-    <div className="space-y-4">
+    <div className="w-full max-w-full overflow-hidden rounded-3xl border border-white/10 bg-[#08080a] shadow-2xl">
       {/* Header bar for embed */}
-      <div className="flex flex-wrap items-center justify-between border-b border-border bg-graphite/40 px-6 py-4 gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 bg-white/[0.02] px-6 py-4 gap-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center border border-border bg-background text-accent">
-            <Calendar className="h-4 w-4" />
+          <div className="flex size-9 items-center justify-center rounded-lg border border-accent/30 bg-accent/10 text-accent">
+            <Calendar className="size-4" />
           </div>
           <div>
-            <span className="font-mono text-[10px] uppercase tracking-widest text-accent">
-              Live Calendar
+            <span className="font-mono text-[9px] uppercase tracking-widest text-accent font-semibold">
+              Cal.com Live Calendar
             </span>
-            <h3 className="text-base font-bold text-foreground">
-              {title || "ORYN ZERO Booking Schedule"}
+            <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">
+              {title}
             </h3>
           </div>
         </div>
@@ -33,26 +36,28 @@ export function CalEmbed({ calLink = "oryn-29f422", title, description }: CalEmb
             href={calUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 border border-border bg-background px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wider text-silver transition hover:border-accent hover:text-foreground"
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 font-mono text-[9px] uppercase tracking-wider text-silver/80 transition-colors hover:border-accent hover:text-white"
           >
-            <span>Open Calendar</span>
-            <ExternalLink className="h-3 w-3" />
+            <span>Open in Cal.com</span>
+            <ExternalLink className="size-3" />
           </a>
         </div>
       </div>
 
       {description && (
-        <p className="px-6 text-xs text-muted-foreground leading-relaxed">
+        <div className="border-b border-white/5 bg-white/[0.01] px-6 py-3 text-xs text-silver/60 font-light leading-relaxed">
           {description}
-        </p>
+        </div>
       )}
 
-      {/* Embed Container */}
-      <div className="relative min-h-[680px] border border-border bg-background overflow-hidden shadow-2xl">
+      {/* Embed Container with strict overflow guard */}
+      <div className="relative w-full max-w-full overflow-hidden bg-black min-h-[580px] sm:min-h-[660px]">
         <iframe
-          src={`${calUrl}?embed=true&theme=dark&layout=month_view`}
+          src={`${calUrl}?embed=true&theme=dark`}
           title="Cal.com Booking Calendar"
-          className="w-full h-[680px] border-0"
+          loading="lazy"
+          className="w-full min-w-full max-w-full h-[620px] sm:h-[680px] md:h-[720px] border-0"
+          style={{ width: "100%", maxWidth: "100%" }}
           allow="camera; microphone; autoplay; payment"
         />
       </div>

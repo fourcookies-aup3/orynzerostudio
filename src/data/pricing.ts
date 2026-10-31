@@ -9,7 +9,7 @@ export const packages = [
       "Single cinematic reel",
       "Aerial or FPV coverage",
       "Professional color grade",
-      "4K delivery + social cutdown",
+      "Cinema master delivery + social cutdowns",
     ],
   },
   {

@@ -20,16 +20,15 @@ function Impressum() {
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-3xl space-y-8 text-sm leading-relaxed text-muted-foreground">
           <Block title="Angaben gemäss Schweizer Recht">
-            <p>Oryn ZERO Studio</p>
-            <p>Ebnetstrasse 25</p>
-            <p>8712 Stäfa, Schweiz</p>
+            <p>ORYN ZERO Studio</p>
+            <p>Schweiz</p>
           </Block>
           <Block title="Kontakt">
             <p>E-Mail: orynzerostudio@gmail.com</p>
             <p>Telefon: +41 77 415 34 33</p>
           </Block>
           <Block title="Handelsregister">
-            <p>Handelsregister-Kanton: Zürich</p>
+            <p>Handelsregister: Schweiz</p>
           </Block>
           <Block title="Verantwortlich für den Inhalt">
             <p>Finn Ryf</p>

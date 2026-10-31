@@ -85,7 +85,7 @@ function CareersPage() {
               {t("page.careers.openApplication")}
             </h2>
             <p className="mt-3 text-muted-foreground text-sm leading-relaxed">
-              {t("page.careers.details")} Fill out the rich job application form below with your CV/résumé, showreel, gear setup, and motivation.
+              {t("page.careers.details")} Submit your contact details, portfolio or showreel, and creative background.
             </p>
           </div>
 

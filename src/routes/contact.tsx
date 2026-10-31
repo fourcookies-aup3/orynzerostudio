@@ -2,16 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import { PageHero } from "@/components/site/SectionHeader";
-import {
-  CheckCircle,
-  Mail,
-  Phone,
-  MapPin,
-  Clock,
-  ArrowUpRight,
-  Loader2,
-  Send,
-} from "lucide-react";
+import { CheckCircle, Mail, Phone, MapPin, Clock, ArrowUpRight, Loader2, Send } from "lucide-react";
 import { site } from "@/data/site";
 
 export const Route = createFileRoute("/contact")({
@@ -21,7 +12,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Start a project or send a project brief to ORYN ZERO Studio in Stäfa, Switzerland. Hear directly from the founder within one working day.",
+          "Start a project or send a project brief to ORYN ZERO Studio in Switzerland. Hear directly from the founder within one working day.",
       },
       { property: "og:title", content: "Contact & Project Brief — ORYN ZERO Studio" },
       { property: "og:url", content: "/contact" },
@@ -75,16 +66,14 @@ function ContactPage() {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const parsed = schema.safeParse(formData);
-
     if (!parsed.success) {
       const errs: Record<string, string> = {};
-      parsed.error.issues.forEach((issue) => {
-        errs[String(issue.path[0])] = issue.message;
+      parsed.error.issues.forEach((i) => {
+        errs[String(i.path[0])] = i.message;
       });
       setErrors(errs);
       return;
     }
-
     setErrors({});
     setLoading(true);
 
@@ -101,7 +90,7 @@ function ContactPage() {
         }),
       });
     } catch {
-      // Allow the user experience to proceed even if external delivery fails.
+      // Allow user experience to proceed
     } finally {
       setLoading(false);
       setSent(true);
@@ -118,13 +107,14 @@ function ContactPage() {
 
       <section className="px-6 py-20">
         <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-12 items-start">
+          {/* Left: Contact Info & Response Promise */}
           <aside className="lg:col-span-4 space-y-8">
             <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-8 space-y-6">
               <div>
                 <span className="font-mono text-[9px] uppercase tracking-widest text-silver/40 block">
                   Studio Location
                 </span>
-                <p className="mt-1 text-sm font-semibold text-white">Stäfa, Zürich, Switzerland</p>
+                <p className="mt-1 text-sm font-semibold text-white">Switzerland</p>
                 <p className="text-xs text-silver/60 mt-0.5">Available across Switzerland and Europe</p>
               </div>
 
@@ -163,22 +153,42 @@ function ContactPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-6 space-y-3 font-mono text-[9px] text-silver/60">
-              <div className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-accent" />
-                <span>Swiss BAZL / FOCA Compliant</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-accent" />
-                <span>EASA Certified Drone Pilots (A1/A3, A2)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-accent" />
-                <span>Commercial Aviation Liability Insurance</span>
+            {/* Official Aviation Compliance & Partner Credentials */}
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 space-y-4">
+              <span className="font-mono text-[9px] uppercase tracking-widest text-silver/40 block">
+                Official Certifications & Partnerships
+              </span>
+
+              <div className="space-y-3 text-xs">
+                <div className="border-l-2 border-accent pl-3">
+                  <div className="font-semibold text-white">Swiss BAZL / FOCA</div>
+                  <div className="text-[11px] text-silver/70">Official aviation compliance and flight logs.</div>
+                </div>
+
+                <div className="border-l-2 border-accent pl-3">
+                  <div className="font-semibold text-white">EASA Certified</div>
+                  <div className="text-[11px] text-silver/70">A1 and A3 open-category drone certifications.</div>
+                </div>
+
+                <div className="border-l-2 border-accent pl-3">
+                  <div className="font-semibold text-white">Fully Insured</div>
+                  <div className="text-[11px] text-silver/70">Commercial aviation third-party liability coverage.</div>
+                </div>
+
+                <div className="border-l-2 border-accent/40 pl-3 pt-1">
+                  <div className="font-semibold text-white">VISURE GMBH</div>
+                  <div className="text-[11px] text-silver/70">Trusted Swiss production collaboration partner.</div>
+                </div>
+
+                <div className="border-l-2 border-accent/40 pl-3">
+                  <div className="font-semibold text-white">Supporting Foundation</div>
+                  <div className="text-[11px] text-silver/70">Cultural & development patron.</div>
+                </div>
               </div>
             </div>
           </aside>
 
+          {/* Right: Project Brief Form */}
           <div className="lg:col-span-8">
             <div className="rounded-3xl border border-white/10 bg-[#0a0a0d] p-8 sm:p-12 shadow-2xl">
               {sent ? (
@@ -186,7 +196,9 @@ function ContactPage() {
                   <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-accent/10 border border-accent/30 text-accent">
                     <CheckCircle className="size-8" />
                   </div>
-                  <h2 className="text-3xl font-bold text-white tracking-tight">Project Brief Received</h2>
+                  <h2 className="text-3xl font-bold text-white tracking-tight">
+                    Project Brief Received
+                  </h2>
                   <p className="text-sm text-silver/70 max-w-md mx-auto font-light leading-relaxed">
                     Thank you for reaching out. We have received your project details and will review your timeline and requirements. Finn will get back to you within one working day.
                   </p>
@@ -214,7 +226,9 @@ function ContactPage() {
               ) : (
                 <form onSubmit={onSubmit} className="space-y-6" noValidate>
                   <div>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Project Brief</h2>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                      Project Brief
+                    </h2>
                     <p className="mt-1 text-xs text-silver/60 font-light">
                       Fill out the fields below or email us directly at {site.email}.
                     </p>
@@ -233,7 +247,7 @@ function ContactPage() {
                         placeholder="Finn Ryf"
                         className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transition-colors"
                       />
-                      {errors.name && <p className="mt-1 text-xs text-red-400">{errors.name}</p>}
+                      {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
                     </div>
 
                     <div>
@@ -263,7 +277,7 @@ function ContactPage() {
                         placeholder="hello@company.ch"
                         className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none transition-colors"
                       />
-                      {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
+                      {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
                     </div>
 
                     <div>
@@ -290,9 +304,9 @@ function ContactPage() {
                         onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
                         className="w-full rounded-xl border border-white/10 bg-[#0d0d10] px-4 py-3 text-sm text-white focus:border-accent focus:outline-none transition-colors"
                       >
-                        {PROJECT_TYPES.map((type) => (
-                          <option key={type} value={type}>
-                            {type}
+                        {PROJECT_TYPES.map((t) => (
+                          <option key={t} value={t}>
+                            {t}
                           </option>
                         ))}
                       </select>
@@ -307,9 +321,9 @@ function ContactPage() {
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                         className="w-full rounded-xl border border-white/10 bg-[#0d0d10] px-4 py-3 text-sm text-white focus:border-accent focus:outline-none transition-colors"
                       >
-                        {BUDGET_OPTIONS.map((option) => (
-                          <option key={option} value={option}>
-                            {option}
+                        {BUDGET_OPTIONS.map((b) => (
+                          <option key={b} value={b}>
+                            {b}
                           </option>
                         ))}
                       </select>
@@ -328,14 +342,14 @@ function ContactPage() {
                       placeholder="Where does the shoot take place? What are your key dates, goals, or desired visual references?"
                       className="w-full rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm text-white placeholder:text-white/20 focus:border-accent focus:outline-none resize-none transition-colors"
                     />
-                    {errors.message && <p className="mt-1 text-xs text-red-400">{errors.message}</p>}
+                    {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
                   </div>
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-white/5">
                     <button
                       type="submit"
                       disabled={loading}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-4 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-black hover:bg-white transition-colors disabled:opacity-60"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-4 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-black hover:bg-white transition-all shadow-[0_0_20px_rgba(212,176,98,0.2)] disabled:opacity-70 cursor-pointer"
                     >
                       {loading ? (
                         <>

@@ -60,7 +60,7 @@ const translations: Record<Language, Record<string, string>> = {
     "pricing.starter.f1": "Single cinematic reel",
     "pricing.starter.f2": "Aerial or FPV coverage",
     "pricing.starter.f3": "Professional color grade",
-    "pricing.starter.f4": "4K delivery + social cutdown",
+    "pricing.starter.f4": "Cinema master delivery + social cutdown",
 
     "pricing.business.tagline": "For brands requiring multiple perspectives and formats.",
     "pricing.business.f1": "FPV & aerial hybrid coverage",
@@ -78,7 +78,7 @@ const translations: Record<Language, Record<string, string>> = {
     "team.eyebrow": "The Team",
     "team.title": "Studio Crew",
     "team.intro":
-      "A small, focused team combining FPV flying, ground cinematography, and post-production based in Stäfa, Switzerland.",
+      "A small, focused team combining FPV flying, ground cinematography, and post-production based in Switzerland.",
     "team.finn.role": "Founder · FPV Pilot & Cinematographer",
     "team.finn.bio":
       "Directs flight lines, close-proximity camera tracking, and editorial assembly for dynamic visual stories.",
@@ -113,35 +113,35 @@ const translations: Record<Language, Record<string, string>> = {
     // Job Roles Details
     "job.fpv.title": "FPV Drone Pilot & Aerial Operator",
     "job.fpv.dept": "Flight Operations",
-    "job.fpv.loc": "Stäfa, CH & Hybrid",
+    "job.fpv.loc": "Switzerland & Hybrid",
     "job.fpv.desc":
       "Execute precision high-speed chase-cam flights, slow cinematic indoor passes, and heavy-lifter operations.",
     "job.fpv.req1": 'Extensive experience flying 5" and 7" cinematic FPV quads',
-    "job.fpv.req2": "Valid EASA A1/A3 & A2 drone certificates",
+    "job.fpv.req2": "Valid EASA A1 and A3 open-category drone certifications",
     "job.fpv.req3": "Outstanding spatial awareness and stress resistance during live shoots",
 
     "job.cameraman.title": "Cinematographer & Camera Operator",
     "job.cameraman.dept": "Camera & Lighting",
-    "job.cameraman.loc": "Stäfa, CH & Travel",
+    "job.cameraman.loc": "Switzerland & Travel",
     "job.cameraman.desc":
-      "Direct visual composition, manage specialized camera gear (RED, ARRI), and maintain cinematic standard on brand sets.",
+      "Direct visual composition, manage specialized cinema gear, and maintain cinematic standard on brand sets.",
     "job.cameraman.req1":
-      "Deep understanding of lens properties, focal lengths, and camera sensors",
+      "Deep understanding of lens properties, focal lengths, and visual composition",
     "job.cameraman.req2": "Proven portfolio in commercial or high-end documentary film",
     "job.cameraman.req3": "Ability to coordinate lighting schemes and active camera moves",
 
     "job.editor.title": "Lead Video Editor & Colorist",
     "job.editor.dept": "Post-Production",
-    "job.editor.loc": "Stäfa, CH & Hybrid",
+    "job.editor.loc": "Switzerland & Hybrid",
     "job.editor.desc":
-      "Craft powerful narrative flow from raw footage, execute rhythm-based edits, and color-grade DaVinci Resolve timelines.",
+      "Craft powerful narrative flow from captured footage, execute rhythm-based edits, and color-grade DaVinci Resolve timelines.",
     "job.editor.req1": "Mastery of DaVinci Resolve or Premiere Pro",
     "job.editor.req2": "Strong sense of pacing, sound design, and emotional storytelling",
     "job.editor.req3": "Proven experience in commercial color grading",
 
     "job.sound.title": "Sound Designer & SFX Specialist",
     "job.sound.dept": "Post-Production",
-    "job.sound.loc": "Stäfa, CH & Remote",
+    "job.sound.loc": "Switzerland & Remote",
     "job.sound.desc":
       "Generate deep, immersive soundscapes, perform clean Foley recording, and direct room-filling audio mixes.",
     "job.sound.req1": "Excellent skill in Reaper, Pro Tools, or Ableton Live",
@@ -151,7 +151,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "job.vfx.title": "VFX & CGI Generalist",
     "job.vfx.dept": "Post-Production",
-    "job.vfx.loc": "Stäfa, CH & Remote",
+    "job.vfx.loc": "Switzerland & Remote",
     "job.vfx.desc":
       "Incorporate highly detailed 3D assets, carry out camera motion tracking, and integrate seamless CGI elements into real FPV takes.",
     "job.vfx.req1": "Proficient in Blender, Cinema 4D, or Unreal Engine",
@@ -160,7 +160,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "job.creative.title": "Creative Director / Producer",
     "job.creative.dept": "Creative Lead",
-    "job.creative.loc": "Stäfa, CH & Hybrid",
+    "job.creative.loc": "Switzerland & Hybrid",
     "job.creative.desc":
       "Translate partner goals into high-impact script/storyboard treatments, oversee overall production design, and direct logistics.",
     "job.creative.req1": "Strong narrative background with exceptional pitching skills",
@@ -231,7 +231,7 @@ const translations: Record<Language, Record<string, string>> = {
       "End-to-end support for your production including airspace clearances, location scouting, storyboard crafting, flight permits, and crew logistics.",
     "services.s07.title": "And Much More",
     "services.s07.body":
-      "Bespoke drone rigs, photogrammetry scanning, raw media transcoding, and customizable creative treatments calibrated to your exact vision.",
+      "Bespoke drone rigs, photogrammetry scanning, media transcoding, and customizable creative treatments calibrated to your exact vision.",
     "services.cta": "Start a project",
 
     // Careers Page
@@ -344,7 +344,7 @@ const translations: Record<Language, Record<string, string>> = {
     "pricing.starter.f1": "Ein einzelnes kinoreifes Reel",
     "pricing.starter.f2": "Luftaufnahmen oder FPV-Aufnahmen",
     "pricing.starter.f3": "Professionelles Color Grading",
-    "pricing.starter.f4": "4K-Lieferung + Social-Media-Schnitt",
+    "pricing.starter.f4": "Cinema-Master-Lieferung + Social-Media-Schnitt",
 
     "pricing.business.tagline": "Für Marken, die mehrere Perspektiven und Formate benötigen.",
     "pricing.business.f1": "Hybride Abdeckung aus FPV & klassischen Drohnen",
@@ -362,7 +362,7 @@ const translations: Record<Language, Record<string, string>> = {
     "team.eyebrow": "Das Team",
     "team.title": "Studio Crew",
     "team.intro":
-      "Ein kleines, fokussiertes Team für FPV-Flug, Boden-Kinematografie und Postproduktion mit Sitz in Stäfa, Schweiz.",
+      "Ein kleines, fokussiertes Team für FPV-Flug, Boden-Kinematografie und Postproduktion mit Sitz in der Schweiz.",
     "team.finn.role": "Gründer · FPV-Pilot & Kameramann",
     "team.finn.bio":
       "Leitet Fluglinien, Nahaufnahmen und Schnittmontagen für dynamische visuelle Geschichten.",
@@ -397,25 +397,25 @@ const translations: Record<Language, Record<string, string>> = {
     // Job Roles Details
     "job.fpv.title": "FPV Drohnenpilot & Kameraoperator",
     "job.fpv.dept": "Flugbetrieb",
-    "job.fpv.loc": "Stäfa, CH & Hybrid",
+    "job.fpv.loc": "Schweiz & Hybrid",
     "job.fpv.desc":
       "Präzise Hochgeschwindigkeits-Verfolgungsflüge, langsame kinoreife Indoor-Durchgänge und Schwerlastflüge.",
     "job.fpv.req1": 'Umfangreiche Erfahrung mit 5" und 7" FPV-Cinewhoops',
-    "job.fpv.req2": "Gültige EASA A1/A3 & A2 Drohnenlizenzen",
+    "job.fpv.req2": "Gültige EASA A1 und A3 Open-Category Drohnenzertifizierungen",
     "job.fpv.req3": "Hervorragendes räumliches Vorstellungsvermögen und Stressresistenz",
 
     "job.cameraman.title": "Kameramann & Kamera-Operator",
     "job.cameraman.dept": "Kamera & Licht",
-    "job.cameraman.loc": "Stäfa, CH & Reisen",
+    "job.cameraman.loc": "Schweiz & Reisen",
     "job.cameraman.desc":
-      "Visuelle Komposition, Verwaltung spezieller Kameraausrüstung (RED, ARRI) und Aufrechterhaltung der Kino-Qualität am Set.",
-    "job.cameraman.req1": "Tiefes Verständnis von Linsen, Brennweiten und Kamerasensoren",
+      "Visuelle Komposition, Verwaltung spezieller Kameraausrüstung und Aufrechterhaltung der Kino-Qualität am Set.",
+    "job.cameraman.req1": "Tiefes Verständnis von Optiken, Brennweiten und visueller Komposition",
     "job.cameraman.req2": "Nachgewiesenes Portfolio im kommerziellen oder Dokumentarfilmbereich",
     "job.cameraman.req3": "Fähigkeit, Lichtkonzepte und dynamische Kamerafahrten zu koordinieren",
 
     "job.editor.title": "Lead-Cutter & Colorist",
     "job.editor.dept": "Postproduktion",
-    "job.editor.loc": "Stäfa, CH & Hybrid",
+    "job.editor.loc": "Schweiz & Hybrid",
     "job.editor.desc":
       "Entwicklung kraftvoller narratives Strukturen, rhythmischer Schnitt und Farbkorrektur in DaVinci Resolve.",
     "job.editor.req1": "Hervorragende Kenntnisse in DaVinci Resolve oder Premiere Pro",
@@ -424,7 +424,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "job.sound.title": "Sounddesigner & SFX-Spezialist",
     "job.sound.dept": "Postproduktion",
-    "job.sound.loc": "Stäfa, CH & Remote",
+    "job.sound.loc": "Schweiz & Remote",
     "job.sound.desc":
       "Erschaffung tiefer, immersiver Klangwelten, saubere Foley-Aufnahmen und raumfüllende Audio-Mischungen.",
     "job.sound.req1": "Exzellente Fähigkeiten in Reaper, Pro Tools oder Ableton Live",
@@ -433,7 +433,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "job.vfx.title": "VFX & CGI Generalist",
     "job.vfx.dept": "Postproduktion",
-    "job.vfx.loc": "Stäfa, CH & Remote",
+    "job.vfx.loc": "Schweiz & Remote",
     "job.vfx.desc":
       "Einbindung hochdetaillierter 3D-Assets, Kameratracking und nahtlose CGI-Integration in echte FPV-Szenen.",
     "job.vfx.req1": "Erfahren in Blender, Cinema 4D oder Unreal Engine",
@@ -442,7 +442,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "job.creative.title": "Kreativdirektor / Produzent",
     "job.creative.dept": "Kreativleitung",
-    "job.creative.loc": "Stäfa, CH & Hybrid",
+    "job.creative.loc": "Schweiz & Hybrid",
     "job.creative.desc":
       "Übersetzung von Markenzielen in visuelle Storyboards, Überwachung des Produktionsdesigns und Logistik.",
     "job.creative.req1": "Starker erzählerischer Hintergrund und exzellente Pitching-Skills",
@@ -628,7 +628,7 @@ const translations: Record<Language, Record<string, string>> = {
     "pricing.starter.f1": "Un seul reel cinématographique",
     "pricing.starter.f2": "Couverture aérienne classique ou FPV",
     "pricing.starter.f3": "Étalonnage couleur professionnel",
-    "pricing.starter.f4": "Livraison 4K + format court pour réseaux",
+    "pricing.starter.f4": "Livraison master cinéma + format court pour réseaux",
 
     "pricing.business.tagline": "Pour les marques nécessitant plusieurs perspectives et formats.",
     "pricing.business.f1": "Couverture hybride FPV & aérienne classique",
@@ -647,7 +647,7 @@ const translations: Record<Language, Record<string, string>> = {
     "team.eyebrow": "L'Équipe",
     "team.title": "Studio Crew",
     "team.intro":
-      "Une petite équipe dédiée combinant vol FPV, cinématographie au sol et post-production basée à Stäfa en Suisse.",
+      "Une petite équipe dédiée combinant vol FPV, cinématographie au sol et post-production basée en Suisse.",
     "team.finn.role": "Fondateur · Pilote FPV & Cadreur",
     "team.finn.bio":
       "Dirige les lignes de vol, le suivi en basse altitude et le montage narratif pour des vidéos percutantes.",
@@ -682,26 +682,26 @@ const translations: Record<Language, Record<string, string>> = {
     // Job Roles Details
     "job.fpv.title": "Pilote de Drone FPV & Opérateur Aérien",
     "job.fpv.dept": "Opérations de Vol",
-    "job.fpv.loc": "Stäfa, CH & Hybride",
+    "job.fpv.loc": "Suisse & Hybride",
     "job.fpv.desc":
       "Exécutez des vols de poursuite précis à haute vitesse, des passages lents en intérieur et des opérations de levage lourd.",
     "job.fpv.req1": 'Vaste expérience de vol avec des quads FPV de 5" et 7"',
-    "job.fpv.req2": "Certificats de drone EASA A1/A3 & A2 valides",
+    "job.fpv.req2": "Certificats de drone EASA A1 et A3 open-category valides",
     "job.fpv.req3": "Excellente conscience spatiale et résistance au stress en tournage",
 
     "job.cameraman.title": "Directeur de la Photographie / Cadreur",
     "job.cameraman.dept": "Caméra & Éclairage",
-    "job.cameraman.loc": "Stäfa, CH & Voyages",
+    "job.cameraman.loc": "Suisse & Voyages",
     "job.cameraman.desc":
-      "Diriger la composition visuelle, gérer le matériel de caméra spécialisé (RED, ARRI) et maintenir le standing cinématographique sur le plateau.",
-    "job.cameraman.req1": "Compréhension approfondie des objectifs, des focales et des capteurs",
+      "Diriger la composition visuelle, gérer le matériel de cinéma spécialisé et maintenir le standing cinématographique sur le plateau.",
+    "job.cameraman.req1": "Compréhension approfondie des optiques, des focales et de la composition visuelle",
     "job.cameraman.req2": "Portfolio solide dans le film commercial ou documentaire haut de gamme",
     "job.cameraman.req3":
       "Capacité à coordonner les schémas d'éclairage et les mouvements de caméra",
 
     "job.editor.title": "Chef Monteur & Étalonneur",
     "job.editor.dept": "Post-Production",
-    "job.editor.loc": "Stäfa, CH & Hybride",
+    "job.editor.loc": "Suisse & Hybride",
     "job.editor.desc":
       "Créer des flux narratifs puissants à partir de rushes, exécuter des montages rythmés et étalonner sur DaVinci Resolve.",
     "job.editor.req1": "Maîtrise absolue de DaVinci Resolve ou Premiere Pro",
@@ -710,7 +710,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "job.sound.title": "Designer Sonore & Spécialiste SFX",
     "job.sound.dept": "Post-Production",
-    "job.sound.loc": "Stäfa, CH & À distance",
+    "job.sound.loc": "Suisse & À distance",
     "job.sound.desc":
       "Générer des ambiances sonores profondes et immersives, réaliser des enregistrements Foley et diriger des mixages audio de qualité.",
     "job.sound.req1": "Excellente maîtrise de Reaper, Pro Tools ou Ableton Live",
@@ -719,7 +719,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "job.vfx.title": "Généraliste VFX & CGI",
     "job.vfx.dept": "Post-Production",
-    "job.vfx.loc": "Stäfa, CH & À distance",
+    "job.vfx.loc": "Suisse & À distance",
     "job.vfx.desc":
       "Intégrer des modèles 3D détaillés, effectuer le tracking de mouvement caméra et ajouter des éléments CGI de façon transparente.",
     "job.vfx.req1": "Maîtrise de Blender, Cinema 4D ou Unreal Engine",
@@ -729,7 +729,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "job.creative.title": "Directeur Créatif / Producteur",
     "job.creative.dept": "Direction Créative",
-    "job.creative.loc": "Stäfa, CH & Hybride",
+    "job.creative.loc": "Suisse & Hybride",
     "job.creative.desc":
       "Traduire les objectifs des partenaires en storyboards et scripts percutants, superviser la direction artistique et la logistique.",
     "job.creative.req1": "Solide expérience narrative avec de grandes compétences de pitch",

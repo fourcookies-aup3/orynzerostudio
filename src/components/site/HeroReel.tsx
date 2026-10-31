@@ -21,7 +21,7 @@ declare global {
 /**
  * Fullscreen looping background video component.
  * Supports HTML5 video (mp4, webm, blob URL) and YouTube embeds.
- * Explicitly forces 4K (2160p / highres) stream quality.
+ * Explicitly forces high-definition cinematic stream quality.
  * Dynamically reacts to user-uploaded custom videos.
  */
 export function HeroReel({ className, src }: { className?: string; src?: string }) {
@@ -62,7 +62,7 @@ export function HeroReel({ className, src }: { className?: string; src?: string 
 
   const youtubeId = getYoutubeId(activeSrc);
 
-  // Enforce 4K UHD playback quality on YouTube player
+  // Enforce cinema-grade playback quality on YouTube player
   useEffect(() => {
     if (!youtubeId || typeof window === "undefined") return;
 
@@ -75,12 +75,12 @@ export function HeroReel({ className, src }: { className?: string; src?: string 
     let playerInstance: any = null;
     let cancelled = false;
 
-    const setup4KPlayer = () => {
+    const setupPlayer = () => {
       if (cancelled) return;
-      const iframeEl = document.getElementById("hero-4k-bg-frame");
+      const iframeEl = document.getElementById("hero-bg-frame");
       if (window.YT && window.YT.Player && iframeEl) {
         try {
-          playerInstance = new window.YT.Player("hero-4k-bg-frame", {
+          playerInstance = new window.YT.Player("hero-bg-frame", {
             events: {
               onReady: (event: any) => {
                 try {
@@ -111,11 +111,11 @@ export function HeroReel({ className, src }: { className?: string; src?: string 
           // ignore
         }
       } else {
-        setTimeout(setup4KPlayer, 300);
+        setTimeout(setupPlayer, 300);
       }
     };
 
-    setup4KPlayer();
+    setupPlayer();
 
     return () => {
       cancelled = true;
@@ -134,13 +134,13 @@ export function HeroReel({ className, src }: { className?: string; src?: string 
       <div className="relative w-full h-full pointer-events-none">
         {youtubeId ? (
           <iframe
-            id="hero-4k-bg-frame"
+            id="hero-bg-frame"
             src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&rel=0&loop=1&playlist=${youtubeId}&modestbranding=1&playsinline=1&enablejsapi=1&vq=hd2160&vq=highres`}
             className="absolute top-1/2 left-1/2 w-[350vw] h-[350vw] sm:w-[200vw] sm:h-[200vw] md:w-[160vw] md:h-[160vw] -translate-x-1/2 -translate-y-1/2 opacity-85 scale-125 pointer-events-none select-none border-0"
             allow="autoplay; encrypted-media"
             frameBorder="0"
             tabIndex={-1}
-            title="ORYN ZERO 4K Background Reel"
+            title="ORYN ZERO Background Reel"
           />
         ) : (
           <video

@@ -15,7 +15,7 @@ export const heroReels = [
     youtubeUrl: "https://youtu.be/4mwIvmZ5y7c",
     poster: "https://img.youtube.com/vi/4mwIvmZ5y7c/maxresdefault.jpg",
     label: "Parkour Day Stäfa / Event Film",
-    credits: "Main Recording/Editing: ORYN ZERO Studio · Co-Filming/Drone Shots: Finn Ryf",
+    credits: "Main Recording/Editing: VISURE GMBH · Co-Filming/Drone Shots: Finn Ryf",
   },
 ];
 
@@ -30,7 +30,7 @@ export const site = {
   tagline: "Films built around movement",
   description:
     "Boutique film studio based in Switzerland. Combining dynamic FPV aerials, ground cinematography, and post-production for brands, events, and places.",
-  email: "project@orynzerostudio.ch",
+  email: "orynzerostudio@gmail.com",
   location: "Switzerland",
   social: {
     instagram: "https://www.instagram.com/orynzerostudio/",
@@ -50,7 +50,37 @@ export const site = {
   },
 };
 
-export const partners = [];
+export const compliance = [
+  {
+    title: "Swiss BAZL / FOCA",
+    badge: "Official Compliance",
+    description: "Official aviation compliance and flight logs.",
+  },
+  {
+    title: "EASA Certified",
+    badge: "Pilot Licensing",
+    description: "A1 and A3 open-category drone certifications.",
+  },
+  {
+    title: "Fully Insured",
+    badge: "Commercial Coverage",
+    description: "Commercial aviation third-party liability coverage.",
+  },
+];
+
+export const partners = [
+  {
+    name: "VISURE GMBH",
+    role: "Trusted Swiss production collaboration partner",
+    note: "Trusted Swiss production collaboration partner",
+    url: "https://www.visure.ch/de",
+  },
+  {
+    name: "Supporting Foundation",
+    role: "Supporting Foundation",
+    note: "Supporting Foundation",
+  },
+];
 
 export const crowdfunding = {
   title: "OrynZERO Studio am Start",
@@ -63,6 +93,6 @@ export const clients = [
   {
     name: "Parkour Day Stäfa",
     note: "Event Film",
-    credits: "Main Recording/Editing: ORYN ZERO Studio · Co-Filming/Drone Shots: Finn Ryf",
+    credits: "Main Recording/Editing: VISURE GMBH · Co-Filming/Drone Shots: Finn Ryf",
   },
 ];

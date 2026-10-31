@@ -122,8 +122,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "ORYN ZERO",
           description:
             "Swiss cinematic production studio — FPV, aerial cinematography, brand films.",
-          email: "studio@orynzero.ch",
-          address: { "@type": "PostalAddress", addressCountry: "CH" },
+          email: "orynzerostudio@gmail.com",
+          address: {
+            "@type": "PostalAddress",
+            addressCountry: "Switzerland",
+          },
         }),
       },
     ],
@@ -161,7 +164,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <LocaleProvider>
         <SiteNav />
-        <main className="min-h-screen bg-background text-foreground">
+        <main className="min-h-screen bg-background text-foreground overflow-x-hidden w-full max-w-full">
           <Outlet />
         </main>
         <SiteFooter />

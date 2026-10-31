@@ -439,7 +439,7 @@ export function ApplicationForm({ type, defaultRole, className = "" }: Applicati
                   <input
                     type="text"
                     name="city"
-                    placeholder="Zürich, Switzerland"
+                    placeholder="Switzerland"
                     className="w-full rounded-xl border border-white/10 bg-black/80 p-3.5 text-sm font-sans text-white outline-none focus:border-accent"
                   />
                   {formErrors.city && (

@@ -85,8 +85,8 @@ export function CrowdfundingSection() {
               OrynZERO Studio am Start
             </h3>
             <p className="mt-4 text-base md:text-lg leading-relaxed text-silver/70 font-light">
-              We are officially taking ORYN ZERO to the next level: financing a dedicated Sony FX3 solo rig
-              and covering all official Swiss legal entries to sign up and register as a formal company.
+              We are officially taking ORYN ZERO to the next level: financing dedicated cinema production
+              flight equipment and covering official Swiss legal entries to register as a formal company.
             </p>
           </div>
 
@@ -106,7 +106,7 @@ export function CrowdfundingSection() {
                 </p>
               </div>
 
-              {/* Highlights List: FX3 Solo Rig & Company Registration */}
+              {/* Highlights List: Cinema Rig & Company Registration */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="rounded-2xl border border-accent/20 bg-accent/[0.03] p-6 backdrop-blur-sm space-y-3">
                   <div className="flex items-center gap-2.5 text-accent">
@@ -114,11 +114,11 @@ export function CrowdfundingSection() {
                       <Camera className="size-4 text-accent" />
                     </div>
                     <span className="font-mono text-[11px] uppercase tracking-wider font-bold text-white">
-                      Sony FX3 Solo Rig
+                      Cinema Production Rig
                     </span>
                   </div>
                   <p className="text-xs text-silver/70 leading-relaxed">
-                    A dedicated, high-mobility cinema line camera rig with top handle audio, high dynamic range 4K recording, and tailored mounting for agile solo shoots and airborne tracking.
+                    A dedicated, high-mobility cinema camera setup with professional audio, wide dynamic range recording, and specialized mounting for agile shoots and airborne tracking.
                   </p>
                   <div className="pt-1 flex items-center gap-1.5 font-mono text-[9px] text-accent/80">
                     <CheckCircle2 className="size-3" />

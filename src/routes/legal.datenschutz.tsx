@@ -28,7 +28,7 @@ function Datenschutz() {
             Schweizer Datenschutzgesetz (revDSG) und – soweit anwendbar – der DSGVO.
           </p>
           <Section title="1. Verantwortliche Stelle">
-            <p>ORYN ZERO, [Adresse], Schweiz. Kontakt: studio@orynzero.ch</p>
+            <p>ORYN ZERO Studio, Schweiz. Kontakt: orynzerostudio@gmail.com</p>
           </Section>
           <Section title="2. Erhebung und Speicherung">
             <p>
@@ -49,7 +49,7 @@ function Datenschutz() {
           <Section title="5. Ihre Rechte">
             <p>
               Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der
-              Verarbeitung Ihrer Daten. Bitte wenden Sie sich an studio@orynzero.ch.
+              Verarbeitung Ihrer Daten. Bitte wenden Sie sich an orynzerostudio@gmail.com.
             </p>
           </Section>
         </div>

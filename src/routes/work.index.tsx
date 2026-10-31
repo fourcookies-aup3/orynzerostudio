@@ -15,7 +15,7 @@ export const Route = createFileRoute("/work/")({
       {
         name: "description",
         content:
-          "Selected cinematic productions, FPV aerial sequences, and event films by ORYN ZERO Studio in Stäfa, Switzerland.",
+          "Selected cinematic productions, FPV aerial sequences, and event films by ORYN ZERO Studio in Switzerland.",
       },
       { property: "og:title", content: "Work & Productions — ORYN ZERO Studio" },
       { property: "og:url", content: "/work" },
@@ -85,7 +85,7 @@ function WorkIndex() {
                   </p>
                 </div>
                 <span className="font-mono text-[9px] uppercase tracking-wider text-white/80 bg-black/60 px-3 py-1.5 rounded-full border border-white/10 shrink-0">
-                  Watch Showreel (4K)
+                  Watch Showreel
                 </span>
               </div>
             </div>
@@ -103,7 +103,7 @@ function WorkIndex() {
                 </h2>
               </div>
               <span className="font-mono text-[10px] text-silver/40 uppercase tracking-widest">
-                Stäfa, Switzerland
+                Switzerland
               </span>
             </div>
 
