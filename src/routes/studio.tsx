@@ -5,8 +5,8 @@ import { FounderImage } from "@/components/site/FounderImage";
 import { MemberImage } from "@/components/site/MemberImage";
 import nickPhoto from "@/assets/Nick.jpeg";
 import tatePhoto from "@/assets/Tate Rittscher.png";
-import { CrowdifyWidget, CROWDIFY_PROJECT_URL } from "@/components/site/CrowdifyWidget";
-import { ExternalLink, ArrowUpRight, ShieldCheck, CheckCircle2, MapPin } from "lucide-react";
+import { StudioTimeline } from "@/components/site/StudioTimeline";
+import { ArrowUpRight, ArrowRight, MapPin, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/studio")({
   head: () => ({
@@ -29,8 +29,21 @@ function StudioPage() {
   return (
     <div className="min-h-screen bg-[#050507] text-white">
       <PageHero
-        eyebrow="The Studio"
-        title="Films Built Around Movement"
+        eyebrow={
+          <div className="flex items-center gap-2">
+            <span>The Studio</span>
+            <span className="text-silver/40">·</span>
+            <span className="font-script text-accent text-xl normal-case">Switzerland</span>
+          </div>
+        }
+        title={
+          <>
+            Films Built Around{" "}
+            <span className="font-script text-accent font-normal text-5xl sm:text-7xl md:text-8xl normal-case pl-1.5 inline-block relative top-1">
+              movement.
+            </span>
+          </>
+        }
         intro="We are a small production team based in Switzerland. We combine FPV flying, ground cinematography, and post-production to create films built around movement. For larger productions, we work with trusted local partners."
       />
 
@@ -51,9 +64,16 @@ function StudioPage() {
           </div>
 
           <div className="space-y-6">
-            <SectionLabel id="01">Studio Direction</SectionLabel>
-            <h3 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-              Hands-on cinematography and flight precision.
+            <div className="flex items-center gap-2">
+              <SectionLabel id="01">Studio Direction</SectionLabel>
+              <span className="text-silver/40 font-mono text-[9px]">·</span>
+              <span className="font-script text-accent text-xl normal-case">hands-on</span>
+            </div>
+            <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tight uppercase">
+              Cinematography &{" "}
+              <span className="font-script text-accent normal-case font-normal text-4xl sm:text-5xl pl-1">
+                flight precision.
+              </span>
             </h3>
             <p className="text-sm leading-relaxed text-silver/80 font-light">
               Finn directs and flies ORYN ZERO's productions. With deep experience building and tuning high-speed FPV quads as well as operating ground cinema packages, he bridges technical flight precision with human-led visual storytelling.
@@ -63,11 +83,18 @@ function StudioPage() {
             </p>
 
             <div className="pt-2">
-              <span className="font-mono text-[8px] uppercase tracking-widest text-silver/40 block mb-3">
-                Core Disciplines
+              <span className="font-mono text-[8px] uppercase tracking-widest text-silver/40 block mb-3 font-semibold">
+                Core Disciplines & Craft
               </span>
               <div className="flex flex-wrap gap-2 text-xs">
-                {["FPV Chase Cinematography", "Indoor Proximity Passes", "Ground Cinematography", "Editorial & Color Grading", "Tactile Sound Design"].map((item) => (
+                {[
+                  "FPV Chase Cinematography",
+                  "Indoor Proximity Single-Takes",
+                  "Ground Handheld & Gimbal Work",
+                  "Narrative Rhythm Editing",
+                  "Bespoke Filmic Color Grading",
+                  "Custom Spatial Sound Design",
+                ].map((item) => (
                   <span
                     key={item}
                     className="rounded-lg border border-white/10 bg-white/[0.02] px-3.5 py-1.5 font-mono text-[10px] text-silver/80"
@@ -114,9 +141,13 @@ function StudioPage() {
       <section className="border-b border-white/10 px-6 py-20 sm:py-24 bg-gradient-to-b from-transparent to-black/30">
         <div className="mx-auto max-w-6xl space-y-12">
           <div>
-            <SectionLabel id="02">Team & Collaborators</SectionLabel>
-            <h3 className="mt-3 text-3xl font-bold text-white tracking-tight">
-              The Crew
+            <div className="flex items-center gap-2 mb-2">
+              <SectionLabel id="02">Team & Collaborators</SectionLabel>
+              <span className="text-silver/40 font-mono text-[9px]">·</span>
+              <span className="font-script text-accent text-xl normal-case">the crew</span>
+            </div>
+            <h3 className="mt-1 text-3xl font-black text-white tracking-tight uppercase">
+              Production Collective
             </h3>
             <p className="mt-2 text-xs text-silver/60 max-w-md font-light leading-relaxed">
               Clear roles, real craft, and transparent production credits.
@@ -197,98 +228,36 @@ function StudioPage() {
         </div>
       </section>
 
-      {/* Safety & Compliance */}
-      <section className="border-b border-white/10 px-6 py-20">
-        <div className="mx-auto max-w-6xl">
-          <div className="rounded-3xl border border-white/10 bg-[#0a0a0d] p-8 sm:p-12">
-            <div className="grid gap-8 md:grid-cols-12 items-center">
-              <div className="md:col-span-8 space-y-4">
-                <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent font-semibold block">
-                  Legal Compliance & Flight Safety
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                  Swiss Aviation Compliance & Insurance
-                </h3>
-                <p className="text-xs sm:text-sm text-silver/70 font-light leading-relaxed">
-                  We operate strictly within Swiss and European civil aviation regulations. Every commercial flight is insured and coordinated through official airspace clearance protocols.
-                </p>
+      {/* Interactive Studio Timeline: Founding to Present Day & Next: Coming Soon */}
+      <StudioTimeline />
 
-                <div className="grid gap-4 sm:grid-cols-2 pt-2 text-xs text-silver/80">
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="text-white block font-medium">Swiss BAZL / FOCA</strong>
-                      <span className="text-silver/60 text-[11px]">Official aviation compliance and flight logs.</span>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="text-white block font-medium">EASA Certified</strong>
-                      <span className="text-silver/60 text-[11px]">A1 and A3 open-category drone certifications.</span>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="text-white block font-medium">Fully Insured</strong>
-                      <span className="text-silver/60 text-[11px]">Commercial aviation third-party liability coverage.</span>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle2 className="size-4 text-accent shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="text-white block font-medium">VISURE GMBH</strong>
-                      <span className="text-silver/60 text-[11px]">Trusted Swiss production collaboration partner, Supporting Foundation.</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="md:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl border border-white/5 bg-white/[0.01] text-center space-y-2">
-                <ShieldCheck className="size-12 text-accent" />
-                <span className="font-mono text-[10px] uppercase tracking-widest text-white font-bold block">
-                  Certified & Insured
-                </span>
-                <span className="text-xs text-silver/50 font-light">
-                  Switzerland · Worldwide Availability
-                </span>
-              </div>
-            </div>
+      {/* Bottom Conversion CTA */}
+      <section className="px-6 py-20 bg-[#050507]">
+        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-[#0a0a0d] p-8 sm:p-14 text-center space-y-6">
+          <div className="flex items-center justify-center gap-2">
+            <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
+              Work With Us
+            </span>
+            <span className="text-silver/40">·</span>
+            <span className="font-script text-accent text-2xl normal-case">bespoke productions</span>
           </div>
-        </div>
-      </section>
 
-      {/* Honest Crowdfunding Note */}
-      <section className="px-6 py-20 bg-[#070709]">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-10 lg:grid-cols-12 items-center">
-            <div className="lg:col-span-7 space-y-4">
-              <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent font-semibold block">
-                Studio Launch & Expansion
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Crowdify.net Studio Campaign
-              </h3>
-              <p className="text-xs sm:text-sm text-silver/70 font-light leading-relaxed">
-                To support the studio's commercial setup in Switzerland and expand our independent production capabilities, we launched an honest crowdfunding campaign on Crowdify.net.
-              </p>
-              <div className="pt-2">
-                <a
-                  href={CROWDIFY_PROJECT_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-mono text-[9px] font-bold uppercase tracking-widest text-black hover:bg-white transition-colors"
-                >
-                  <span>View Campaign on Crowdify.net</span>
-                  <ExternalLink className="size-3" />
-                </a>
-              </div>
-            </div>
+          <h3 className="text-3xl sm:text-5xl font-black text-white tracking-tight uppercase">
+            Have a Project in Mind?
+          </h3>
 
-            <div className="lg:col-span-5 flex justify-center">
-              <CrowdifyWidget />
-            </div>
+          <p className="text-xs sm:text-sm text-silver/70 font-light max-w-md mx-auto leading-relaxed">
+            From initial shot treatment to flight clearances and final post-production master delivery. Discuss your vision directly with our founder.
+          </p>
+
+          <div className="pt-2">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-black hover:bg-white transition-all shadow-[0_0_30px_rgba(212,176,98,0.25)]"
+            >
+              <span>Discuss a Project</span>
+              <ArrowRight className="size-3.5" />
+            </Link>
           </div>
         </div>
       </section>

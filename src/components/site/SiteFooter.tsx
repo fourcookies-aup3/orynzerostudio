@@ -60,14 +60,6 @@ export function SiteFooter() {
             >
               Careers
             </Link>
-            <a
-              href="https://www.crowdify.net/de/projekt/orynzero-studio-am-start"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs uppercase tracking-widest text-accent/90 hover:text-white transition-colors"
-            >
-              Crowdfunding ↗
-            </a>
           </div>
 
           <div className="flex flex-col gap-2.5">

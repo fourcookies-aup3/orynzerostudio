@@ -34,6 +34,8 @@
   --font-luxury: var(--font-luxury);
   --font-mono: var(--font-mono);
   --font-sans: var(--font-display);
+  --font-script: var(--font-script);
+  --font-serif-luxury: var(--font-serif-luxury);
 }
 
 :root {

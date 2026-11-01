@@ -100,8 +100,21 @@ function ContactPage() {
   return (
     <div className="min-h-screen bg-[#050507] text-white">
       <PageHero
-        eyebrow="Direct Inquiries"
-        title="Start a Project"
+        eyebrow={
+          <div className="flex items-center gap-2">
+            <span>Direct Inquiries</span>
+            <span className="text-silver/40">·</span>
+            <span className="font-script text-accent text-xl normal-case">collaborate</span>
+          </div>
+        }
+        title={
+          <>
+            Start a{" "}
+            <span className="font-script text-accent font-normal text-5xl sm:text-7xl md:text-8xl normal-case pl-1.5 inline-block relative top-1">
+              project.
+            </span>
+          </>
+        }
         intro="Tell us what you're planning, where it takes place, and when you need it. You'll hear directly from the founder within one working day."
       />
 
@@ -150,40 +163,6 @@ function ContactPage() {
                   <span>Book a 30-Minute Intro Call</span>
                   <ArrowUpRight className="size-3.5" />
                 </a>
-              </div>
-            </div>
-
-            {/* Official Aviation Compliance & Partner Credentials */}
-            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 space-y-4">
-              <span className="font-mono text-[9px] uppercase tracking-widest text-silver/40 block">
-                Official Certifications & Partnerships
-              </span>
-
-              <div className="space-y-3 text-xs">
-                <div className="border-l-2 border-accent pl-3">
-                  <div className="font-semibold text-white">Swiss BAZL / FOCA</div>
-                  <div className="text-[11px] text-silver/70">Official aviation compliance and flight logs.</div>
-                </div>
-
-                <div className="border-l-2 border-accent pl-3">
-                  <div className="font-semibold text-white">EASA Certified</div>
-                  <div className="text-[11px] text-silver/70">A1 and A3 open-category drone certifications.</div>
-                </div>
-
-                <div className="border-l-2 border-accent pl-3">
-                  <div className="font-semibold text-white">Fully Insured</div>
-                  <div className="text-[11px] text-silver/70">Commercial aviation third-party liability coverage.</div>
-                </div>
-
-                <div className="border-l-2 border-accent/40 pl-3 pt-1">
-                  <div className="font-semibold text-white">VISURE GMBH</div>
-                  <div className="text-[11px] text-silver/70">Trusted Swiss production collaboration partner.</div>
-                </div>
-
-                <div className="border-l-2 border-accent/40 pl-3">
-                  <div className="font-semibold text-white">Supporting Foundation</div>
-                  <div className="text-[11px] text-silver/70">Cultural & development patron.</div>
-                </div>
               </div>
             </div>
           </aside>

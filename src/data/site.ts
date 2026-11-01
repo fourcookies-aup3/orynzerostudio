@@ -50,45 +50,6 @@ export const site = {
   },
 };
 
-export const compliance = [
-  {
-    title: "Swiss BAZL / FOCA",
-    badge: "Official Compliance",
-    description: "Official aviation compliance and flight logs.",
-  },
-  {
-    title: "EASA Certified",
-    badge: "Pilot Licensing",
-    description: "A1 and A3 open-category drone certifications.",
-  },
-  {
-    title: "Fully Insured",
-    badge: "Commercial Coverage",
-    description: "Commercial aviation third-party liability coverage.",
-  },
-];
-
-export const partners = [
-  {
-    name: "VISURE GMBH",
-    role: "Trusted Swiss production collaboration partner",
-    note: "Trusted Swiss production collaboration partner",
-    url: "https://www.visure.ch/de",
-  },
-  {
-    name: "Supporting Foundation",
-    role: "Supporting Foundation",
-    note: "Supporting Foundation",
-  },
-];
-
-export const crowdfunding = {
-  title: "OrynZERO Studio am Start",
-  platform: "Crowdify",
-  projectUrl: "https://www.crowdify.net/de/projekt/orynzero-studio-am-start",
-  widgetUrl: "https://www.crowdify.net/de/projekt/orynzero-studio-am-start/widget/v3",
-};
-
 export const clients = [
   {
     name: "Parkour Day Stäfa",

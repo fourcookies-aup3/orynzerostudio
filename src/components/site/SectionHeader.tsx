@@ -16,8 +16,8 @@ export function PageHero({
   intro,
   className,
 }: {
-  eyebrow: string;
-  title: string;
+  eyebrow: React.ReactNode;
+  title: React.ReactNode;
   intro?: string;
   className?: string;
 }) {

@@ -31,8 +31,21 @@ function WorkIndex() {
   return (
     <>
       <PageHero
-        eyebrow="Portfolio & Productions"
-        title="Selected Work"
+        eyebrow={
+          <div className="flex items-center gap-2">
+            <span>Portfolio & Productions</span>
+            <span className="text-silver/40">·</span>
+            <span className="font-script text-accent text-xl normal-case">selected work</span>
+          </div>
+        }
+        title={
+          <>
+            Work Defined by{" "}
+            <span className="font-script text-accent font-normal text-5xl sm:text-7xl md:text-8xl normal-case pl-1.5 inline-block relative top-1">
+              movement.
+            </span>
+          </>
+        }
         intro="Real productions demonstrating dynamic FPV perspectives, synchronized ground cinematography, and movement-first editing."
       />
 

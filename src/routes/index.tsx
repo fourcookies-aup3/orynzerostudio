@@ -26,6 +26,7 @@ import { FounderImage } from "@/components/site/FounderImage";
 import { MemberImage } from "@/components/site/MemberImage";
 import nickPhoto from "@/assets/Nick.jpeg";
 import tatePhoto from "@/assets/Tate Rittscher.png";
+import { StudioTimeline } from "@/components/site/StudioTimeline";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -144,29 +145,35 @@ function HomePage() {
                 ORYN ZERO Studio
               </span>
               <span className="text-white/30">·</span>
-              <span className="font-mono text-[9px] uppercase tracking-widest text-silver/70">
+              <span className="font-script text-accent text-xl normal-case relative top-0.5">
                 Switzerland
               </span>
             </motion.div>
 
-            {/* Clear, Human Headline */}
+            {/* Clear, Human Headline with Luxury Calligraphy Contrast */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-balance text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.05]"
+              className="text-balance text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.02]"
             >
-              Films built around <span className="text-accent italic font-serif-luxury font-normal">movement.</span>
+              Films built around{" "}
+              <span className="font-script text-accent font-normal text-5xl sm:text-7xl md:text-8xl lg:text-9xl normal-case pl-1.5 inline-block relative top-1">
+                movement.
+              </span>
             </motion.h1>
 
-            {/* Clear Supporting Copy */}
+            {/* Clear Supporting Copy with Calligraphy Emphasis */}
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="mx-auto mt-6 max-w-xl text-base sm:text-lg font-light text-silver/90 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
             >
-              Cinematic production and FPV perspectives for events, brands, and places. We film movement from angles conventional cameras can’t reach.
+              Cinematic production and FPV perspectives for events, brands, and places. We film movement from angles conventional cameras{" "}
+              <span className="font-script text-accent text-2xl sm:text-3xl font-normal normal-case">
+                cannot reach.
+              </span>
             </motion.p>
 
             {/* Direct Action CTAs */}
@@ -213,8 +220,11 @@ function HomePage() {
               <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
                 <div>
                   <SectionLabel id="01">Selected Work</SectionLabel>
-                  <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl text-white">
-                    Featured Productions
+                  <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white uppercase">
+                    Featured{" "}
+                    <span className="font-script text-accent font-normal text-4xl sm:text-6xl normal-case pl-1">
+                      productions
+                    </span>
                   </h2>
                 </div>
                 <p className="max-w-md text-xs sm:text-sm text-silver/70 font-light leading-relaxed">
@@ -370,21 +380,6 @@ function HomePage() {
                   <p className="text-xs sm:text-sm leading-relaxed text-silver/70 font-light max-w-xl">
                     Our focus is on camera movement with intention. Rather than standard drone flyovers, we place the lens directly alongside subjects—matching speed, height, and momentum to capture the genuine atmosphere of events, architecture, and brand stories.
                   </p>
-
-                  <div className="pt-4 flex flex-wrap gap-8 font-mono text-[9px] uppercase tracking-widest text-silver/60 border-t border-white/5">
-                    <div>
-                      <span className="block text-xl font-bold font-sans text-accent">100%</span>
-                      <span className="mt-0.5 block">Swiss BAZL Compliant</span>
-                    </div>
-                    <div>
-                      <span className="block text-xl font-bold font-sans text-accent">A1 & A3</span>
-                      <span className="mt-0.5 block">EASA Certified</span>
-                    </div>
-                    <div>
-                      <span className="block text-xl font-bold font-sans text-accent">24h</span>
-                      <span className="mt-0.5 block">Direct Founder Response</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -489,54 +484,10 @@ function HomePage() {
         </section>
 
         {/* =================================================================
-            6. TRUST & SAFETY SIGNALS
-            Swiss BAZL Compliance, EASA certifications, Insurance, VISURE partner
+            6. INTERACTIVE STUDIO TIMELINE
+            Founding through Present Day & Next: Coming Soon...
         ================================================================= */}
-        <section className="relative px-6 py-14 md:px-16 border-t border-white/10 bg-[#070709]">
-          <div className="mx-auto max-w-6xl">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5 font-mono text-[10px]">
-              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-5 flex items-start gap-3">
-                <ShieldCheck className="size-5 text-accent shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold text-white uppercase block">Swiss BAZL / FOCA</span>
-                  <span className="text-silver/60 text-[9px] block mt-1">Official aviation compliance and flight logs.</span>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-5 flex items-start gap-3">
-                <ShieldCheck className="size-5 text-accent shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold text-white uppercase block">EASA Certified</span>
-                  <span className="text-silver/60 text-[9px] block mt-1">A1 and A3 open-category drone certifications.</span>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-5 flex items-start gap-3">
-                <ShieldCheck className="size-5 text-accent shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold text-white uppercase block">Fully Insured</span>
-                  <span className="text-silver/60 text-[9px] block mt-1">Commercial aviation third-party liability coverage.</span>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-5 flex items-start gap-3">
-                <ShieldCheck className="size-5 text-accent shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold text-white uppercase block">VISURE GMBH</span>
-                  <span className="text-silver/60 text-[9px] block mt-1">Trusted Swiss production collaboration partner.</span>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-white/5 bg-white/[0.01] p-5 flex items-start gap-3">
-                <ShieldCheck className="size-5 text-accent shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold text-white uppercase block">Supporting Foundation</span>
-                  <span className="text-silver/60 text-[9px] block mt-1">Recognized foundation patron & supporter.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <StudioTimeline />
 
         {/* =================================================================
             7. CLEAR CONTACT CTA (HOMEPAGE CONVERSION BLOCK)

@@ -253,19 +253,10 @@ export function SiteNav() {
               >
                 Discuss a Project
               </Link>
-              <div className="flex items-center justify-center gap-6 pt-2 font-mono text-[9px] uppercase tracking-widest text-silver/50">
+              <div className="flex items-center justify-center pt-2 font-mono text-[9px] uppercase tracking-widest text-silver/50">
                 <Link to="/careers" onClick={() => setOpen(false)} className="hover:text-white transition-colors">
                   Careers
                 </Link>
-                <span>·</span>
-                <a
-                  href="https://www.crowdify.net/de/projekt/orynzero-studio-am-start"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors"
-                >
-                  Crowdfunding ↗
-                </a>
               </div>
             </motion.div>
           </motion.div>
