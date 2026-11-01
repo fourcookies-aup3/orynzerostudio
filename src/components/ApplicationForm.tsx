@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { z } from "zod";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -130,6 +130,14 @@ async function uploadFileToCloudHost(file: File): Promise<CloudUploadResult | nu
 export function ApplicationForm({ type, defaultRole, className = "" }: ApplicationFormProps) {
   const isJob = type === "job";
   const roles = isJob ? JOB_ROLES : FREELANCER_ROLES;
+
+  const [selectedRole, setSelectedRole] = useState(defaultRole || roles[0]);
+
+  useEffect(() => {
+    if (defaultRole) {
+      setSelectedRole(defaultRole);
+    }
+  }, [defaultRole]);
 
   // File upload state
   const [resumeFile, setResumeFile] = useState<UploadedFileState | null>(null);
@@ -457,7 +465,8 @@ export function ApplicationForm({ type, defaultRole, className = "" }: Applicati
                 </label>
                 <select
                   name="role"
-                  defaultValue={defaultRole || roles[0]}
+                  value={selectedRole}
+                  onChange={(e) => setSelectedRole(e.target.value)}
                   className="w-full rounded-xl border border-white/10 bg-black/80 p-3.5 text-sm font-sans text-white outline-none focus:border-accent"
                 >
                   {roles.map((role) => (

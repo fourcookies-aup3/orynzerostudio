@@ -479,6 +479,19 @@ function HomePage() {
                   </div>
                 </div>
               </div>
+
+              <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <p className="text-xs text-silver/60 font-light">
+                  Interested in flying or filming with us? We are expanding our collaborative creative crew.
+                </p>
+                <Link
+                  to="/careers"
+                  className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-widest text-accent hover:text-white transition-colors"
+                >
+                  <span>Explore Open Positions</span>
+                  <ArrowUpRight className="size-3" />
+                </Link>
+              </div>
             </div>
           </FadeInOnScroll>
         </section>
