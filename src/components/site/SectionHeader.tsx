@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
-export function SectionLabel({ children, id }: { children: string; id?: string }) {
-  const cleanId = id ? id.replace(/^\/\/\s*/, "").trim() : null;
+export function SectionLabel({ children, id }: { children: React.ReactNode; id?: string }) {
+  const cleanId = typeof id === "string" ? id.replace(/^\/\/\s*/, "").trim() : null;
   return (
     <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-silver/80">
       {cleanId ? <span className="mr-2 text-accent font-semibold">{cleanId} ·</span> : null}

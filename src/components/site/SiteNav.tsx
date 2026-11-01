@@ -10,6 +10,7 @@ const nav = [
   { id: "work", href: "#work", path: "/work", labelKey: "nav.work", defaultLabel: "Work" },
   { id: "services", href: "#services", path: "/services", labelKey: "nav.services", defaultLabel: "Services" },
   { id: "studio", href: "#studio", path: "/studio", labelKey: "nav.studio", defaultLabel: "Studio" },
+  { id: "careers", href: "/careers", path: "/careers", labelKey: "nav.careers", defaultLabel: "Careers" },
   { id: "contact", href: "#contact", path: "/contact", labelKey: "nav.contact", defaultLabel: "Contact" },
 ] as const;
 
@@ -74,6 +75,11 @@ export function SiteNav() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: (typeof nav)[number]) => {
     if (currentPath === "/") {
+      if (item.id === "careers") {
+        setOpen(false);
+        document.body.style.overflow = "";
+        return;
+      }
       e.preventDefault();
       if (open) {
         setOpen(false);

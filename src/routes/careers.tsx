@@ -32,6 +32,8 @@ export const Route = createFileRoute("/careers")({
     links: [{ rel: "canonical", href: "/careers" }],
   }),
   component: CareersPage,
+  errorComponent: CareersErrorBoundary,
+  notFoundComponent: CareersErrorBoundary,
 });
 
 interface JobPosition {
@@ -439,3 +441,44 @@ function CareersPage() {
     </div>
   );
 }
+
+function CareersErrorBoundary() {
+  return (
+    <div className="min-h-screen bg-[#050507] text-white flex items-center justify-center px-6 py-28">
+      <div className="max-w-md text-center space-y-6">
+        <div className="inline-flex items-center gap-2">
+          <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
+            ORYN ZERO · Studio Roster
+          </span>
+          <span className="font-script text-accent text-xl">open positions</span>
+        </div>
+        <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-white">
+          Opportunities & Roles
+        </h1>
+        <p className="text-xs sm:text-sm text-silver/70 font-light leading-relaxed">
+          We are actively looking for FPV Drone Pilots, Video Editors, Cinematographers (DP), Sound Designers, and Production Coordinators across Switzerland.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+          <a
+            href="mailto:orynzerostudio@gmail.com?subject=Job%20Application%20—%20ORYN%20ZERO%20Studio"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 font-mono text-[10px] font-bold uppercase tracking-widest text-black hover:bg-white transition-all shadow-[0_0_20px_rgba(212,176,98,0.25)]"
+          >
+            Email Application (orynzerostudio@gmail.com)
+          </a>
+          <button
+            type="button"
+            onClick={() => {
+              if (typeof window !== "undefined") {
+                window.location.reload();
+              }
+            }}
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 font-mono text-[10px] font-bold uppercase tracking-widest text-white hover:bg-white/20 transition-all cursor-pointer"
+          >
+            Reload Page
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
